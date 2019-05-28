@@ -1,68 +1,96 @@
 
-<body>
-<main class="contenedor contenido-principal">
-  <h1 class="titulo">La mejor receta para hacer pizza en tu hogar</h1>
-
-  <div class="entrada">
-          <p>Sed neque sapien, rutrum vel elit at, consequat maximus libero. In molestie est odio, eget laoreet dui aliquet sit amet. Proin in hendrerit enim. Etiam blandit quis enim sed facilisis. Cras euismod, sem vel cursus feugiat, metus felis fermentum metus, in vulputate ex enim eget risus. Ut vitae cursus tortor. Aenean ante tellus, venenatis in semper sit amet, iaculis vitae lorem. Proin et aliquet enim. In tempus a lorem vel pretium. Aenean nec laoreet sapien. In placerat odio sit amet convallis rhoncus. Donec varius mollis nisl id pretium. Aenean ac nunc vitae nunc bibendum pharetra. Cras a nulla tellus. Suspendisse et elit sodales, aliquet enim bibendum, venenatis urna. Donec laoreet, elit non imperdiet luctus, nunc nisl commodo quam, ac vulputate leo felis quis metus.</p>
-
-          <p>Nulla facilisi. Nullam sed leo leo. Proin ipsum lacus, pharetra non est non, tincidunt elementum orci. Sed volutpat neque id lectus dictum, malesuada ullamcorper urna cursus. Aenean at pellentesque orci, sed tristique sapien. Quisque et nunc pellentesque, cursus quam ut, sollicitudin lorem. Ut egestas mi ante, sit amet consectetur velit fringilla eu. Praesent rhoncus nunc eget ornare tincidunt. Nunc posuere ipsum quis tortor mattis porttitor. Praesent commodo purus vitae fringilla pellentesque. Donec interdum facilisis faucibus. Vestibulum a ex lorem. Duis neque nibh, gravida in euismod non, ullamcorper eget leo. Donec at quam faucibus, accumsan nisl sed, congue purus. Nam at bibendum dui, sollicitudin tempor nisi.</p>
-          <blockquote>
-              Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus musmontes, nascetur ridiculus mus.
-          </blockquote>
-
-          <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc eleifend, augue dapibus pharetra facilisis, ligula nunc fringilla nunc, non convallis purus lectus sit amet augue. Nunc luctus sagittis sapien, eu sodales dolor mollis in. Sed sollicitudin maximus ex, ullamcorper tincidunt ligula viverra vel. Donec a aliquet est. Proin at neque nec turpis vulputate eleifend. Sed mollis pharetra aliquet. In eget tempus erat. Nulla facilisi. Quisque iaculis, est id varius sodales, ligula enim lacinia nunc, et pulvinar nisi mi sed diam. Aenean ut enim at odio tristique gravida. Nullam in finibus augue. Cras ac odio at nibh placerat aliquet fermentum sit amet sem. Vivamus condimentum tortor non mi gravida, non volutpat augue consectetur. Quisque vitae mollis risus. Donec eu egestas ipsum, vel rhoncus lorem.</p>
-  </div>
-
-  <div class="informacion">
-          <p>30 Minutos</p>
-          <p>4 Personas</p>
-          <p>$200</p>
-      </div>
-      <div class="imagen1">
-          <img src="img/mini1.jpg">
-      </div>
-
-      <div class="imagen2">
-          <img src="img/mini2.jpg">
-      </div>
+<!--
+https://material.angular.io
+https://www.dotnettricks.com/learn/angularmaterial/gridlayout
+https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.component.html&hideNavigation=1
+-->
 
 
+<mat-toolbar>
+  Control de limpieza cristales zona de despaletizador Linea 1
+</mat-toolbar>
+<div class="basic-container">
 
-</main>
-</body>
+      <mat-grid-list cols="4" rowHeight="30px" gutterSize="1px" [style.border]="'1px solid green'">
+          <mat-grid-tile
+           colspan="2"
+          [style.background]="'#F2F2F2'">
+          <div class="leftVerticalAlign">
+              Kamizibai
+          </div>
+          </mat-grid-tile>
+          <mat-grid-tile [style.background]="'#F2F2F2'">
+           Fecha
+          </mat-grid-tile>
+          <mat-grid-tile [style.background]="'#F2F2F2'" >
+          Versión.
+          </mat-grid-tile>
+      </mat-grid-list>
 
-<!-- <div id="main-window"> -->
-  <div class="post">
-    <div class="user">
-      <!--
-    <div class="user-img" style="background: url(&quot;https://unsplash.it/50/?random&amp;0&quot;) 50% 50% / cover no-repeat rgb(68, 68, 68);"></div>
-    -->
-      <div class="user-info">
-        <div class="user-name">MAM</div>
-        <span class="post-date">07:00 a 08:00</span>
-      </div>
-      <div class="actions">
-        <!-- <span class="heart"></span> -->
-        <!-- <span class="comment"></span> -->
-        <!-- <span class="share"></span> -->
-      </div>
-    </div>
-    <div class="content">
-      1ª revisióm.
-    </div>
-    <div class="content">
-      2ª revisión.
-    </div>
-    <div class="content">
-      3ª revisión.
-    </div>
+<mat-grid-list cols="9" rowHeight="400px" gutterSize="1px"  >
+  <mat-grid-tile-header>
+      <h3>Header</h3>
+      </mat-grid-tile-header>
 
-    <div class="media photo">
-      <img src="https://unsplash.it/600/350/?random&amp;0" alt="post-image" />
-    </div>
-  </div>
-<!-- </div> -->
+  <mat-grid-tile
+      *ngFor="let tile of tiles"
+      [colspan]="tile.cols"
+      [rowspan]="tile.rows"
+      [style.background]="tile.color">
+    {{tile.text}}
+
+    <!-- <mat-grid-tile-footer>
+      <h3>Footer</h3>
+      </mat-grid-tile-footer> -->
+
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="9" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
+     <mat-grid-tile
+        *ngFor="let tile of tilesFooter"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+        [style.background]="tile.color">
+      {{tile.text}}
+
+      <!-- <mat-grid-tile-footer>
+        <h3>Footer</h3>
+        </mat-grid-tile-footer> -->
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
+<div class="footer">
+<mat-grid-list cols="4" rowHeight="100px" gutterSize="1px">
+    <mat-grid-tile
+     colspan="2"
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid red'"
+    >
+     Información actualizada
+    </mat-grid-tile>
+    <mat-grid-tile
+    [style.background]="'#F2F2F2'"
+    [style.border-left]="'1px solid red'"
+    [style.border-top]="'1px solid red'"
+    [style.border-bottom]="'1px solid red'"
+    >
+     Fecha
+    </mat-grid-tile>
+    <mat-grid-tile
+    [style.background]="'#F2F2F2'"
+    [style.border-left]="'1px solid red'"
+    [style.border-right]="'1px solid red'"
+    [style.border-top]="'1px solid red'"
+    [style.border-bottom]="'1px solid red'"
+    >
+    Versión.
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
+
+</div>
 
 
 <router-outlet></router-outlet>
