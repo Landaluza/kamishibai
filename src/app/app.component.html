@@ -27,7 +27,22 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
           </mat-grid-tile>
       </mat-grid-list>
 
-<mat-grid-list cols="9" rowHeight="400px" gutterSize="1px"  >
+      <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
+          <mat-grid-tile
+             *ngFor="let tile of tiles"
+             [colspan]="tile.cols"
+             [rowspan]="tile.rows"
+             [style.background]="tile.color">
+           {{tile.text}}
+
+           <!-- <mat-grid-tile-footer>
+             <h3>Footer</h3>
+             </mat-grid-tile-footer> -->
+
+         </mat-grid-tile>
+       </mat-grid-list>
+
+<mat-grid-list cols="8" rowHeight="400px" gutterSize="1px"  >
   <mat-grid-tile-header>
       <h3>Header</h3>
       </mat-grid-tile-header>
@@ -37,7 +52,17 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
       [colspan]="tile.cols"
       [rowspan]="tile.rows"
       [style.background]="tile.color">
-    {{tile.text}}
+
+      <!-- https://codepen.io/eped22/pen/PzALNq -->
+      <div class="card">
+        <div class="overlay">
+          <h4>CONTROL</h4>
+          <p>Verificar que no existen cristales en la zona</p>
+          <!-- <a href="http://www.google.com/" target="_blank" class='button'>Hecho</a> -->
+          <a href="http://www.google.com/" target="_blank" button class ="btn-material">Hecho</a>
+
+        </div>
+      </div>
 
     <!-- <mat-grid-tile-footer>
       <h3>Footer</h3>
@@ -46,7 +71,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
   </mat-grid-tile>
 </mat-grid-list>
 
-<mat-grid-list cols="9" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
+<mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
      <mat-grid-tile
         *ngFor="let tile of tilesFooter"
         [colspan]="tile.cols"
@@ -91,6 +116,8 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 </div>
 
 </div>
+
+
 
 
 <router-outlet></router-outlet>

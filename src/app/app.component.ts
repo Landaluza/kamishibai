@@ -14,7 +14,6 @@ export interface Tile {
 export class AppComponent {
 
    tiles = [
-    {text: 'Información', cols: 1, rows: 1, color: '#F2F2F2'},
     {text: '7:00 a 8:00', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '8:00 a 9:00', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '9:00 a 10:00', cols: 1, rows: 1, color: '#ADD8E6'},
@@ -27,15 +26,14 @@ export class AppComponent {
   ];
 
   tilesFooter = [
-    {text: 'Resumen', cols: 1, rows: 1, color: '#F2F2F2'},
     {text: '1', cols: 1, rows: 1, color: '#ADD8E6'},
-    {text: '1', cols: 1, rows: 1, color: '#ADD8E6'},
+    {text: '2', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '3', cols: 1, rows: 1, color: '#ADD8E6'},
-    {text: '30', cols: 1, rows: 1, color: '#ADD8E6'},
-    {text: '30', cols: 1, rows: 1, color: '#ADD8E6'},
-    {text: '30', cols: 1, rows: 1, color: '#ADD8E6'},
-    {text: '30', cols: 1, rows: 1, color: '#ADD8E6'},
-    {text: '30', cols: 1, rows: 1, color: '#ADD8E6'},
+    {text: '4', cols: 1, rows: 1, color: '#ADD8E6'},
+    {text: '5', cols: 1, rows: 1, color: '#ADD8E6'},
+    {text: '6', cols: 1, rows: 1, color: '#ADD8E6'},
+    {text: '7', cols: 1, rows: 1, color: '#ADD8E6'},
+    {text: '8', cols: 1, rows: 1, color: '#ADD8E6'},
 
   ];
   title = 'kamizibai';
