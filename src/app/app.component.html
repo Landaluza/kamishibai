@@ -42,6 +42,8 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
          </mat-grid-tile>
        </mat-grid-list>
 
+
+<!--** Grid de tarjetas *******************************************/ -->
 <mat-grid-list cols="8" rowHeight="400px" gutterSize="1px"  >
   <mat-grid-tile-header>
       <h3>Header</h3>
@@ -54,12 +56,14 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
       [style.background]="tile.color">
 
       <!-- https://codepen.io/eped22/pen/PzALNq -->
-      <div class="card">
-        <div class="overlay">
+      <div  class="card">
+        <div #overlay class="overlay">
           <h4>CONTROL</h4>
           <p>Verificar que no existen cristales en la zona</p>
           <!-- <a href="http://www.google.com/" target="_blank" class='button'>Hecho</a> -->
-          <a href="http://www.google.com/" target="_blank" button class ="btn-material">Hecho</a>
+          <!-- <a href="http://www.google.com/" target="_blank" button class ="btn-material">Hecho</a> -->
+
+          <button (click)=onClickMe()>Hecho</button>
 
         </div>
       </div>
@@ -103,6 +107,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
     >
      Fecha
     </mat-grid-tile>
+
     <mat-grid-tile
     [style.background]="'#F2F2F2'"
     [style.border-left]="'1px solid red'"

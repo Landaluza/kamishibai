@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
 
 export interface Tile {
   cols: number;
@@ -12,6 +12,9 @@ export interface Tile {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('overlay', {static: false}) test: ElementRef;
+
+  constructor(private renderer: Renderer2) {}
 
    tiles = [
     {text: '7:00 a 8:00', cols: 1, rows: 1, color: '#ADD8E6'},
@@ -22,7 +25,6 @@ export class AppComponent {
     {text: '12:00 a 13:00', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '13:00 a 14:00', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '14:00 a 15:00', cols: 1, rows: 1, color: '#ADD8E6'},
-
   ];
 
   tilesFooter = [
@@ -34,7 +36,17 @@ export class AppComponent {
     {text: '6', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '7', cols: 1, rows: 1, color: '#ADD8E6'},
     {text: '8', cols: 1, rows: 1, color: '#ADD8E6'},
-
   ];
   title = 'kamizibai';
+
+
+ onClickMe(){
+  // alert("Has pulsado boton")
+  // console.log(this.test.nativeElement);
+  this.renderer.setStyle(this.test.nativeElement, 'backgroundColor', 'green');
 }
+
+
+}
+
+
