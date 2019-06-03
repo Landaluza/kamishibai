@@ -6,6 +6,15 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 -->
 
 
+<!-- https://www.diariodecadiz.es/noticias-provincia-cadiz/fondos-ITI-arrojan-inversiones-provincia_0_1359764340.html
+
+
+
+
+
+-->
+
+
 <mat-toolbar>
   Control de limpieza cristales zona de despaletizador Linea 1
 </mat-toolbar>
@@ -29,16 +38,60 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 
       <!--** Grid de horas *******************************************/ -->
       <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
-          <mat-grid-tile
-             *ngFor="let tile of tiles"
-             [colspan]="tile.cols"
-             [rowspan]="tile.rows"
-             [style.background]="tile.color">
-           {{tile.text}}
 
+        <mat-grid-tile
+        [style.border-left]="'1px solid red'"
+        [style.border-top]="'1px solid red'"
+        [style.border-bottom]="'1px solid red'"
+        >
+          <div #hora7>
+           7:00 a 8:00
+          </div>
           </mat-grid-tile>
-       </mat-grid-list>
 
+          <mat-grid-tile>
+          <div #hora8>
+           8:00 a 9:00
+          </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <div #hora9>
+             9:00 a 10:00
+            </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <div #hora10>
+               10:00 a 11:00
+              </div>
+              </mat-grid-tile>
+
+              <mat-grid-tile>
+                <div #hora11>
+                 11:00 a 12:00
+                </div>
+                </mat-grid-tile>
+
+    <mat-grid-tile>
+          <div #hora12>
+           12:00 a 13:00
+          </div>
+          </mat-grid-tile>
+
+          <mat-grid-tile>
+            <div #hora13>
+             13:00 a 14:00
+            </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+              <div #hora14>
+               14:00 a 15:00
+              </div>
+              </mat-grid-tile>
+
+         </mat-grid-list>
 
 <!--** Grid de tarjetas *******************************************/ -->
 <mat-grid-list cols="8" rowHeight="400px" gutterSize="1px"  >
@@ -59,7 +112,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
         <!-- <a href="http://www.google.com/" target="_blank" class='button'>Hecho</a> -->
         <!-- <a href="http://www.google.com/" target="_blank" button class ="btn-material">Hecho</a> -->
 
-        <button (click)=onClickHecho(0)>Hecho</button>
+        <button class ="btn-material" (click)=onClickHecho(0)>Hecho</button>
 
       </div>
     </div>
@@ -73,7 +126,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
     >
     <div  class="card">
       <div #overlay1 class="overlay">
-        <button (click)=onClickHecho(1)>Hecho</button>
+        <button class ="btn-material" (click)=onClickHecho(1)>Hecho</button>
       </div>
     </div>
     </mat-grid-tile>
@@ -83,6 +136,10 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
       </mat-grid-tile-footer> -->
 
     </mat-grid-list>
+<!--******************************************************************************/ -->
+
+
+
 
 <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
      <mat-grid-tile
