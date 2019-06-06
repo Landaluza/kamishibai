@@ -3,7 +3,8 @@ import {
   Renderer2,
   AfterViewInit,
   ViewChild,
-  ElementRef
+  ElementRef,
+  OnInit,
 } from '@angular/core';
 
 export interface Tile {
@@ -12,6 +13,9 @@ export interface Tile {
   text: string;
   border: string;
 }
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,10 +25,15 @@ export class AppComponent {
   @ViewChild('overlay0', { static: false }) card0: ElementRef;
   @ViewChild('overlay1', { static: false }) card1: ElementRef;
   @ViewChild('hora7', { static: false }) hora7: ElementRef;
+  @ViewChild('boton7', { static: false }) boton7: ElementRef;
   @ViewChild('hora8', { static: false }) hora8: ElementRef;
 
+ verBoton7 = true;
+ verBoton8 = true;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2) {
+
+  }
 
   tiles = [
     { text: '7:00 a 8:00', cols: 1, rows: 1, color: '#ADD8E6' },
@@ -50,15 +59,24 @@ export class AppComponent {
   title = 'kamizibai';
 
   onClickHecho(numCard: number) {
+
+    // this.renderer.removeChild(window, this.boton7.nativeElement);
+    // this.renderer.removeClass(this.boton7, 'boton7');
     switch (numCard) {
       case 0:
         this.renderer.setStyle(this.card0.nativeElement, 'backgroundColor', 'green');
-        console.log(this.hora7);
         this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+        this.renderer.setStyle(this.hora7.nativeElement, 'text', 'Hora control');
+        this.verBoton7 = false;
+
+        console.log('hora7: ' + this.hora7.nativeElement);
         break;
       case 1:
-        this.renderer.setStyle(this.card1.nativeElement,'backgroundColor', 'green');
+        this.renderer.setStyle(this.card1.nativeElement, 'backgroundColor', 'green');
         this.renderer.setStyle(this.hora8.nativeElement, 'backgroundColor', 'green');
+        this.verBoton8 = false;
+
         break;
     }
   }

@@ -112,7 +112,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
         <!-- <a href="http://www.google.com/" target="_blank" class='button'>Hecho</a> -->
         <!-- <a href="http://www.google.com/" target="_blank" button class ="btn-material">Hecho</a> -->
 
-        <button class ="btn-material" (click)=onClickHecho(0)>Hecho</button>
+        <button *ngIf="verBoton7" #boton7 class ="btn-material" (click)=onClickHecho(0)>Hecho</button>
 
       </div>
     </div>
@@ -126,7 +126,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
     >
     <div  class="card">
       <div #overlay1 class="overlay">
-        <button class ="btn-material" (click)=onClickHecho(1)>Hecho</button>
+        <button *ngIf="verBoton8" class ="btn-material" (click)=onClickHecho(1)>Hecho</button>
       </div>
     </div>
     </mat-grid-tile>
