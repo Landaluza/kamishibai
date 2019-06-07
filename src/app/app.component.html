@@ -45,8 +45,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
         [style.border-bottom]="'1px solid red'"
         >
           <div #hora7>
-            <!-- <div *ngIf="verBoton7" {{ horaControl7 }} | 7:00 a 8:00></div> -->
-             {{ horaControl7 }}
+            7:00 a 8:00
           </div>
           </mat-grid-tile>
 
@@ -94,7 +93,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 
          </mat-grid-list>
 
-<!--** Grid de tarjetas *******************************************/ -->
+<!--** Grid de cards *******************************************/ -->
 <mat-grid-list cols="8" rowHeight="400px" gutterSize="1px"  >
   <mat-grid-tile-header>
       <h3>Header</h3>
@@ -107,7 +106,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
     [style.border-bottom]="'1px solid red'"
     >
     <div  class="card">
-      <div #overlay0 class="overlay">
+      <div #card0 class="overlay">
         <h4>CONTROL</h4>
         <p>Verificar que no existen cristales en la zona</p>
         <button *ngIf="verBoton7" #boton7 class ="btn-material" (click)=onClickHecho(0)>Hecho</button>
@@ -122,7 +121,7 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
     [style.border-bottom]="'1px solid red'"
     >
     <div  class="card">
-      <div #overlay1 class="overlay">
+      <div #card1 class="overlay">
         <button *ngIf="verBoton8" class ="btn-material" (click)=onClickHecho(1)>Hecho</button>
       </div>
     </div>
@@ -135,9 +134,13 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
     </mat-grid-list>
 <!--******************************************************************************/ -->
 
+<!--** Grid de horas de control *******************************************/ -->
 <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
-     <mat-grid-tile> {{ horaControl7 }} </mat-grid-tile>
+     <mat-grid-tile >
+      <div #elHoraControl7 > {{ horaControl7 }}  </div>
+         </mat-grid-tile>
   </mat-grid-list>
+<!--******************************************************************************/ -->
 
 <div class="footer">
 <mat-grid-list cols="4" rowHeight="100px" gutterSize="1px">

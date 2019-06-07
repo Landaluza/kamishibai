@@ -28,10 +28,12 @@ export interface Tile {
 
 
 export class AppComponent {
-  @ViewChild('overlay0', { static: false }) card0: ElementRef;
-  @ViewChild('overlay1', { static: false }) card1: ElementRef;
+  @ViewChild('card0', { static: false }) card0: ElementRef;
+  @ViewChild('card1', { static: false }) card1: ElementRef;
   @ViewChild('hora7', { static: false }) hora7: ElementRef;
+  @ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
+
   @ViewChild('hora8', { static: false }) hora8: ElementRef;
 
  verBoton7 = true;
@@ -72,6 +74,8 @@ export class AppComponent {
         this.renderer.setStyle(this.card0.nativeElement, 'backgroundColor', 'green');
         this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
         this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
         this.verBoton7 = false;
         this.horaControl7 = moment().format('LT');
         // alert('El control se ha hecho a  las ' + this.horaControl7);
