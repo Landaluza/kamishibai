@@ -37,78 +37,51 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
       </mat-grid-list>
 
       <!--** Grid de horas *******************************************/ -->
-      <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
-
-        <mat-grid-tile
-        [style.border-left]="'1px solid red'"
-        [style.border-top]="'1px solid red'"
-        [style.border-bottom]="'1px solid red'"
-        >
-          <div #hora7>
-            7:00 a 8:00
-          </div>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-          <div #hora8>
-           8:00 a 9:00
-          </div>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <div #hora9>
-             9:00 a 10:00
-            </div>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-              <div #hora10>
-               10:00 a 11:00
-              </div>
-              </mat-grid-tile>
-
-              <mat-grid-tile>
-                <div #hora11>
-                 11:00 a 12:00
-                </div>
-                </mat-grid-tile>
-
-    <mat-grid-tile>
-          <div #hora12>
-           12:00 a 13:00
-          </div>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <div #hora13>
-             13:00 a 14:00
-            </div>
-            </mat-grid-tile>
-
-            <mat-grid-tile>
-              <div #hora14>
-               14:00 a 15:00
-              </div>
-              </mat-grid-tile>
-
-         </mat-grid-list>
+     <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px">
+        <mat-grid-tile [style.border]="'1px solid black'" [style.border-left]="'2px solid black'" >
+          <div #hora7> 7:00 a 8:00 </div>
+        </mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px solid black'" >
+          <div #hora8> 8:00 a 9:00 </div>
+        </mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px solid black'" >
+          <div #hora9> 9:00 a 10:00 </div>
+        </mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px solid black'" >
+          <div #hora10> 10:00 a 11:00 </div>
+        </mat-grid-tile>
+       <mat-grid-tile [style.border]="'1px solid black'" >
+          <div #hora11> 11:00 a 12:00 </div>
+       </mat-grid-tile>
+       <mat-grid-tile [style.border]="'1px solid black'" >
+          <div #hora12> 12:00 a 13:00 </div>
+       </mat-grid-tile>
+       <mat-grid-tile [style.border]="'1px solid black'" >
+          <div #hora13> 13:00 a 14:00 </div>
+       </mat-grid-tile>
+       <mat-grid-tile [style.border]="'1px solid black'" [style.border-right]="'2px solid black'">
+          <div #hora14> 14:00 a 15:00 </div>
+       </mat-grid-tile>
+     </mat-grid-list>
 
 <!--** Grid de cards *******************************************/ -->
 <mat-grid-list cols="8" rowHeight="400px" gutterSize="1px"  >
   <mat-grid-tile-header>
-      <h3>Header</h3>
+      <!-- <h3>Header</h3> -->
       </mat-grid-tile-header>
 
       <mat-grid-tile
     [style.background]="'#F2F2F2'"
-    [style.border-left]="'1px solid red'"
-    [style.border-top]="'1px solid red'"
-    [style.border-bottom]="'1px solid red'"
-    >
+    [style.border]="'1px solid black'"
+    [style.border-left]="'2px solid black'"
+      >
     <div  class="card">
-      <div #card0 class="overlay">
+      <div #card7 class="overlay">
         <h4>CONTROL</h4>
-        <p>Verificar que no existen cristales en la zona</p>
+        <div># Verificar que no existen cristales en la zona.</div>
+        <br>
+        <div># Otra tarea.</div>
+        <br>
         <button *ngIf="verBoton7" #boton7 class ="btn-material" (click)=onClickHecho(0)>Hecho</button>
       </div>
     </div>
@@ -116,12 +89,15 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 
     <mat-grid-tile
     [style.background]="'#F2F2F2'"
-    [style.border-left]="'1px solid red'"
-    [style.border-top]="'1px solid red'"
-    [style.border-bottom]="'1px solid red'"
+    [style.border]="'1px solid black'"
     >
     <div  class="card">
-      <div #card1 class="overlay">
+      <div #card8 class="overlay">
+          <h4>CONTROL</h4>
+          <div># Verificar que no existen cristales en la zona.</div>
+          <br>
+          <div># Otra tarea.</div>
+          <br>
         <button *ngIf="verBoton8" class ="btn-material" (click)=onClickHecho(1)>Hecho</button>
       </div>
     </div>
@@ -136,10 +112,20 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 
 <!--** Grid de horas de control *******************************************/ -->
 <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
-     <mat-grid-tile >
-      <div #elHoraControl7 > {{ horaControl7 }}  </div>
-         </mat-grid-tile>
-  </mat-grid-list>
+     <mat-grid-tile
+     [style.border]="'1px solid black'"
+     [style.border-left]="'2px solid black'"
+     >
+       <div #elHoraControl7 > {{ horaControl7 }}  </div>
+     </mat-grid-tile>
+
+
+  <mat-grid-tile
+  [style.border]="'1px solid black'"
+  >
+    <div #elHoraControl8 > {{ horaControl8 }}  </div>
+  </mat-grid-tile>
+</mat-grid-list>
 <!--******************************************************************************/ -->
 
 <div class="footer">

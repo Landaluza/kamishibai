@@ -17,9 +17,6 @@ export interface Tile {
   text: string;
   border: string;
 }
-
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -28,20 +25,23 @@ export interface Tile {
 
 
 export class AppComponent {
-  @ViewChild('card0', { static: false }) card0: ElementRef;
-  @ViewChild('card1', { static: false }) card1: ElementRef;
+  @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('hora7', { static: false }) hora7: ElementRef;
   @ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
 
+  @ViewChild('card8', { static: false }) card8: ElementRef;
   @ViewChild('hora8', { static: false }) hora8: ElementRef;
+  @ViewChild('elHoraControl8', { static: false }) elHoraControl8: ElementRef;
+  @ViewChild('boton8', { static: false }) boton8: ElementRef;
 
  verBoton7 = true;
- verBoton8 = true;
  horaControl7: string;
 
-  constructor(private renderer: Renderer2) {
+ verBoton8 = true;
+ horaControl8: string;
 
+  constructor(private renderer: Renderer2) {
       }
 
   // tiles = [
@@ -67,26 +67,43 @@ export class AppComponent {
   // ];
   title = 'Tablero kamizibai';
 
-
   onClickHecho(numCard: number) {
       switch (numCard) {
       case 0:
-        this.renderer.setStyle(this.card0.nativeElement, 'backgroundColor', 'green');
-        this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
-        this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
-        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
-        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
-        this.verBoton7 = false;
-        this.horaControl7 = moment().format('LT');
-        // alert('El control se ha hecho a  las ' + this.horaControl7);
+      this.horaControl7 = moment().format('LT');
+      // si la hora en que se ha pulsado el botón es superior al rango de hora establecido
+      // para el control lo pintamos en amarillo, si correcto en verde.
+      if ( this.horaControl7 > '8:00 PM') {
+          console.log('Te has pasado de la hora.');
+          this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
+          this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
+          this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+          this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
+          this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+          this.verBoton7 = false;
+      } else
+      {
+      this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
+      this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
+      this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+      this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
+      this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+      this.verBoton7 = false;
+          console.log('En hora.');
+      }
 
 
-        break;
+
+      console.log('El control se ha hecho a  las ' + this.horaControl7);
+      break;
       case 1:
-        this.renderer.setStyle(this.card1.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.card8.nativeElement, 'backgroundColor', 'green');
         this.renderer.setStyle(this.hora8.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.hora8.nativeElement, 'padding', '15px');
+        this.renderer.setStyle(this.elHoraControl8.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.elHoraControl8.nativeElement, 'padding', '15px');
         this.verBoton8 = false;
-
+        this.horaControl8 = moment().format('LT');
         break;
     }
   }
