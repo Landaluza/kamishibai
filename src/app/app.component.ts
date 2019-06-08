@@ -10,6 +10,8 @@ import {
 } from '@angular/core';
 
 import * as moment from 'moment';
+import Swal from 'sweetalert2';
+
 
 export interface Tile {
   cols: number;
@@ -73,14 +75,25 @@ export class AppComponent {
       this.horaControl7 = moment().format('LT');
       // si la hora en que se ha pulsado el botón es superior al rango de hora establecido
       // para el control lo pintamos en amarillo, si correcto en verde.
-      if ( this.horaControl7 > '8:00 PM') {
-          console.log('Te has pasado de la hora.');
-          this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
-          this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
-          this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
-          this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
-          this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
-          this.verBoton7 = false;
+      if ( this.horaControl7 > '7:00 PM') {
+
+        Swal.fire({
+          title: '¡Control fuera de hora!',
+          text: 'Es importante que respetes los horarios de cada control.',
+          imageUrl: '../assets/img/alerta.jpg',
+          imageWidth: 400,
+          imageHeight: 400,
+          imageAlt: 'Custom image',
+          animation: true
+        });
+
+        console.log('Te has pasado de la hora.');
+        this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
+        this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
+        this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
+        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+        this.verBoton7 = false;
       } else
       {
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
@@ -89,7 +102,7 @@ export class AppComponent {
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
       this.verBoton7 = false;
-          console.log('En hora.');
+      console.log('En hora.');
       }
 
 
