@@ -11,7 +11,7 @@ import {
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
-
+import { LineToLineMappedSource } from 'webpack-sources';
 
 export interface Tile {
   cols: number;
@@ -25,8 +25,7 @@ export interface Tile {
   styleUrls: ['./app.component.css']
 })
 
-
-export class AppComponent {
+export class AppComponent  implements OnInit {
   @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('hora7', { static: false }) hora7: ElementRef;
   @ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
@@ -37,13 +36,29 @@ export class AppComponent {
   @ViewChild('elHoraControl8', { static: false }) elHoraControl8: ElementRef;
   @ViewChild('boton8', { static: false }) boton8: ElementRef;
 
+  @ViewChild('card9', { static: false }) card9: ElementRef;
+  @ViewChild('hora9', { static: false }) hora9: ElementRef;
+  @ViewChild('elHoraControl9', { static: false }) elHoraControl9: ElementRef;
+  @ViewChild('boton9', { static: false }) boton9: ElementRef;
+
  verBoton7 = true;
  horaControl7: string;
-
  verBoton8 = true;
  horaControl8: string;
+ verBoton9 = true;
+ horaControl9: string;
+ fecha = new Date();
+minutos: any;
+ title = 'Tablero kamizibai';
+  tiempo =  moment().startOf('hour').fromNow();
+
+ ngOnInit() {
+  this.minutos = this.fecha.getMinutes();
+  // this.actualizarHora();
+}
 
   constructor(private renderer: Renderer2) {
+
       }
 
   // tiles = [
@@ -67,15 +82,17 @@ export class AppComponent {
   //   { text: '7', cols: 1, rows: 1, color: '#ADD8E6' },
   //   { text: '8', cols: 1, rows: 1, color: '#ADD8E6' }
   // ];
-  title = 'Tablero kamizibai';
 
-  onClickHecho(numCard: number) {
+    onClickHecho(numCard: number) {
+
       switch (numCard) {
       case 0:
       this.horaControl7 = moment().format('LT');
+      console.log(typeof(this.tiempo));
+      // alert('Hora: ' + this.fecha.getMinutes());
       // si la hora en que se ha pulsado el botón es superior al rango de hora establecido
       // para el control lo pintamos en amarillo, si correcto en verde.
-      if ( this.horaControl7 > '7:00 PM') {
+      if ( this.horaControl7 > '07:00 AM') {
 
         Swal.fire({
           title: '¡Control fuera de hora!',
@@ -87,22 +104,22 @@ export class AppComponent {
           animation: true
         });
 
-        console.log('Te has pasado de la hora.');
+
         this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
         this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
         this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
         this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
         this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
         this.verBoton7 = false;
-      } else
-      {
+
+
+      } else {
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
       this.verBoton7 = false;
-      console.log('En hora.');
       }
 
 
@@ -120,4 +137,16 @@ export class AppComponent {
         break;
     }
   }
+
+  // actualizarHora() {
+  // let fecha= new Date();
+  // let horas= fecha.getHours();
+  // let minutos = fecha.getMinutes();
+  // let segundos = fecha.getSeconds();
+  // document.getElementById('contenedor').innerHTML=''+horas+':'+minutos+':'+segundos+'';
+  // console.log(''+horas+':'+minutos+':'+segundos+'');
+  // setTimeout(this.actualizarHora(), 1000);
+  //   }
+
+
 }

@@ -9,6 +9,8 @@ https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.
 
 git remote add origin https://github.com/Landaluza/kamishibai.git
 git push -u origin master
+
+git push -u kamishibai master
 -->
 
 

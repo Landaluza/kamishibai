@@ -1,25 +1,5 @@
-
-<!--
-https://material.angular.io
-https://www.dotnettricks.com/learn/angularmaterial/gridlayout
-https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.component.html&hideNavigation=1
-
-git remote add origin https://github.com/Landaluza/kamishibai.git
-git push -u origin master
--->
-
-
-<!-- https://www.diariodecadiz.es/noticias-provincia-cadiz/fondos-ITI-arrojan-inversiones-provincia_0_1359764340.html
-
-
-
-
-
--->
-
-
 <mat-toolbar>
-  Control de limpieza cristales zona de despaletizador Linea 1
+  <h1 class="center">Control de limpieza cristales zona de despaletizador Linea 1</h1>
 </mat-toolbar>
 <div class="basic-container">
 
@@ -106,6 +86,23 @@ git push -u origin master
     </div>
     </mat-grid-tile>
 
+    <mat-grid-tile
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid black'"
+    >
+    <div  class="card">
+      <div #card9 class="overlay">
+          <h4>CONTROL</h4>
+          <div># Verificar que no existen cristales en la zona.</div>
+          <br>
+          <div># Otra tarea.</div>
+          <br>
+        <button *ngIf="verBoton9" class ="btn-material" (click)=onClickHecho(2)>Hecho</button>
+      </div>
+    </div>
+    </mat-grid-tile>
+
+
     <!-- <mat-grid-tile-footer>
       <h3>Footer</h3>
       </mat-grid-tile-footer> -->
@@ -161,9 +158,23 @@ git push -u origin master
 </mat-grid-list>
 </div>
 
+
+
+
+<div>
+  <h1>Tiempo para hacer el control de esta franja horaria: {{ 60 - minutos }} </h1>
+ <div id="contenedor">
+
+
+ </div>
+
+
+
+
+
+
+
 </div>
-
-
-
+</div>
 
 <router-outlet></router-outlet>
