@@ -12,13 +12,15 @@ import { LOCALE_ID} from '@angular/core';
 // https://angular.io/guide/i18n#i18n-pipes
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { PruebaPipe } from './pipes/prueba.pipe';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PruebaPipe
   ],
   imports: [
     BrowserModule,
