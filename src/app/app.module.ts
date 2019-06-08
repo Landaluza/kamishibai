@@ -7,6 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+// Para que las fechas y números esten en español.
+import { LOCALE_ID} from '@angular/core';
+// https://angular.io/guide/i18n#i18n-pipes
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+// the second parameter es is optional
+registerLocaleData(localeEs, 'es');
 
 @NgModule({
   declarations: [
@@ -17,9 +25,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     AppRoutingModule,
     MatGridListModule,
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'es'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -48,9 +48,13 @@ export class AppComponent  implements OnInit {
  verBoton9 = true;
  horaControl9: string;
  fecha = new Date();
+ fecha1 = '2019.01.23';
+
 minutos: any;
  title = 'Tablero kamizibai';
   tiempo =  moment().startOf('hour').fromNow();
+
+
 
  ngOnInit() {
   this.minutos = this.fecha.getMinutes();
@@ -144,7 +148,7 @@ minutos: any;
   // let minutos = fecha.getMinutes();
   // let segundos = fecha.getSeconds();
   // document.getElementById('contenedor').innerHTML=''+horas+':'+minutos+':'+segundos+'';
-  // console.log(''+horas+':'+minutos+':'+segundos+'');
+  // // console.log(''+horas+':'+minutos+':'+segundos+'');
   // setTimeout(this.actualizarHora(), 1000);
   //   }
 

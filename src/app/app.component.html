@@ -12,7 +12,7 @@
           </div>
           </mat-grid-tile>
           <mat-grid-tile [style.background]="'#F2F2F2'">
-           Fecha
+           Fecha: {{ fecha | date : 'dd-MMMM-yyyy'}}
           </mat-grid-tile>
           <mat-grid-tile [style.background]="'#F2F2F2'" >
           Versión.
@@ -157,14 +157,16 @@
     </mat-grid-tile>
 </mat-grid-list>
 </div>
+<div>
 
+
+</div>
 
 
 
 <div>
   <h1>Tiempo para hacer el control de esta franja horaria: {{ 60 - minutos }} </h1>
  <div id="contenedor">
-
 
  </div>
 
