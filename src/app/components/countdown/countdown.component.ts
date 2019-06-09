@@ -19,7 +19,7 @@ export class CountdownComponent implements OnInit {
   @Output() onDecrease = new EventEmitter<number>();
   @Output() onComplete = new EventEmitter<void>();
 
-
+  @Output() onIniciar = new EventEmitter<number>();
 
   constructor() { }
 
@@ -59,8 +59,8 @@ this.counter = 60;
 }
 
 // Tiene que mostrar la card corespondiente a la hora actual en el row-cards.component.html
-mostrarCardHoraActual() {
-
+emitirHoraActual() {
+  this.onDecrease.emit(this.hora);
 
 }
 

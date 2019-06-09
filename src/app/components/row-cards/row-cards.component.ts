@@ -17,18 +17,12 @@ import Swal from 'sweetalert2';
 export class RowCardsComponent implements OnInit {
 
   @ViewChild('card7', { static: false }) card7: ElementRef;
-  @ViewChild('hora7', { static: false }) hora7: ElementRef;
-  @ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
-  @ViewChild('boton7', { static: false }) boton7: ElementRef;
+   @ViewChild('boton7', { static: false }) boton7: ElementRef;
 
   @ViewChild('card8', { static: false }) card8: ElementRef;
-  @ViewChild('hora8', { static: false }) hora8: ElementRef;
-  @ViewChild('elHoraControl8', { static: false }) elHoraControl8: ElementRef;
   @ViewChild('boton8', { static: false }) boton8: ElementRef;
 
   @ViewChild('card9', { static: false }) card9: ElementRef;
-  @ViewChild('hora9', { static: false }) hora9: ElementRef;
-  @ViewChild('elHoraControl9', { static: false }) elHoraControl9: ElementRef;
   @ViewChild('boton9', { static: false }) boton9: ElementRef;
 
  verBoton7 = true;
@@ -70,22 +64,14 @@ constructor(private renderer: Renderer2) {
       });
 
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
-      // this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
-      // this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
-      // this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
-      // this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
       this.verBoton7 = false;
-      console.log('Valor verBoton7: ', this.verBoton7);
+      // console.log('Valor verBoton7: ', this.verBoton7);
     } else {
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
-      // this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
-      // this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
-      // this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
-      // this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
       this.verBoton7 = false;
     }
 
-    console.log('El control se ha hecho a  las ' + this.horaControl7);
+    // console.log('El control se ha hecho a  las ' + this.horaControl7);
     break;
     case 1:
       this.renderer.setStyle(this.card8.nativeElement, 'backgroundColor', 'green');
