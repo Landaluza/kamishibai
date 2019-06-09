@@ -1,0 +1,16 @@
+<div class="basic-container">
+  <mat-grid-list cols="4" rowHeight="30px" gutterSize="1px" [style.border]="'1px solid green'">
+      <mat-grid-tile
+       colspan="2"
+      [style.background]="'#F2F2F2'">
+      <div class="leftVerticalAlign">
+         Empleado:
+      </div>
+      </mat-grid-tile>
+      <mat-grid-tile [style.background]="'#F2F2F2'">
+       Fecha: {{ fecha | date : 'dd-MMMM-yyyy'}}
+      </mat-grid-tile>
+      <mat-grid-tile [style.background]="'#F2F2F2'" >
+      Versión: {{ version }}
+      </mat-grid-tile>
+  </mat-grid-list>

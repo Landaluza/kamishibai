@@ -16,6 +16,11 @@ import { PruebaPipe } from './pipes/prueba.pipe';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { RelojComponent } from './components/reloj/reloj.component';
 import { ShowCardComponent } from './components/show-card/show-card.component';
+import { CabeceraComponent } from './components/cabecera/cabecera.component';
+import { RowEmpleadoComponent } from './components/row-empleado/row-empleado.component';
+import { RowHorasComponent } from './components/row-horas/row-horas.component';
+import { RowHorasControlComponent } from './components/row-horas-control/row-horas-control.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -26,7 +31,12 @@ registerLocaleData(localeEs, 'es');
     PruebaPipe,
     CountdownComponent,
     RelojComponent,
-    ShowCardComponent
+    ShowCardComponent,
+    CabeceraComponent,
+    RowEmpleadoComponent,
+    RowHorasComponent,
+    RowHorasControlComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
