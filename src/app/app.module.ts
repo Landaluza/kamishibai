@@ -13,6 +13,7 @@ import { LOCALE_ID} from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { PruebaPipe } from './pipes/prueba.pipe';
+import { CountdownComponent } from './components/countdown/countdown.component';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -20,7 +21,8 @@ registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
-    PruebaPipe
+    PruebaPipe,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,
