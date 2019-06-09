@@ -21,6 +21,7 @@ import { RowEmpleadoComponent } from './components/row-empleado/row-empleado.com
 import { RowHorasComponent } from './components/row-horas/row-horas.component';
 import { RowHorasControlComponent } from './components/row-horas-control/row-horas-control.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { RowCardsComponent } from './components/row-cards/row-cards.component';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -36,7 +37,8 @@ registerLocaleData(localeEs, 'es');
     RowEmpleadoComponent,
     RowHorasComponent,
     RowHorasControlComponent,
-    FooterComponent
+    FooterComponent,
+    RowCardsComponent
   ],
   imports: [
     BrowserModule,
