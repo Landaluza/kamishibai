@@ -11,7 +11,6 @@ import {
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
-import { LineToLineMappedSource } from 'webpack-sources';
 
 export interface Tile {
   cols: number;
@@ -51,44 +50,18 @@ export class AppComponent  implements OnInit {
  fecha1 = '2019.01.23';
 
 minutos: any;
- title = 'Tablero kamizibai';
-  tiempo =  moment().startOf('hour').fromNow();
-
-
+title = 'Tablero kamizibai';
+tiempo =  moment().startOf('hour').fromNow();
 
  ngOnInit() {
   this.minutos = this.fecha.getMinutes();
-  // this.actualizarHora();
-}
+ }
 
   constructor(private renderer: Renderer2) {
 
       }
 
-  // tiles = [
-  //   { text: '7:00 a 8:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '8:00 a 9:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '9:00 a 10:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '10:00 a 11:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '11:00 a 12:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '12:00 a 13:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '13:00 a 14:00', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '14:00 a 15:00', cols: 1, rows: 1, color: '#ADD8E6' }
-  // ];
-
-  // tilesFooter = [
-  //   { text: '1', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '2', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '3', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '4', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '5', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '6', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '7', cols: 1, rows: 1, color: '#ADD8E6' },
-  //   { text: '8', cols: 1, rows: 1, color: '#ADD8E6' }
-  // ];
-
-    onClickHecho(numCard: number) {
-
+     onClickHecho(numCard: number) {
       switch (numCard) {
       case 0:
       this.horaControl7 = moment().format('LT');
@@ -108,25 +81,20 @@ minutos: any;
           animation: true
         });
 
-
         this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
         this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
         this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
         this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
         this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
         this.verBoton7 = false;
-
-
       } else {
-      this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
-      this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
-      this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
-      this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
-      this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
-      this.verBoton7 = false;
+        this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
+        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+        this.verBoton7 = false;
       }
-
-
 
       console.log('El control se ha hecho a  las ' + this.horaControl7);
       break;
@@ -141,16 +109,5 @@ minutos: any;
         break;
     }
   }
-
-  // actualizarHora() {
-  // let fecha= new Date();
-  // let horas= fecha.getHours();
-  // let minutos = fecha.getMinutes();
-  // let segundos = fecha.getSeconds();
-  // document.getElementById('contenedor').innerHTML=''+horas+':'+minutos+':'+segundos+'';
-  // // console.log(''+horas+':'+minutos+':'+segundos+'');
-  // setTimeout(this.actualizarHora(), 1000);
-  //   }
-
 
 }

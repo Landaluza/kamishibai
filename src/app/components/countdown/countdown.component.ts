@@ -8,7 +8,11 @@ import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class CountdownComponent implements OnInit {
 
-  @Input() init: number = null;
+  // @Input() init: number = null;
+
+  time = new Date();
+  init = 60 - this.time.getMinutes();
+
   public counter = 0;
 
   @Output() onDecrease = new EventEmitter<number>();
@@ -31,7 +35,7 @@ doCountDown() {
 setTimeout(() => {
 this.counter = this.counter - 1;
 this.processCount();
-}, 1000);
+}, 60000);
 }
 
 processCount() {
