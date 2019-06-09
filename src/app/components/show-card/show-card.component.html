@@ -1,60 +1,69 @@
-<mat-grid-list cols="8" rowHeight="400px" gutterSize="1px"  >
-    <mat-grid-tile-header>
-        <!-- <h3>Header</h3> -->
-        </mat-grid-tile-header>
-
-        <mat-grid-tile
-      [style.background]="'#F2F2F2'"
-      [style.border]="'1px solid black'"
-      [style.border-left]="'2px solid black'"
+<mat-grid-list cols="8" rowHeight="400px" gutterSize="1px">
+    <mat-grid-tile
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid black'"
+    [style.border-left]="'2px solid black'"
+  >
+    <div class="card">
+      <div #card7 class="overlay">
+        <h4>CONTROL</h4>
+        <div># Verificar que no existen cristales en la zona.</div>
+        <br />
+        <div># Otra tarea.</div>
+        <br />
+        <button
+          *ngIf="verBoton7"
+          #boton7
+          class="btn-material"
+          (click)="onClickHecho(0)"
         >
-      <div  class="card">
-        <div #card7 class="overlay">
-          <h4>CONTROL</h4>
-          <div># Verificar que no existen cristales en la zona.</div>
-          <br>
-          <div># Otra tarea.</div>
-          <br>
-          <button *ngIf="verBoton7" #boton7 class ="btn-material" (click)=onClickHecho(0)>Hecho</button>
-        </div>
+          Hecho
+        </button>
       </div>
-      </mat-grid-tile>
+    </div>
+  </mat-grid-tile>
 
-      <mat-grid-tile
-      [style.background]="'#F2F2F2'"
-      [style.border]="'1px solid black'"
-      >
-      <div  class="card">
-        <div #card8 class="overlay">
-            <h4>CONTROL</h4>
-            <div># Verificar que no existen cristales en la zona.</div>
-            <br>
-            <div># Otra tarea.</div>
-            <br>
-          <button *ngIf="verBoton8" class ="btn-material" (click)=onClickHecho(1)>Hecho</button>
-        </div>
+  <mat-grid-tile
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid black'"
+  >
+    <div class="card">
+      <div #card8 class="overlay">
+        <h4>CONTROL</h4>
+        <div># Verificar que no existen cristales en la zona.</div>
+        <br />
+        <div># Otra tarea.</div>
+        <br />
+        <button
+          *ngIf="verBoton8"
+          class="btn-material"
+          (click)="onClickHecho(1)"
+        >
+          Hecho
+        </button>
       </div>
-      </mat-grid-tile>
+    </div>
+  </mat-grid-tile>
 
-      <mat-grid-tile
-      [style.background]="'#F2F2F2'"
-      [style.border]="'1px solid black'"
-      >
-      <div  class="card">
-        <div #card9 class="overlay">
-            <h4>CONTROL</h4>
-            <div># Verificar que no existen cristales en la zona.</div>
-            <br>
-            <div># Otra tarea.</div>
-            <br>
-          <button *ngIf="verBoton9" class ="btn-material" (click)=onClickHecho(2)>Hecho</button>
-        </div>
+  <mat-grid-tile
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid black'"
+  >
+    <div class="card">
+      <div #card9 class="overlay">
+        <h4>CONTROL</h4>
+        <div># Verificar que no existen cristales en la zona.</div>
+        <br />
+        <div># Otra tarea.</div>
+        <br />
+        <button
+          *ngIf="verBoton9"
+          class="btn-material"
+          (click)="onClickHecho(2)"
+        >
+          Hecho
+        </button>
       </div>
-      </mat-grid-tile>
-
-
-      <!-- <mat-grid-tile-footer>
-        <h3>Footer</h3>
-        </mat-grid-tile-footer> -->
-
-      </mat-grid-list>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

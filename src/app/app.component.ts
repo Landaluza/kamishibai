@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { now } from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent  implements OnInit {
+  fecha = now();
+  version = '0.0.1';
+
   ngOnInit() {}
   constructor() {}
 }
