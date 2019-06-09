@@ -21,10 +21,10 @@ export class CountdownComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.startCountDown()
+    this.startCountDown();
   }
 
-startCountDown(){
+startCountDown() {
   if (this.init && this.init > 0) {
     this.counter = this.init;
     this.doCountDown();

@@ -14,6 +14,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { PruebaPipe } from './pipes/prueba.pipe';
 import { CountdownComponent } from './components/countdown/countdown.component';
+import { RelojComponent } from './components/reloj/reloj.component';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -22,7 +23,8 @@ registerLocaleData(localeEs, 'es');
   declarations: [
     AppComponent,
     PruebaPipe,
-    CountdownComponent
+    CountdownComponent,
+    RelojComponent
   ],
   imports: [
     BrowserModule,

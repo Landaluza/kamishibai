@@ -1,7 +1,19 @@
-<mat-toolbar>
-  <h1 class="center">Control de limpieza cristales zona de despaletizador Linea 1</h1>
-  <app-countdown></app-countdown>
-</mat-toolbar>
+
+<div class="basic-container">
+    <mat-grid-list cols="3" rowHeight= 4em gutterSize="1px" [style.border]="'1px solid green'">
+        <mat-grid-tile>
+ <app-reloj></app-reloj>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <h1 class="center">Control de limpieza cristales zona de despaletizador Linea 1</h1>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <app-countdown></app-countdown>
+          </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
 <div class="basic-container">
 
       <mat-grid-list cols="4" rowHeight="30px" gutterSize="1px" [style.border]="'1px solid green'">
@@ -159,5 +171,5 @@
 </mat-grid-list>
 </div>
 </div>
-
+<app-reloj></app-reloj>
 <router-outlet></router-outlet>
