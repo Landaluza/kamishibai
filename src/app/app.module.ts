@@ -22,6 +22,8 @@ import { RowHorasComponent } from './components/row-horas/row-horas.component';
 import { RowHorasControlComponent } from './components/row-horas-control/row-horas-control.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RowCardsComponent } from './components/row-cards/row-cards.component';
+import { MissionControlComponent } from '../app/missioncontrol/missioncontrol.component';
+import { AstronautComponent } from './astronaut/astronaut.component';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -38,7 +40,9 @@ registerLocaleData(localeEs, 'es');
     RowHorasComponent,
     RowHorasControlComponent,
     FooterComponent,
-    RowCardsComponent
+    RowCardsComponent,
+    MissionControlComponent,
+    AstronautComponent
   ],
   imports: [
     BrowserModule,
