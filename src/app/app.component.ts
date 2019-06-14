@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,4 +10,9 @@ export class AppComponent  implements OnInit {
 
   ngOnInit() {}
   constructor() {}
+
+
+  prueba(pulsado: boolean) {
+console.log('app.component: Se ha pulsado HECHO');
+  }
 }

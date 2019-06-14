@@ -4,7 +4,17 @@
   [style.border]="'1px solid black'"
   [style.border-left]="'2px solid black'"
   >
-    <div #elHoraControl7 > {{ horaControl7 }}  </div>
+    <div  #elHoraControl7 > {{ horaControl7 }}  </div>
+
+
+
+    <button
+    class="btn-material"
+    (click)="onClickHecho(0)"
+  >
+    Hecho
+  </button>
+
   </mat-grid-tile>
 
 <mat-grid-tile
