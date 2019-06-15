@@ -1,4 +1,6 @@
-//  https://stackoverflow.com/questions/56585165/how-change-elements-in-another-component
+// https://stackoverflow.com/questions/56585165/how-change-elements-in-another-component
+// https://angular.io/guide/component-interaction
+
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
@@ -9,9 +11,14 @@ export class MissionService {
   private missionAnnouncedSource = new Subject<string>();
   private missionConfirmedSource = new Subject<string>();
 
+  private botonPulsadoSource = new Subject<string>();
+
   // Observable string streams
   missionAnnounced$ = this.missionAnnouncedSource.asObservable();
   missionConfirmed$ = this.missionConfirmedSource.asObservable();
+
+  botonPulsado$ = this.botonPulsadoSource.asObservable();
+
 
   // Service message commands
   announceMission(mission: string) {
@@ -20,5 +27,10 @@ export class MissionService {
 
   confirmMission(astronaut: string) {
     this.missionConfirmedSource.next(astronaut);
+  }
+
+  botonSeHaPulsado(origen: string) {
+     console.log(`Desde el service: se ha pulsado el botón  ${ origen }` );
+     this.botonPulsadoSource.next(origen);
   }
 }

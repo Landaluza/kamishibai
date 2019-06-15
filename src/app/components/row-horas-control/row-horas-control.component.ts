@@ -1,9 +1,11 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef, } from '@angular/core';
 import * as moment from 'moment';
+import { MissionService } from '../../mission.service';
 @Component({
   selector: 'app-row-horas-control',
   templateUrl: './row-horas-control.component.html',
-  styleUrls: ['./row-horas-control.component.css']
+  styleUrls: ['./row-horas-control.component.css'],
+  providers: [MissionService]
 })
 export class RowHorasControlComponent implements OnInit {
 
@@ -15,12 +17,26 @@ horaControl9: string;
 
 onPulsado = false;
 
-  constructor( private renderer: Renderer2 ) { }
+  // constructor( private renderer: Renderer2 ) { }
+
+  constructor(private renderer: Renderer2, private missionService: MissionService) {
+
+    missionService.botonPulsado$.subscribe(
+        () => {
+          console.log('Se ha pulsado un boton en el otro componente');
+        });
+
+  }
+
+
+
+
 
   ngOnInit() {
   }
 
   onClickHecho(numCard: number) {
+    this.missionService.botonSeHaPulsado('row-horas-control.component');
     switch (numCard) {
     case 0:
     this.horaControl7 = moment().format('LT');
@@ -31,8 +47,8 @@ onPulsado = false;
 }
 
 
-prueba(pulsado: boolean) {
-  console.log('row-horas-control: Se ha pulsado HECHO');
-    }
+// prueba(pulsado: boolean) {
+//   console.log('row-horas-control: Se ha pulsado HECHO');
+//     }
 
 }

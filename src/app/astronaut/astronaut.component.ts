@@ -33,6 +33,7 @@ export class AstronautComponent implements OnDestroy {
 
   confirm() {
     this.confirmed = true;
+    this.missionService.botonSeHaPulsado('astronaut.component');
     this.missionService.confirmMission(this.astronaut);
   }
 

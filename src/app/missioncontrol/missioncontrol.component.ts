@@ -29,11 +29,19 @@ export class MissionControlComponent {
       astronaut => {
         this.history.push(`${astronaut} confirmed the mission`);
       });
+
+    missionService.botonPulsado$.subscribe(
+        astronaut => {
+          this.history.push(`${astronaut} botón pulsado`);
+        });
+
   }
+
 
   announce() {
     const mission = this.missions[this.nextMission++];
     this.missionService.announceMission(mission);
+    this.missionService.botonSeHaPulsado('missioncontrol.component');
     this.history.push(`Mission "${mission}" announced`);
     if (this.nextMission >= this.missions.length) { this.nextMission = 0; }
   }

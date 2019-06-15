@@ -10,11 +10,14 @@ import {
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import { MissionService } from '../../mission.service';
+
 
 @Component({
   selector: 'app-row-cards',
   templateUrl: './row-cards.component.html',
-  styleUrls: ['./row-cards.component.css']
+  styleUrls: ['./row-cards.component.css'],
+  providers: [MissionService]
 })
 
 
@@ -46,14 +49,19 @@ export class RowCardsComponent implements OnInit {
 // title = 'Tablero kamizibai';
 // tiempo = moment().startOf('hour').fromNow();
 
-constructor(private renderer: Renderer2) {
+constructor(private renderer: Renderer2, private missionService: MissionService) {
   // this.OnPulsado = new EventEmitter();
+  missionService.botonPulsado$.subscribe(
+    () => {
+      console.log('Se ha pulsado un boton en row-cards.component');
+    });
  }
 
   ngOnInit() {
   }
 
   onClickHecho(numCard: number) {
+    this.missionService.botonSeHaPulsado('row-cards.component');
     switch (numCard) {
     case 0:
     // console.log(typeof(this.tiempo));
