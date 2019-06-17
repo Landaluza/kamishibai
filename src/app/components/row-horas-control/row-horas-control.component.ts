@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input, } from '@angular/core';
 import * as moment from 'moment';
 @Component({
   selector: 'app-row-horas-control',
@@ -7,18 +7,31 @@ import * as moment from 'moment';
 })
 export class RowHorasControlComponent implements OnInit {
 
+@Input() leyenda: string ;
+@Input() botonHechoPulsado: boolean ;
+
 @ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
 
 horaControl7: string;
 horaControl8: string;
 horaControl9: string;
 
-onPulsado = false;
 
-  constructor( private renderer: Renderer2 ) { }
+  constructor( private renderer: Renderer2 ) {
+
+    }
 
   ngOnInit() {
+    // console.log('Leyenda: ', this.leyenda);
+    // console.log('botonHechoPulsado: ', this.botonHechoPulsado);
   }
+
+// if (this.botonHechoPulsado) {
+//     console.log(this.botonHechoPulsado);
+//     this.horaControl7 = moment().format('LT');
+//     this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
+//     this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+//   }
 
   onClickHecho(numCard: number) {
     switch (numCard) {
@@ -30,9 +43,10 @@ onPulsado = false;
   }
 }
 
-
-prueba(pulsado: boolean) {
-  console.log('row-horas-control: Se ha pulsado HECHO');
-    }
-
 }
+
+
+
+
+
+

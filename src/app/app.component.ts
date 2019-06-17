@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AppComponent  implements OnInit {
-
-  ngOnInit() {}
   constructor() {}
+  ngOnInit() {}
 
-
-  prueba(pulsado: boolean) {
-console.log('app.component: Se ha pulsado HECHO');
+prueba(pulsado: boolean) {
+console.log('app.component: Se ha pulsado HECHO', pulsado);
   }
+
 }

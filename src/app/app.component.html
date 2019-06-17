@@ -1,11 +1,14 @@
-// Usar curso Fernando Herrera.
-
 <app-cabecera></app-cabecera>
 <app-row-empleado></app-row-empleado>
 <app-row-horas ></app-row-horas>
-<app-row-cards (OnPulsado)="prueba($event)"></app-row-cards>
-<app-row-horas-control></app-row-horas-control>
+<!-- <app-row-cards (OnPulsado)="prueba($event)"></app-row-cards>
+<app-row-horas-control (OnPulsado)="prueba($event)"  leyenda = "Desde app.component"></app-row-horas-control> -->
+
+
+<app-row-cards></app-row-cards>
+<app-row-horas-control (OnPulsado)="prueba($event)"></app-row-horas-control>
 <app-footer></app-footer>
+
 
 
 <router-outlet></router-outlet>

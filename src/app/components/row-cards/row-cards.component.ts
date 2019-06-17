@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 
 
 export class RowCardsComponent implements OnInit {
-  @Output() OnPulsado = new EventEmitter<boolean>();
+  @Output() public OnPulsado: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
@@ -94,10 +94,9 @@ mensajeControlFueraHora() {
 }
 
 emitir() {
-  this.OnPulsado.emit(true);
+  this.OnPulsado.emit(false);
   console.log('Emitir');
 }
-
 
 }
 
