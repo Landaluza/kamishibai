@@ -94,7 +94,7 @@ mensajeControlFueraHora() {
 }
 
 emitir() {
-  this.OnPulsado.emit(false);
+  this.OnPulsado.emit(true);
   console.log('Emitir');
 }
 
