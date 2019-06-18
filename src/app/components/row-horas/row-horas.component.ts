@@ -16,10 +16,21 @@ export class RowHorasComponent implements OnInit {
    }
 
   ngOnInit() {
-     this.hechoService.hecho.subscribe(() => {
+     this.hechoService.hecho7.subscribe(() => {
      this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
      this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
     });
+
+     this.hechoService.hecho8.subscribe(() => {
+     this.renderer.setStyle(this.hora8.nativeElement, 'backgroundColor', 'green');
+     this.renderer.setStyle(this.hora8.nativeElement, 'padding', '15px');
+       });
+
+     this.hechoService.hecho9.subscribe(() => {
+     this.renderer.setStyle(this.hora9.nativeElement, 'backgroundColor', 'green');
+     this.renderer.setStyle(this.hora9.nativeElement, 'padding', '15px');
+      });
+
     }
 
 }

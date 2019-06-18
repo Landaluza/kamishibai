@@ -32,9 +32,8 @@ export class RowCardsComponent implements OnInit {
 
   time = new Date();
   public horaControl7 = this.time.getHours();
-
-  horaControl8: string;
-  horaControl9: string;
+  public horaControl8 = this.time.getHours();
+  public horaControl9 = this.time.getHours();
 
   fecha = new Date();
   //  fecha1 = '2019.01.23';
@@ -45,33 +44,55 @@ export class RowCardsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
   }
 
   onClickHecho(numCard: number) {
-    this.hechoService.hecho.emit();
-
     switch (numCard) {
       case 0:
-        // Se usa para ocultar el boton.
-        this.verBoton7 = false;
 
-        if (this.horaControl7 >= 8) {
-          this.mensajeControlFueraHora();
-          this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
+
+        if ( this.horaControl7 < 20 ) {
+          this.mensajeControlAntesHora();
+          break;
         } else {
-          this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
-        }
+           this.hechoService.hecho7.emit();
+        // Se usa para ocultar el boton.
+           this.verBoton7 = false;
+           if (this.horaControl7 >= 8) {
+            this.mensajeControlDespuesHora();
+            this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
+          } else {
+            this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
+          }
+           }
         break;
 
       case 1:
-        this.renderer.setStyle( this.card8.nativeElement, 'backgroundColor', 'green' );
+        this.hechoService.hecho8.emit();
         this.verBoton8 = false;
+        if (this.horaControl8 >= 9) {
+          this.mensajeControlDespuesHora();
+          this.renderer.setStyle(this.card8.nativeElement, 'backgroundColor', 'orange' );
+        } else {
+          this.renderer.setStyle( this.card8.nativeElement, 'backgroundColor', 'green' );
+        }
         break;
+
+        case 2:
+        this.hechoService.hecho9.emit();
+        this.verBoton9 = false;
+        if (this.horaControl9 >= 10) {
+          this.mensajeControlDespuesHora();
+          this.renderer.setStyle(this.card9.nativeElement, 'backgroundColor', 'orange' );
+        } else {
+          this.renderer.setStyle( this.card9.nativeElement, 'backgroundColor', 'green' );
+        }
+        break;
+
     }
   }
 
-  mensajeControlFueraHora() {
+  mensajeControlDespuesHora() {
     Swal.fire({
       title: '¡Control fuera de hora!',
       text: 'Es importante que respetes los horarios de cada control.',
@@ -82,4 +103,17 @@ export class RowCardsComponent implements OnInit {
       animation: true
     });
   }
+
+  mensajeControlAntesHora() {
+    Swal.fire({
+      title: '¡Control antes de su hora!',
+      text: 'Es importante que respetes los horarios de cada control.',
+      imageUrl: '../assets/img/alerta.jpg',
+      imageWidth: 400,
+      imageHeight: 400,
+      imageAlt: 'Imagen',
+      animation: true
+    });
+  }
+
 }

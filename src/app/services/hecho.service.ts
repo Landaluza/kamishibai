@@ -2,5 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 @Injectable({ providedIn: 'root' })
 
 export class HechoService {
-   @Output() hecho: EventEmitter<boolean> = new EventEmitter();
+   @Output() hecho7: EventEmitter<boolean> = new EventEmitter();
+   @Output() hecho8: EventEmitter<boolean> = new EventEmitter();
+   @Output() hecho9: EventEmitter<boolean> = new EventEmitter();
 }
