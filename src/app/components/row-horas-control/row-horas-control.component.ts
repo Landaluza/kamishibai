@@ -18,7 +18,9 @@ horaControl9: string;
   }
 
   ngOnInit() {
-    this.missionService.change.subscribe(isOpen => {
+    // TODO: Parece que no es necesrio pasar IsOpen.
+    // this.missionService.change.subscribe(isOpen => {
+      this.missionService.change.subscribe(() => {
       this.horaControl7 = moment().format('LT');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');

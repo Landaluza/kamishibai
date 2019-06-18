@@ -53,14 +53,14 @@ export class RowCardsComponent implements OnInit {
 
     switch (numCard) {
       case 0:
+        // Se usa para ocultar el boton.
         this.verBoton7 = false;
 
-        if (this.horaControl7 < 7) {
+        if (this.horaControl7 >= 8) {
           this.mensajeControlFueraHora();
           this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
         } else {
           this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
-          // this.missionService.toggle();
         }
         break;
 
