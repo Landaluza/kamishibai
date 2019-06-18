@@ -45,12 +45,10 @@ export class RowCardsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.missionService.change.subscribe(isOpen => {});
-    // this.missionService.change.subscribe(() => {});
+
   }
 
   onClickHecho(numCard: number) {
-    // this.missionService.toggle();
     this.hechoService.hecho.emit();
 
     switch (numCard) {
