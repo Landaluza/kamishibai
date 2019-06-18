@@ -15,7 +15,6 @@ import localeEs from '@angular/common/locales/es';
 import { PruebaPipe } from './pipes/prueba.pipe';
 import { CountdownComponent } from './components/countdown/countdown.component';
 import { RelojComponent } from './components/reloj/reloj.component';
-import { ShowCardComponent } from './components/show-card/show-card.component';
 import { CabeceraComponent } from './components/cabecera/cabecera.component';
 import { RowEmpleadoComponent } from './components/row-empleado/row-empleado.component';
 import { RowHorasComponent } from './components/row-horas/row-horas.component';
@@ -31,7 +30,6 @@ registerLocaleData(localeEs, 'es');
     PruebaPipe,
     CountdownComponent,
     RelojComponent,
-    ShowCardComponent,
     CabeceraComponent,
     RowEmpleadoComponent,
     RowHorasComponent,
