@@ -22,7 +22,7 @@ import { MissionService } from '../../mission.service';
 
 
 export class RowCardsComponent implements OnInit {
-  @Output() OnPulsado = new EventEmitter<boolean>();
+  // @Output() OnPulsado = new EventEmitter<boolean>();
 
   @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
@@ -51,22 +51,22 @@ export class RowCardsComponent implements OnInit {
 
 constructor(private renderer: Renderer2, private missionService: MissionService) {
   // this.OnPulsado = new EventEmitter();
-  missionService.botonPulsado$.subscribe(
-    () => {
-      console.log('Se ha pulsado un boton en row-cards.component');
-    });
+  // missionService.botonPulsado$.subscribe(
+  //   () => {
+  //     console.log('Se ha pulsado un boton en row-cards.component');
+  //   });
  }
 
   ngOnInit() {
     this.missionService.change.subscribe(isOpen => {
-      console.log('ENTRO A CAMBIAR EL VALOR');
+      // console.log('ENTRO A CAMBIAR EL VALOR');
     });
   }
 
   onClickHecho(numCard: number) {
-    console.log('OnClickHecho num: ', numCard);
+    // console.log('OnClickHecho num: ', numCard);
     this.missionService.toggle();
-    this.missionService.botonSeHaPulsado('row-cards.component');
+    // this.missionService.botonSeHaPulsado('row-cards.component');
     switch (numCard) {
     case 0:
     // console.log(typeof(this.tiempo));
@@ -86,7 +86,7 @@ constructor(private renderer: Renderer2, private missionService: MissionService)
     }
 
     // Hay que emitir un evento para cambiar el color tambien en row-horas-control
-     this.emitir();
+    //  this.emitir();
      break;
 
     case 1:
@@ -108,10 +108,10 @@ mensajeControlFueraHora() {
   });
 }
 
-emitir() {
+// emitir() {
   // this.OnPulsado.emit(true);
   // console.log('Emitir');
-}
+// }
 
 
 }

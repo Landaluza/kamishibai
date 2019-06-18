@@ -27,7 +27,7 @@ export class CountdownComponent implements OnInit {
     // Para que el counter cambie en el segundo 0 del primer minuto.
     this.counter = 60 - this.time.getMinutes();
     // console.log('Minutos iniciales: ', this.counter);
-    console.log( 'Hora del control: ', this.hora);
+    // console.log( 'Hora del control: ', this.hora);
     this.segundos = this.time.getSeconds();
     setTimeout(() => this.startCountDown() , (60 - this.segundos) * 1000);
       }

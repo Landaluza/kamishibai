@@ -15,7 +15,7 @@ horaControl7: string;
 horaControl8: string;
 horaControl9: string;
 
-onPulsado = false;
+// onPulsado = false;
 
   // constructor( private renderer: Renderer2 ) { }
 
@@ -29,36 +29,27 @@ onPulsado = false;
 
   }
 
-
-
-
-
   ngOnInit() {
     this.missionService.change.subscribe(isOpen => {
-      console.log('***************************************************************************');
-      console.log(isOpen);
-      console.log('cambio de estado de boton');
+      // console.log('***************************************************************************');
+      // console.log(isOpen);
+      // console.log('cambio de estado de boton');
       this.horaControl7 = moment().format('LT');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
     });
   }
 
-  onClickHecho(numCard: number) {
-    console.log(this.missionService.clickeao);
-    this.missionService.botonSeHaPulsado('row-horas-control.component');
-    switch (numCard) {
-    case 0:
-    this.horaControl7 = moment().format('LT');
-    this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
-    this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
-    break;
-  }
+  // onClickHecho(numCard: number) {
+  //   console.log(this.missionService.clickeao);
+  //   this.missionService.botonSeHaPulsado('row-horas-control.component');
+  //   switch (numCard) {
+  //   case 0:
+  //   this.horaControl7 = moment().format('LT');
+  //   this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
+  //   this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+  //   break;
+  // }
 }
 
 
-// prueba(pulsado: boolean) {
-//   console.log('row-horas-control: Se ha pulsado HECHO');
-//     }
-
-}
