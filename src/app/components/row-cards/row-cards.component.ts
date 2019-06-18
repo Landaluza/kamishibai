@@ -16,8 +16,8 @@ import { MissionService } from '../../mission.service';
 @Component({
   selector: 'app-row-cards',
   templateUrl: './row-cards.component.html',
-  styleUrls: ['./row-cards.component.css'],
-  providers: [MissionService]
+  styleUrls: ['./row-cards.component.css']
+  // providers: [MissionService]
 })
 
 
@@ -58,9 +58,14 @@ constructor(private renderer: Renderer2, private missionService: MissionService)
  }
 
   ngOnInit() {
+    this.missionService.change.subscribe(isOpen => {
+      console.log('ENTRO A CAMBIAR EL VALOR');
+    });
   }
 
   onClickHecho(numCard: number) {
+    console.log('OnClickHecho num: ', numCard);
+    this.missionService.toggle();
     this.missionService.botonSeHaPulsado('row-cards.component');
     switch (numCard) {
     case 0:
@@ -74,8 +79,10 @@ constructor(private renderer: Renderer2, private missionService: MissionService)
       this.mensajeControlFueraHora();
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
       // console.log('Valor verBoton7: ', this.verBoton7);
+
     } else {
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
+      // this.missionService.toggle();
     }
 
     // Hay que emitir un evento para cambiar el color tambien en row-horas-control
@@ -102,8 +109,8 @@ mensajeControlFueraHora() {
 }
 
 emitir() {
-  this.OnPulsado.emit(true);
-  console.log('Emitir');
+  // this.OnPulsado.emit(true);
+  // console.log('Emitir');
 }
 
 

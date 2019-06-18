@@ -4,7 +4,8 @@ import { MissionService } from '../mission.service';
 @Component({
   selector: 'app-mission-control',
   template: `
-    <h2>Mission Control</h2>
+  <div class="basic-container">
+      <h2>Mission Control</h2>
     <button (click)="announce()">Announce mission</button>
     <app-astronaut *ngFor="let astronaut of astronauts"
       [astronaut]="astronaut">
@@ -13,6 +14,8 @@ import { MissionService } from '../mission.service';
     <ul>
       <li *ngFor="let event of history">{{event}}</li>
     </ul>
+  </div>
+
   `,
   providers: [MissionService]
 })
@@ -37,7 +40,6 @@ export class MissionControlComponent {
 
   }
 
-
   announce() {
     const mission = this.missions[this.nextMission++];
     this.missionService.announceMission(mission);
@@ -45,4 +47,7 @@ export class MissionControlComponent {
     this.history.push(`Mission "${mission}" announced`);
     if (this.nextMission >= this.missions.length) { this.nextMission = 0; }
   }
+
 }
+
+
