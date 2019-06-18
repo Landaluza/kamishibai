@@ -48,43 +48,45 @@ export class RowCardsComponent implements OnInit {
 
   onClickHecho(numCard: number) {
     switch (numCard) {
-      case 0:
-
-
+      case 7:
         if ( this.horaControl7 < 20 ) {
           this.mensajeControlAntesHora();
           break;
         } else {
-           this.hechoService.hecho7.emit();
+           this.hechoService.hecho7.emit(true);
         // Se usa para ocultar el boton.
            this.verBoton7 = false;
            if (this.horaControl7 >= 8) {
+            this.hechoService.hecho7.emit(false);
             this.mensajeControlDespuesHora();
             this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
           } else {
+            this.hechoService.hecho7.emit(true);
             this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
           }
            }
         break;
 
-      case 1:
-        this.hechoService.hecho8.emit();
+      case 8:
         this.verBoton8 = false;
         if (this.horaControl8 >= 9) {
+          this.hechoService.hecho8.emit(false);
           this.mensajeControlDespuesHora();
           this.renderer.setStyle(this.card8.nativeElement, 'backgroundColor', 'orange' );
         } else {
+          this.hechoService.hecho8.emit(true);
           this.renderer.setStyle( this.card8.nativeElement, 'backgroundColor', 'green' );
         }
         break;
 
-        case 2:
-        this.hechoService.hecho9.emit();
+        case 9:
         this.verBoton9 = false;
         if (this.horaControl9 >= 10) {
+          this.hechoService.hecho9.emit(false);
           this.mensajeControlDespuesHora();
           this.renderer.setStyle(this.card9.nativeElement, 'backgroundColor', 'orange' );
         } else {
+          this.hechoService.hecho9.emit(true);
           this.renderer.setStyle( this.card9.nativeElement, 'backgroundColor', 'green' );
         }
         break;
