@@ -1,6 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef, } from '@angular/core';
 import * as moment from 'moment';
-import { MissionService } from '../../mission.service';
+import { HechoService } from '../../services/hecho.service';
 @Component({
   selector: 'app-row-horas-control',
   templateUrl: './row-horas-control.component.html',
@@ -14,13 +14,13 @@ horaControl7: string;
 horaControl8: string;
 horaControl9: string;
 
-  constructor(private renderer: Renderer2, public missionService: MissionService) {
+  constructor(private renderer: Renderer2, public hechoService: HechoService) {
   }
 
   ngOnInit() {
-    // TODO: Parece que no es necesrio pasar IsOpen.
+    // TODO: Parece que no es necesario pasar IsOpen.
     // this.missionService.change.subscribe(isOpen => {
-      this.missionService.change.subscribe(() => {
+      this.hechoService.hecho.subscribe(() => {
       this.horaControl7 = moment().format('LT');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
       this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');

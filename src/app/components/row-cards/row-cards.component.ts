@@ -8,7 +8,7 @@ import {
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
-import { MissionService } from '../../mission.service';
+import { HechoService } from '../../services/hecho.service';
 
 @Component({
   selector: 'app-row-cards',
@@ -41,15 +41,17 @@ export class RowCardsComponent implements OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private missionService: MissionService
+    private hechoService: HechoService
   ) {}
 
   ngOnInit() {
-    this.missionService.change.subscribe(isOpen => {});
+    // this.missionService.change.subscribe(isOpen => {});
+    // this.missionService.change.subscribe(() => {});
   }
 
   onClickHecho(numCard: number) {
-    this.missionService.toggle();
+    // this.missionService.toggle();
+    this.hechoService.hecho.emit();
 
     switch (numCard) {
       case 0:
