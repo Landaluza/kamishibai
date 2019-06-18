@@ -3,27 +3,20 @@ import {
   Renderer2,
   ViewChild,
   ElementRef,
-  OnInit,
-  Output,
-  EventEmitter
-  } from '@angular/core';
+  OnInit
+} from '@angular/core';
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import { MissionService } from '../../mission.service';
 
-
 @Component({
   selector: 'app-row-cards',
   templateUrl: './row-cards.component.html',
   styleUrls: ['./row-cards.component.css']
-  // providers: [MissionService]
 })
 
-
 export class RowCardsComponent implements OnInit {
-  // @Output() OnPulsado = new EventEmitter<boolean>();
-
   @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
 
@@ -33,92 +26,60 @@ export class RowCardsComponent implements OnInit {
   @ViewChild('card9', { static: false }) card9: ElementRef;
   @ViewChild('boton9', { static: false }) boton9: ElementRef;
 
- verBoton7 = true;
- verBoton8 = true;
- verBoton9 = true;
+  verBoton7 = true;
+  verBoton8 = true;
+  verBoton9 = true;
 
- time = new Date();
- public horaControl7 = this.time.getHours();
+  time = new Date();
+  public horaControl7 = this.time.getHours();
 
- horaControl8: string;
- horaControl9: string;
+  horaControl8: string;
+  horaControl9: string;
 
- fecha = new Date();
-//  fecha1 = '2019.01.23';
+  fecha = new Date();
+  //  fecha1 = '2019.01.23';
 
-// title = 'Tablero kamizibai';
-// tiempo = moment().startOf('hour').fromNow();
-
-constructor(private renderer: Renderer2, private missionService: MissionService) {
-  // this.OnPulsado = new EventEmitter();
-  // missionService.botonPulsado$.subscribe(
-  //   () => {
-  //     console.log('Se ha pulsado un boton en row-cards.component');
-  //   });
- }
+  constructor(
+    private renderer: Renderer2,
+    private missionService: MissionService
+  ) {}
 
   ngOnInit() {
-    this.missionService.change.subscribe(isOpen => {
-      // console.log('ENTRO A CAMBIAR EL VALOR');
-    });
+    this.missionService.change.subscribe(isOpen => {});
   }
 
   onClickHecho(numCard: number) {
-    // console.log('OnClickHecho num: ', numCard);
     this.missionService.toggle();
-    // this.missionService.botonSeHaPulsado('row-cards.component');
+
     switch (numCard) {
-    case 0:
-    // console.log(typeof(this.tiempo));
-    // alert('Hora: ' + this.fecha.getMinutes());
-    // si la hora en que se ha pulsado el botón es superior al rango de hora establecido
-    // para el control lo pintamos en naranja, si correcto en verde.
-     this.verBoton7 = false;
+      case 0:
+        this.verBoton7 = false;
 
-     if ( this.horaControl7 < 7) {
-      this.mensajeControlFueraHora();
-      this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange');
-      // console.log('Valor verBoton7: ', this.verBoton7);
+        if (this.horaControl7 < 7) {
+          this.mensajeControlFueraHora();
+          this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
+        } else {
+          this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
+          // this.missionService.toggle();
+        }
+        break;
 
-    } else {
-      this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
-      // this.missionService.toggle();
+      case 1:
+        this.renderer.setStyle( this.card8.nativeElement, 'backgroundColor', 'green' );
+        this.verBoton8 = false;
+        break;
     }
+  }
 
-    // Hay que emitir un evento para cambiar el color tambien en row-horas-control
-    //  this.emitir();
-     break;
-
-    case 1:
-      this.renderer.setStyle(this.card8.nativeElement, 'backgroundColor', 'green');
-      this.verBoton8 = false;
-      break;
+  mensajeControlFueraHora() {
+    Swal.fire({
+      title: '¡Control fuera de hora!',
+      text: 'Es importante que respetes los horarios de cada control.',
+      imageUrl: '../assets/img/alerta.jpg',
+      imageWidth: 400,
+      imageHeight: 400,
+      imageAlt: 'Imagen',
+      animation: true
+    });
   }
 }
-
-mensajeControlFueraHora() {
-  Swal.fire({
-    title: '¡Control fuera de hora!',
-    text: 'Es importante que respetes los horarios de cada control.',
-    imageUrl: '../assets/img/alerta.jpg',
-    imageWidth: 400,
-    imageHeight: 400,
-    imageAlt: 'Imagen',
-    animation: true
-  });
-}
-
-// emitir() {
-  // this.OnPulsado.emit(true);
-  // console.log('Emitir');
-// }
-
-
-}
-
-
-
-
-
-
-
