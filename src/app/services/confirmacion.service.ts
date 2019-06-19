@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class ConfirmacionService {
-  
+
   btnConfirm: boolean;
 
   private btnConfirm$ = new Subject<any>();
@@ -18,7 +18,7 @@ export class ConfirmacionService {
   agregarConfirmacion(pulsado: boolean) {
     this.btnConfirm = pulsado;
     this.btnConfirm$.next(this.btnConfirm);
-    console.log('agrego')
+    console.log('agrego');
   }
 
   getConfirmacion$(): Observable<any> {

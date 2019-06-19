@@ -25,7 +25,7 @@ horaControl8: string;
 horaControl9: string;
 
 
-  constructor( 
+  constructor(
     private renderer: Renderer2,
     private confirmacionService: ConfirmacionService
     ) {
