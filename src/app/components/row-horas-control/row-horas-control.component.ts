@@ -1,11 +1,15 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef, Input, OnChanges } from '@angular/core';
 import * as moment from 'moment';
+import { Observable } from 'rxjs/internal/Observable';
+import { ConfirmacionService } from '../../services/confirmacion.service';
 @Component({
   selector: 'app-row-horas-control',
   templateUrl: './row-horas-control.component.html',
   styleUrls: ['./row-horas-control.component.css']
 })
 export class RowHorasControlComponent implements OnInit, OnChanges {
+
+  btnConfirm$: Observable<any>;
 
 
 // @Input() leyenda: string ;
@@ -14,24 +18,30 @@ export class RowHorasControlComponent implements OnInit, OnChanges {
 
 @ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
 
-
+pulsado = false;
 prueba = false;
 horaControl7: string;
 horaControl8: string;
 horaControl9: string;
 
 
-  constructor( private renderer: Renderer2 ) {
+  constructor( 
+    private renderer: Renderer2,
+    private confirmacionService: ConfirmacionService
+    ) {
 
     }
 
   ngOnInit() {
+
+    this.btnConfirm$ = this.confirmacionService.getConfirmacion$();
+    this.btnConfirm$.subscribe(btnConfirm => this.pulsado = btnConfirm);
     // console.log('Leyenda: ', this.leyenda);
     // console.log('botonHechoPulsado: ', this.botonHechoPulsado);
   }
 
   ngOnChanges(  ) {
-    if (this.botonHechoPulsado) {
+    if (this.pulsado) {
         this.onClickHecho(0);
 
         }
@@ -50,7 +60,7 @@ horaControl9: string;
     this.horaControl7 = moment().format('LT');
     this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
     this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
-    this.prueba = this.botonHechoPulsado;
+    this.prueba = this.pulsado;
     console.log('botonHechoPulsado: ', this.botonHechoPulsado);
     break;
   }

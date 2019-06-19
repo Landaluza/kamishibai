@@ -10,6 +10,7 @@ import {
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
+import { ConfirmacionService } from 'src/app/services/confirmacion.service';
 
 @Component({
   selector: 'app-row-cards',
@@ -46,7 +47,10 @@ export class RowCardsComponent implements OnInit {
 // title = 'Tablero kamizibai';
 // tiempo = moment().startOf('hour').fromNow();
 
-constructor(private renderer: Renderer2) {
+constructor(
+  private renderer: Renderer2,
+  private confirmacionService: ConfirmacionService
+  ) {
   // this.OnPulsado = new EventEmitter();
  }
 
@@ -94,8 +98,9 @@ mensajeControlFueraHora() {
 }
 
 emitir() {
-  this.OnPulsado.emit(true);
+  this.OnPulsado.emit(false);
   console.log('Emitir');
+  this.confirmacionService.agregarConfirmacion(true);
 }
 
 }
