@@ -11,6 +11,7 @@ https://www.dotnettricks.com/learn/angularmaterial/gridlayout
 https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.component.html&hideNavigation=1
 
 
+
 #GIT:
 git remote add origin https://github.com/Landaluza/kamishibai.git
 git push -u origin master
