@@ -10,19 +10,16 @@ import {
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
-import { MissionService } from '../../mission.service';
-
 
 @Component({
   selector: 'app-row-cards',
   templateUrl: './row-cards.component.html',
-  styleUrls: ['./row-cards.component.css'],
-  providers: [MissionService]
+  styleUrls: ['./row-cards.component.css']
 })
 
 
 export class RowCardsComponent implements OnInit {
-  @Output() OnPulsado = new EventEmitter<boolean>();
+  @Output() public OnPulsado: EventEmitter<boolean> = new EventEmitter();
 
   @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
@@ -49,19 +46,14 @@ export class RowCardsComponent implements OnInit {
 // title = 'Tablero kamizibai';
 // tiempo = moment().startOf('hour').fromNow();
 
-constructor(private renderer: Renderer2, private missionService: MissionService) {
+constructor(private renderer: Renderer2) {
   // this.OnPulsado = new EventEmitter();
-  missionService.botonPulsado$.subscribe(
-    () => {
-      console.log('Se ha pulsado un boton en row-cards.component');
-    });
  }
 
   ngOnInit() {
   }
 
   onClickHecho(numCard: number) {
-    this.missionService.botonSeHaPulsado('row-cards.component');
     switch (numCard) {
     case 0:
     // console.log(typeof(this.tiempo));
@@ -76,10 +68,10 @@ constructor(private renderer: Renderer2, private missionService: MissionService)
       // console.log('Valor verBoton7: ', this.verBoton7);
     } else {
       this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'green');
+      this.emitir();
     }
 
     // Hay que emitir un evento para cambiar el color tambien en row-horas-control
-     this.emitir();
      break;
 
     case 1:
@@ -105,7 +97,6 @@ emitir() {
   this.OnPulsado.emit(true);
   console.log('Emitir');
 }
-
 
 }
 
