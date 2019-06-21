@@ -10,6 +10,11 @@ https://material.angular.io
 https://www.dotnettricks.com/learn/angularmaterial/gridlayout
 https://stackblitz.com/edit/angular-material2-grid-example?embed=1&file=app/app.component.html&hideNavigation=1
 
+Video de Fazt:
+Añadir module para Material en minuto 17.
+https://www.youtube.com/watch?v=n5kTqHmLtN8
+
+
 
 
 #GIT:

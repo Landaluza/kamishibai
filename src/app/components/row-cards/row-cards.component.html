@@ -66,5 +66,53 @@
         </div>
       </div>
     </mat-grid-tile>
+
+
+
+    <mat-grid-tile *ngFor="let card of cards; let indice=index"
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid black'"
+  >
+    <div class="card">
+      <div #card10 class="overlay">
+        <h4>CONTROL  </h4>
+        <div>{{card.name}}</div>
+        <br />
+        <div>{{card.id}}</div>
+        <br />
+        <button
+          *ngIf="verBoton10"
+          class="btn-material"
+          (click)="onClickHecho(card.id)"
+        >
+          Hecho
+        </button>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+
+    <!-- <mat-grid-tile *ngFor="let item of cards; let indice=index"
+    [style.background]="'#F2F2F2'"
+    [style.border]="'1px solid black'"
+  >
+    <div class="card">
+      <div #card10 class="overlay">
+        <h4>CONTROL  </h4>
+        <div>{{item}}</div>
+        <br />
+        <div>{{ indice + 10}}</div>
+        <br />
+        <button
+          *ngIf="verBoton10"
+          class="btn-material"
+          (click)="onClickHecho(10)"
+        >
+          Hecho
+        </button>
+      </div>
+    </div>
+  </mat-grid-tile> -->
+
   </mat-grid-list>
   </div>

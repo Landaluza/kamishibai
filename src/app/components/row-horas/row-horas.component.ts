@@ -43,6 +43,14 @@ export class RowHorasComponent implements OnInit {
       this.renderer.setStyle(this.hora9.nativeElement, 'padding', '15px');
       });
 
+     const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+     for (const card of cards) {
+          console.log(`hecho${card}`, `hora${card}`);
+      }
+
+
+
+
     }
 
 }
