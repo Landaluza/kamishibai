@@ -26,6 +26,7 @@ export class RowCardsComponent implements OnInit {
     {name: '#card12', id: 13, boton: 'verBoton13'},
     {name: '#card12', id: 14, boton: 'verBoton14'}
 ];
+
  @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
 
@@ -44,6 +45,9 @@ export class RowCardsComponent implements OnInit {
   verBoton9 = true;
   verBoton10 = true;
 
+  imgs: string[] = [];
+  i: number;
+
   time = new Date();
   public horaControl7 = this.time.getHours();
   public horaControl8 = this.time.getHours();
@@ -52,6 +56,7 @@ export class RowCardsComponent implements OnInit {
 
   fecha = new Date();
   //  fecha1 = '2019.01.23';
+ a = 10;
 
   constructor(
     private renderer: Renderer2,
@@ -59,6 +64,7 @@ export class RowCardsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+  setInterval(this.concienciacion, 30000);
   }
 
   onClickHecho(numCard: number) {
@@ -162,5 +168,20 @@ export class RowCardsComponent implements OnInit {
       animation: true
     });
   }
+
+  concienciacion() {
+    this.imgs = ['alerta.jpg', 'PisaCristal.jpg', 'BotellaRota.png'],
+    this.i = Math.floor(Math.random() * this.imgs.length);
+    // console.log(this.i);
+    Swal.fire({
+      title: '¿Por qué es importante que no existan cristales?',
+      imageUrl: '../assets/img/concienciacion/' + this.imgs[this.i],
+      imageWidth: 400,
+      imageHeight: 400,
+      imageAlt: 'Imagen',
+      animation: true
+    });
+  }
+
 
 }
