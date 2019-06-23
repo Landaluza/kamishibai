@@ -16,13 +16,14 @@ export class RowHorasComponent implements OnInit {
    }
 
   ngOnInit() {
-     this.hechoService.hecho7.subscribe(($Event: boolean) => {
-      if ($Event) {
+     this.hechoService.hecho.subscribe(($Event) => {
+     this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+     if ($Event.enHora) {
         this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
       } else {
         this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
      }
-      this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
+
     });
 
      this.hechoService.hecho8.subscribe(($Event: boolean) => {
@@ -43,10 +44,10 @@ export class RowHorasComponent implements OnInit {
       this.renderer.setStyle(this.hora9.nativeElement, 'padding', '15px');
       });
 
-     const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-     for (const card of cards) {
-          console.log(`hecho${card}`, `hora${card}`);
-      }
+    //  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    //  for (const card of cards) {
+    //       console.log(`hecho${card}`, `hora${card}`);
+    //   }
 
 
 

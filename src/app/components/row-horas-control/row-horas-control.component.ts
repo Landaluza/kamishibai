@@ -20,14 +20,20 @@ horaControl9: string;
   }
 
   ngOnInit() {
-        this.hechoService.hecho7.subscribe(($Event: boolean) => {
-        if ($Event) {
+    // TODO:  Da error si asigno type Object a $Event.
+        this.hechoService.hecho.subscribe(($Event) => {
+          // console.log(`event = ${ $Event.boton }`);
+          // console.log(`event = ${ $Event.enHora }`);
+             console.log(`event = ${ $Event.el }`);
+
+             if ($Event.enHora) {
            this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
+          //  this.renderer.setStyle(this.{this.elHoraControl7}.nativeElement, 'backgroundColor', 'green');
         } else {
            this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
         }
-        this.horaControl7 = moment().format('LT');
-        this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
+             this.horaControl7 = moment().format('LT');
+             this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
     });
 
         this.hechoService.hecho8.subscribe(($Event: boolean) => {

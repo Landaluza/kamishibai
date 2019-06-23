@@ -50,6 +50,22 @@ body {
   border-radius: 10px;
 }
 
+.card-img {
+  margin: 1px auto;
+  height: 120px;
+  max-width: 200px;
+  width: 100%;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  /* background-image: url("../src/assets/img/BotellaRota.png"); */
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center top;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+
 /* .card:hover .overlay {
   bottom: -25%;
 } */
@@ -68,6 +84,7 @@ body {
   font-weight: 200;
   line-height: 1;
 }
+
 .card p {
   font-family: "Roboto Slab", serif;
   /* -webkit-transform: rotate(3deg);

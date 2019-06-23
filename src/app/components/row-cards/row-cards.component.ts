@@ -17,7 +17,6 @@ import { HechoService } from '../../services/hecho.service';
 })
 
 export class RowCardsComponent implements OnInit {
-  // cards: string[] = ['card10', 'card11', 'card12' , 'card13', 'card14' ];
 
   cards = [
     {name: '#card10', id: 10, boton: 'verBoton10'},
@@ -25,7 +24,7 @@ export class RowCardsComponent implements OnInit {
     {name: '#card12', id: 12, boton: 'verBoton12'},
     {name: '#card12', id: 13, boton: 'verBoton13'},
     {name: '#card12', id: 14, boton: 'verBoton14'}
-];
+   ];
 
  @ViewChild('card7', { static: false }) card7: ElementRef;
   @ViewChild('boton7', { static: false }) boton7: ElementRef;
@@ -68,23 +67,23 @@ export class RowCardsComponent implements OnInit {
   }
 
   onClickHecho(numCard: number) {
-    console.log(numCard);
+    // console.log(numCard);
     switch (numCard) {
       case 7:
         if ( this.horaControl7 < 7 ) {
           this.mensajeControlAntesHora();
           break;
         } else {
-           this.hechoService.hecho7.emit(true);
-        // Se usa para ocultar el boton.
+           // Se usa para ocultar el boton.
            this.verBoton7 = false;
-           if (this.horaControl7 >= 8) {
-            this.hechoService.hecho7.emit(false);
-            this.mensajeControlDespuesHora();
-            this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
-          } else {
-            this.hechoService.hecho7.emit(true);
-            this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
+           if (this.horaControl7 >= 12) {
+            // https://stackoverflow.com/questions/35390765/pass-parameters-with-eventemitter
+              this.hechoService.hecho.emit({boton : 7, enHora : true, el : 'elHoraControl7', hora: 'hora7'});
+              this.renderer.setStyle( this.card7.nativeElement, 'backgroundColor', 'green' );
+           } else {
+              this.mensajeControlDespuesHora();
+              this.hechoService.hecho.emit({boton : 7, enHora : false, el : 'elHoraControl7', hora: 'hora7'});
+              this.renderer.setStyle(this.card7.nativeElement, 'backgroundColor', 'orange' );
           }
            }
         break;
