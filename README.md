@@ -24,7 +24,16 @@ git push -u origin master
 git push -u kamishibai master
 
 
+#StackBlitz:
+https://stackblitz.com/edit/kamishibai
 
+
+#StackOverflow:
+https://stackoverflow.com/questions/56692694/how-can-i-change-by-code-using-interpolation
+https://es.stackoverflow.com/questions/273552/sustituir-cadena-tag-con-cadena-de-un-objeto
+
+
+https://stackoverflow.com/questions/56726992/use-of-interpolation-in-html-to-reduce-code
 
 
 

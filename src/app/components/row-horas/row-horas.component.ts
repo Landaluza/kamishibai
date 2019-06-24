@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChildren, QueryList, ElementRef, } from '@angular/core';
 import { HechoService } from '../../services/hecho.service';
 
 @Component({
@@ -7,53 +7,33 @@ import { HechoService } from '../../services/hecho.service';
   styleUrls: ['./row-horas.component.css']
 })
 export class RowHorasComponent implements OnInit {
-
-  @ViewChild('hora7', { static: false }) hora7: ElementRef;
-  @ViewChild('hora8', { static: false }) hora8: ElementRef;
-  @ViewChild('hora9', { static: false }) hora9: ElementRef;
+  cards = [
+    { horario: '07:00 a 08:00'},
+    { horario: '08:00 a 09:00'},
+    { horario: '09:00 a 10:00'},
+    { horario: '10:00 a 11:00'},
+    { horario: '11:00 a 12:00'},
+    { horario: '12:00 a 13:00'},
+    { horario: '13:00 a 14:00'},
+    { horario: '14:00 a 15:00'}
+  ];
+    @ViewChildren('hora') Hora: QueryList<ElementRef>;
 
   constructor(private renderer: Renderer2, public hechoService: HechoService) {
    }
 
   ngOnInit() {
-     this.hechoService.hecho.subscribe(($Event) => {
-     this.renderer.setStyle(this.hora7.nativeElement, 'padding', '15px');
-     if ($Event.enHora) {
-        this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'green');
-      } else {
-        this.renderer.setStyle(this.hora7.nativeElement, 'backgroundColor', 'orange');
-     }
+      this.hechoService.hecho.subscribe(($Event) => {
+      const hora = this.Hora.toArray()[$Event.boton];
+      this.renderer.setStyle(hora.nativeElement, 'padding', '15px');
 
+      if ($Event.enHora) {
+        this.renderer.setStyle(hora.nativeElement, 'backgroundColor', 'green');
+      } else {
+        this.renderer.setStyle(hora.nativeElement, 'backgroundColor', 'orange');
+     }
     });
-
-     this.hechoService.hecho8.subscribe(($Event: boolean) => {
-      if ($Event) {
-        this.renderer.setStyle(this.hora8.nativeElement, 'backgroundColor', 'green');
-      } else {
-        this.renderer.setStyle(this.hora8.nativeElement, 'backgroundColor', 'orange');
-     }
-      this.renderer.setStyle(this.hora8.nativeElement, 'padding', '15px');
-       });
-
-     this.hechoService.hecho9.subscribe(($Event: boolean) => {
-      if ($Event) {
-        this.renderer.setStyle(this.hora9.nativeElement, 'backgroundColor', 'green');
-      } else {
-        this.renderer.setStyle(this.hora9.nativeElement, 'backgroundColor', 'orange');
-     }
-      this.renderer.setStyle(this.hora9.nativeElement, 'padding', '15px');
-      });
-
-    //  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-    //  for (const card of cards) {
-    //       console.log(`hecho${card}`, `hora${card}`);
-    //   }
-
-
-
-
-    }
-
+   }
 }
 
 

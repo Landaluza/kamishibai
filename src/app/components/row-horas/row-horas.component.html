@@ -1,28 +1,8 @@
 <div class="basic-container">
   <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px">
-    <mat-grid-tile [style.border]="'1px solid black'" [style.border-left]="'2px solid black'" >
-      <div #hora7> 7:00 a 8:00 </div>
+    <mat-grid-tile  *ngFor="let card of cards"
+    [style.border]="'1px solid black'" [style.border-left]="'2px solid black'" >
+      <div #hora>  {{ card.horario }}</div>
     </mat-grid-tile>
-    <mat-grid-tile [style.border]="'1px solid black'" >
-      <div #hora8> 8:00 a 9:00 </div>
-    </mat-grid-tile>
-    <mat-grid-tile [style.border]="'1px solid black'" >
-      <div #hora9> 9:00 a 10:00 </div>
-    </mat-grid-tile>
-    <mat-grid-tile [style.border]="'1px solid black'" >
-      <div #hora10> 10:00 a 11:00 </div>
-    </mat-grid-tile>
-   <mat-grid-tile [style.border]="'1px solid black'" >
-      <div #hora11> 11:00 a 12:00 </div>
-   </mat-grid-tile>
-   <mat-grid-tile [style.border]="'1px solid black'" >
-      <div #hora12> 12:00 a 13:00 </div>
-   </mat-grid-tile>
-   <mat-grid-tile [style.border]="'1px solid black'" >
-      <div #hora13> 13:00 a 14:00 </div>
-   </mat-grid-tile>
-   <mat-grid-tile [style.border]="'1px solid black'" [style.border-right]="'2px solid black'">
-      <div #hora14> 14:00 a 15:00 </div>
-   </mat-grid-tile>
  </mat-grid-list>
 </div>

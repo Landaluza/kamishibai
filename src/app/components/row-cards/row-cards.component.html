@@ -1,121 +1,25 @@
 <div class="basic-container">
-  <mat-grid-list cols="8" rowHeight="400px" gutterSize="1px">
-          <mat-grid-tile
-      [style.background]="'#F2F2F2'"
-      [style.border]="'1px solid black'"
-      [style.border-left]="'2px solid black'"
-
-    >
+    <mat-grid-list cols="8" rowHeight="400px" gutterSize="1px">
+      <mat-grid-tile *ngFor="let card of cards; let indice=index"
+        [style.background]="'#F2F2F2'"
+        [style.border]="'1px solid black'"
+      >
       <div class="card">
-
-  <div> <img class="card-img" src="../../../assets/img/alerta.jpg" alt=""></div>
-        <div #card7 class="overlay">
-          <h4>CONTROL</h4>
-          <div># Verificar que no existen cristales en la zona.</div>
-          <br />
-          <div># Otra tarea.</div>
-          <br />
-          <button
-            *ngIf="verBoton7"
-             class="btn-material"
-            (click)="onClickHecho(7)"
-          >
-            Hecho
-          </button>
+          <div #card class="overlay">
+            <h4>CONTROL</h4>
+            <div># Verificar que no existen cristales en la zona.</div>
+            <br />
+            <div># Otra tarea.</div>
+            <br />
+            <button #boton
+              class="btn-material"
+              (click)="onClickHecho(indice)"
+            >
+              Hecho
+            </button>
+          </div>
         </div>
-      </div>
-    </mat-grid-tile>
+      </mat-grid-tile>
 
-    <mat-grid-tile
-      [style.background]="'#F2F2F2'"
-      [style.border]="'1px solid black'"
-    >
-      <div class="card">
-        <div #card8 class="overlay">
-          <h4>CONTROL</h4>
-          <div># Verificar que no existen cristales en la zona.</div>
-          <br />
-          <div># Otra tarea.</div>
-          <br />
-          <button
-            *ngIf="verBoton8"
-            class="btn-material"
-            (click)="onClickHecho(8)"
-          >
-            Hecho
-          </button>
-        </div>
-      </div>
-    </mat-grid-tile>
-
-    <mat-grid-tile
-      [style.background]="'#F2F2F2'"
-      [style.border]="'1px solid black'"
-    >
-      <div class="card">
-        <div #card9 class="overlay">
-          <h4>CONTROL</h4>
-          <div># Verificar que no existen cristales en la zona.</div>
-          <br />
-          <div># Otra tarea.</div>
-          <br />
-          <button
-            *ngIf="verBoton9"
-            class="btn-material"
-            (click)="onClickHecho(9)"
-          >
-            Hecho
-          </button>
-        </div>
-      </div>
-    </mat-grid-tile>
-
-
-
-    <mat-grid-tile *ngFor="let card of cards; let indice=index"
-    [style.background]="'#F2F2F2'"
-    [style.border]="'1px solid black'"
-  >
-    <div class="card">
-      <div #card10 class="overlay">
-        <h4>CONTROL  </h4>
-        <div>{{card.name}}</div>
-        <br />
-        <div>{{card.id}}</div>
-        <br />
-        <button
-          *ngIf="verBoton10"
-          class="btn-material"
-          (click)="onClickHecho(card.id)"
-        >
-          Hecho
-        </button>
-      </div>
+    </mat-grid-list>
     </div>
-  </mat-grid-tile>
-
-
-    <!-- <mat-grid-tile *ngFor="let item of cards; let indice=index"
-    [style.background]="'#F2F2F2'"
-    [style.border]="'1px solid black'"
-  >
-    <div class="card">
-      <div #card10 class="overlay">
-        <h4>CONTROL  </h4>
-        <div>{{item}}</div>
-        <br />
-        <div>{{ indice + 10}}</div>
-        <br />
-        <button
-          *ngIf="verBoton10"
-          class="btn-material"
-          (click)="onClickHecho(10)"
-        >
-          Hecho
-        </button>
-      </div>
-    </div>
-  </mat-grid-tile> -->
-
-  </mat-grid-list>
-  </div>

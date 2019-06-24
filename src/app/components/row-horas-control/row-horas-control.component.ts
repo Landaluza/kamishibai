@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChild, ElementRef, } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChildren, QueryList, ElementRef, } from '@angular/core';
 import * as moment from 'moment';
 import { HechoService } from '../../services/hecho.service';
 @Component({
@@ -6,15 +6,21 @@ import { HechoService } from '../../services/hecho.service';
   templateUrl: './row-horas-control.component.html',
   styleUrls: ['./row-horas-control.component.css']
 })
+
 export class RowHorasControlComponent implements OnInit {
 
-@ViewChild('elHoraControl7', { static: false }) elHoraControl7: ElementRef;
-@ViewChild('elHoraControl8', { static: false }) elHoraControl8: ElementRef;
-@ViewChild('elHoraControl9', { static: false }) elHoraControl9: ElementRef;
+  cards = [
+    { id: 7},
+    { id: 8},
+    { id: 9},
+    { id: 10},
+    { id: 11},
+    { id: 12},
+    { id: 13},
+    { id: 14}
+  ];
 
-horaControl7: string;
-horaControl8: string;
-horaControl9: string;
+@ViewChildren('eleHoraControl') eleHoraControl: QueryList<ElementRef>;
 
   constructor(private renderer: Renderer2, public hechoService: HechoService) {
   }
@@ -22,41 +28,20 @@ horaControl9: string;
   ngOnInit() {
     // TODO:  Da error si asigno type Object a $Event.
         this.hechoService.hecho.subscribe(($Event) => {
-          // console.log(`event = ${ $Event.boton }`);
-          // console.log(`event = ${ $Event.enHora }`);
-             console.log(`event = ${ $Event.el }`);
+        const horaControl = this.eleHoraControl.toArray()[$Event.boton];
 
-             if ($Event.enHora) {
-           this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'green');
-          //  this.renderer.setStyle(this.{this.elHoraControl7}.nativeElement, 'backgroundColor', 'green');
+        if ($Event.enHora) {
+           this.renderer.setStyle(horaControl.nativeElement, 'backgroundColor', 'green');
         } else {
-           this.renderer.setStyle(this.elHoraControl7.nativeElement, 'backgroundColor', 'orange');
+           this.renderer.setStyle(horaControl.nativeElement, 'backgroundColor', 'orange');
         }
-             this.horaControl7 = moment().format('LT');
-             this.renderer.setStyle(this.elHoraControl7.nativeElement, 'padding', '15px');
-    });
 
-        this.hechoService.hecho8.subscribe(($Event: boolean) => {
-        if ($Event) {
-          this.renderer.setStyle(this.elHoraControl8.nativeElement, 'backgroundColor', 'green');
-        } else {
-          this.renderer.setStyle(this.elHoraControl8.nativeElement, 'backgroundColor', 'orange');
-        }
-        this.horaControl8 = moment().format('LT');
-        this.renderer.setStyle(this.elHoraControl8.nativeElement, 'padding', '15px');
-    });
-
-        this.hechoService.hecho9.subscribe(($Event: boolean) => {
-        if ($Event) {
-          this.renderer.setStyle(this.elHoraControl9.nativeElement, 'backgroundColor', 'green');
-        } else {
-          this.renderer.setStyle(this.elHoraControl9.nativeElement, 'backgroundColor', 'orange');
-        }
-        this.horaControl9 = moment().format('LT');
-        this.renderer.setStyle(this.elHoraControl9.nativeElement, 'padding', '15px');
+        const div = this.renderer.createElement('div');
+        const text = this.renderer.createText(moment().format('LT'));
+        this.renderer.appendChild(div, text);
+        this.renderer.appendChild(horaControl.nativeElement, div);
+        this.renderer.setStyle(horaControl.nativeElement, 'padding', '15px');
     });
   }
 
 }
-
-

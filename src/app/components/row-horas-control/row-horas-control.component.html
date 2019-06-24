@@ -1,22 +1,9 @@
 <div class="basic-container">
 <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
-  <mat-grid-tile
+  <mat-grid-tile  *ngFor="let card of cards"
   [style.border]="'1px solid black'"
-  [style.border-left]="'2px solid black'"
-  >
-    <div  #elHoraControl7 > {{ horaControl7 }} </div>
+  [style.border-left]="'2px solid black'">
+    <div  #eleHoraControl >  </div>
   </mat-grid-tile>
-
-<mat-grid-tile
-[style.border]="'1px solid black'"
->
- <div #elHoraControl8 > {{ horaControl8 }}  </div>
-</mat-grid-tile>
-
-<mat-grid-tile
-[style.border]="'1px solid black'"
->
- <div #elHoraControl9 > {{ horaControl9 }}  </div>
-</mat-grid-tile>
 </mat-grid-list>
 </div>
