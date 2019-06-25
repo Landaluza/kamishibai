@@ -85,7 +85,7 @@ export class RowCardsComponent implements OnInit {
     Swal.fire({
       title: '¡Control antes de su hora!',
       text: 'Es importante que respetes los horarios de cada control.',
-      imageUrl: '../assets/img/alerta.jpg',
+      imageUrl: '../assets/img/reloj.jpg',
       imageWidth: 400,
       imageHeight: 400,
       imageAlt: 'Imagen',
@@ -100,8 +100,8 @@ export class RowCardsComponent implements OnInit {
     Swal.fire({
       title: '¿Por qué es importante que no existan cristales?',
       imageUrl: '../assets/img/concienciacion/' + this.imgs[this.i],
-      imageWidth: 400,
-      imageHeight: 400,
+      imageWidth: 700,
+      imageHeight: 500,
       imageAlt: 'Imagen',
       animation: true
     });

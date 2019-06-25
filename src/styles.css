@@ -29,7 +29,7 @@ body {
 }
 
 
-/** Card *********************/
+/** Card *************************************************************************************************/
 
 body {
   background: #e1e1e1;
@@ -37,7 +37,7 @@ body {
 
 .card {
   margin: 40px auto;
-  height: 350px;
+  height: 550px;
   max-width: 200px;
   width: 100%;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -48,6 +48,8 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .card-img {
@@ -104,18 +106,23 @@ body {
 .overlay {
   position: absolute;
   /* left: -10%;*/
-  bottom: -35%;
+  bottom: 2px;
+  top: 145px;
   display: block;
   background: rgb(196, 33, 33);
-  height: 350px;
+  height: 390px;
   width: 170px;
   /* -webkit-transform: rotate(-3deg) translate3d(0, 0, 0);
           transform: rotate(-3deg) translate3d(0, 0, 0); */
   border-radius: 10px;
   text-align: center;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   /* transition: 0.3s all ease-in-out;
   transition-delay: 0.1s; */
-}
+ }
+
+/** End Card *************************************************************************************************/
+
 
 .button {
   color: #E80000;
@@ -132,17 +139,28 @@ body {
 
 /** https://codepen.io/dongato/pen/pjpvwe */
 .btn-material {
-  padding: 10px 20px;
+  padding: 10px 20px 10px 10px;
+  margin-top: 20px;
   overflow: hidden;
   position: relative;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 10px;
   background: #ec8a8a;;
   border: solid 1 px;
   font-size: 18px;
   text-align: center;
-  width: auto;
+  /* width: auto; */
+  width: 140px;
   color:#fff;
   text-transform:uppercase;
   font-family: 'Roboto', sans-serif;
 }
+
+.btn-material-rojo {
+   background: #ec8a8a;
+}
+
+.btn-material-verde {
+  background: #47cf80;
+}
+
