@@ -30,7 +30,7 @@ export class CountdownComponent implements OnInit {
     // console.log( 'Hora del control: ', this.hora);
     this.segundos = this.time.getSeconds();
     setTimeout(() => this.startCountDown() , (60 - this.segundos) * 1000);
-      }
+     }
 
 startCountDown() {
   if (this.init && this.init > 0) {

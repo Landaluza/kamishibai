@@ -2,7 +2,7 @@
   <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px">
     <mat-grid-tile  *ngFor="let card of cards"
     [style.border]="'1px solid black'" [style.border-left]="'2px solid black'" >
-      <div #hora>  {{ card.horario }}</div>
+      <div class ="mamDiv" #hora>  {{ card.horario }}</div>
     </mat-grid-tile>
  </mat-grid-list>
 

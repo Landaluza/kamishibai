@@ -32,6 +32,12 @@ export class RowCardsComponent implements OnInit {
 
   @ViewChildren('card') eleCards: QueryList<ElementRef>;
   @ViewChildren('boton') eleBoton: QueryList<ElementRef>;
+  @ViewChildren('botonLimpieza') eleBotonLimpieza: QueryList<ElementRef>;
+  @ViewChildren('imagen') eleImagen: QueryList<ElementRef>;
+  @ViewChildren('texto1') eleTexto1: QueryList<ElementRef>;
+  @ViewChildren('texto2') eleTexto2: QueryList<ElementRef>;
+  @ViewChildren('texto3') eleTexto3: QueryList<ElementRef>;
+
 
   imgs: string[] = [];
   i: number;
@@ -51,14 +57,26 @@ export class RowCardsComponent implements OnInit {
   }
 
   onClickHecho(index: number) {
+    console.log('Hora:', this.horaControl, 'Index:', (index));
     if ( this.horaControl < (index + 7) ) {
+
       this.mensajeControlAntesHora();
     } else {
       const card = this.eleCards.toArray()[index];
       const boton = this.eleBoton.toArray()[index];
+      const botonLimpieza = this.eleBotonLimpieza.toArray()[index];
+      const imagen = this.eleImagen.toArray()[index];
+      const texto1 = this.eleTexto1.toArray()[index];
+      const texto2 = this.eleTexto2.toArray()[index];
+      const texto3 = this.eleTexto3.toArray()[index];
       this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden' );
-
-      if (this.horaControl < (index + 8)) {
+      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png' );
+console.log('Hora:', this.horaControl, 'Index:', (index));
+      if (this.horaControl <= (index + 7)) {
           this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
           this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
       } else {
@@ -69,9 +87,38 @@ export class RowCardsComponent implements OnInit {
     }
   }
 
+  onClickHechoLimpieza(index: number){
+    if ( this.horaControl < (index + 7) ) {
+      this.mensajeControlAntesHora();
+    } else {
+      const card = this.eleCards.toArray()[index];
+      const boton = this.eleBoton.toArray()[index];
+      const botonLimpieza = this.eleBotonLimpieza.toArray()[index];
+      const imagen = this.eleImagen.toArray()[index];
+      const texto1 = this.eleTexto1.toArray()[index];
+      const texto2 = this.eleTexto2.toArray()[index];
+      const texto3 = this.eleTexto3.toArray()[index];
+      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
+      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg' );
+      console.log('Hora:', this.horaControl, 'Index:', (index));
+      if (this.horaControl <= (index + 7)) {
+         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
+         this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+      } else {
+         this.mensajeControlDespuesHora();
+         this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl });
+         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
+      }
+    }
+  }
+
   mensajeControlDespuesHora() {
     Swal.fire({
-      title: '¡Control fuera de hora!',
+      title: '¡Control despues de su hora!',
       text: 'Es importante que respetes los horarios de cada control.',
       imageUrl: '../assets/img/alerta.jpg',
       imageWidth: 400,
