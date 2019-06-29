@@ -54,8 +54,9 @@ this.onComplete.emit();
 this.counter = 60;
 // console.log('--counter end--');
 } else {
-  this.doCountDown();
+
 }
+this.doCountDown();
 }
 
 // Tiene que mostrar la card corespondiente a la hora actual en el row-cards.component.html

@@ -15,8 +15,6 @@ Añadir module para Material en minuto 17.
 https://www.youtube.com/watch?v=n5kTqHmLtN8
 
 
-
-
 #GIT:
 git remote add origin https://github.com/Landaluza/kamishibai.git
 git push -u origin master
@@ -34,6 +32,14 @@ https://es.stackoverflow.com/questions/273552/sustituir-cadena-tag-con-cadena-de
 
 
 https://stackoverflow.com/questions/56726992/use-of-interpolation-in-html-to-reduce-code
+
+
+#server
+para arrancar npm run dev
+
+Me baso en los dos titoriales de Fazt:
+https://www.youtube.com/watch?v=khCIunNAEHI&t=2442s
+https://www.youtube.com/watch?v=ccBtSAMFjto
 
 
 

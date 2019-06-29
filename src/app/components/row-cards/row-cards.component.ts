@@ -75,7 +75,6 @@ export class RowCardsComponent implements OnInit {
       this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
       this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
       this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png' );
-console.log('Hora:', this.horaControl, 'Index:', (index));
       if (this.horaControl <= (index + 7)) {
           this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
           this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
@@ -87,7 +86,8 @@ console.log('Hora:', this.horaControl, 'Index:', (index));
     }
   }
 
-  onClickHechoLimpieza(index: number){
+  onClickHechoLimpieza(index: number) {
+    console.log('Hora:', this.horaControl, 'Index:', (index));
     if ( this.horaControl < (index + 7) ) {
       this.mensajeControlAntesHora();
     } else {
@@ -104,7 +104,6 @@ console.log('Hora:', this.horaControl, 'Index:', (index));
       this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
       this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
       this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg' );
-      console.log('Hora:', this.horaControl, 'Index:', (index));
       if (this.horaControl <= (index + 7)) {
          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
          this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
