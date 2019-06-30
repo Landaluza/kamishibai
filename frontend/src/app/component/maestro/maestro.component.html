@@ -1,0 +1,26 @@
+
+<!-- https://www.ag-grid.com/ -->
+<!-- Tabla de datos. -->
+<div class="row col-10 offset-1 img">
+    <table class="table table-striped">
+      <thead>
+        <th>Proceso</th>
+        <th>Descripción</th>
+        <th>Dato</th>
+        <th>Estandar</th>
+      </thead>
+      <tbody>
+        <!-- TODO: Aviso: Identifier 'procesoService' refers to a private member of the component -->
+        <tr *ngFor="let proceso of procesoService.procesos">
+        <!-- Se corrige declarando procesos como public en maestro.component.ts -->
+        <!-- PERO NO SE VEN LOS REGISTROS -->
+        <!-- <tr *ngFor="let proceso of procesos"> -->
+          <td>{{ proceso.name }}</td>
+          <td>{{ proceso.position }}</td>
+          <td>{{ proceso.office }}</td>
+          <td>{{ proceso.salary }}</td>
+        </tr>
+    
+      </tbody>
+    </table>
+  </div>

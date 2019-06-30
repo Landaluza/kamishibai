@@ -8,6 +8,7 @@ import { now } from 'moment';
 })
 export class RowEmpleadoComponent implements OnInit {
   fecha = now();
+  fechaCompleta = new Date();
   version = '0.0.2';
 
   constructor() { }

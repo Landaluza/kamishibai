@@ -1,0 +1,50 @@
+<div class="container">
+  
+<!-- Tabla de datos. -->
+<div class="row col-10 offset-1">
+  <table class="table table-striped">
+    <thead>
+      <th>Proceso</th>
+      <th>Descripción</th>
+      <th>Dato</th>
+      <th>Estandar</th>
+    </thead>
+    <tbody>
+      <!-- Tenia este error Aviso: Identifier 'procesoService' refers to a private member of the component -->
+      <!-- <tr *ngFor="let proceso of procesoService.procesos"> -->
+      <!-- Se corrige declarando procesos como public en addedit.component.ts -->
+      <tr *ngFor="let proceso of procesos">
+        <td>{{ proceso.name }}</td>
+        <td>{{ proceso.position }}</td>
+        <td>{{ proceso.office }}</td>
+        <td>{{ proceso.salary }}</td>
+        <td>
+          <a (click)="editProceso(proceso)">
+            <i class="material-icons">edit</i>
+          </a>
+          <!-- <a (click)="deleteProceso(proceso._id, procesoForm)"> -->
+          <a (click)="deleteProceso(proceso._id)">
+
+            <i class="material-icons">delete</i>
+          </a>
+          <a routerLink="/ficha">
+            <i class="material-icons">description</i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Añadir. -->
+<div class="container">
+  <div class="row justify-content-end">
+    <div class="col-2">
+        <button class="btn btn-outline-primary" (click)="openModal()" style="margin-right: 16px;" >
+          Añadir
+          </button>
+    </div>
+  </div>
+</div>
+
+</div>

@@ -42,8 +42,11 @@ export class RowCardsComponent implements OnInit {
   imgs: string[] = [];
   i: number;
 
-  time = new Date();
-  public horaControl = this.time.getHours();
+  // time = new Date();
+  time: Date;
+
+  // public horaControl = this.time.getHours();
+  horaControl: number;
   fecha = new Date();
   //  fecha1 = '2019.01.23';
 
@@ -56,8 +59,14 @@ export class RowCardsComponent implements OnInit {
   // setInterval(this.concienciacion, 30000);
   }
 
-  onClickHecho(index: number) {
-    console.log('Hora:', this.horaControl, 'Index:', (index));
+    onClickHecho(index: number) {
+    this.time = new Date();
+    this.horaControl = this.time.getHours();
+    // console.log('Hora:', this.horaControl, 'Index:', (index));
+    // https://medium.com/free-code-camp/how-to-use-the-javascript-console-going-beyond-console-log-5128af9d573b
+    console.log('%c Hora ',
+            'color: white; background-color: #2274A5',
+            this.horaControl, this.time);
     if ( this.horaControl < (index + 7) ) {
 
       this.mensajeControlAntesHora();
@@ -87,6 +96,8 @@ export class RowCardsComponent implements OnInit {
   }
 
   onClickHechoLimpieza(index: number) {
+    this.time = new Date();
+    this.horaControl = this.time.getHours();
     console.log('Hora:', this.horaControl, 'Index:', (index));
     if ( this.horaControl < (index + 7) ) {
       this.mensajeControlAntesHora();

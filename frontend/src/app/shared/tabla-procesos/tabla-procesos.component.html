@@ -1,0 +1,56 @@
+<div class="container">
+    <!-- Botones. -->
+    <div class="row">
+        <div class="">
+          <button
+            class="btn btn-outline-primary"
+            [routerLink]="['home']"
+            style="margin-right: 16px;"
+          >
+            Inicio
+          </button>
+        </div>
+      </div>
+      <p>Procesos linea #.</p>
+  
+      <div class="row col-12">
+          <table class="table table-striped">
+            <thead>
+              <th>Proceso</th>
+              <th>Descripción</th>
+              <th>Dato</th>
+              <th>Estandar</th>
+             </thead>
+            <tbody>
+              <tr *ngFor="let proceso of procesoService.procesos">
+                <td>{{ proceso.name }}</td>
+                <td>{{ proceso.position }}</td>
+                <td>{{ proceso.office }}</td>
+                <td>{{ proceso.salary }}</td>
+                <td>
+                  <a (click)="editProceso(proceso)">
+                    <i class="material-icons">edit</i>
+                  </a>
+                  <a (click)="deleteProceso(proceso._id, procesoForm)">
+                    <i class="material-icons">delete</i>
+                  </a>
+                  <a routerLink="/detalles">
+                    <i class="material-icons">description</i>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <!-- Añadir. -->
+        <div class="container">
+          <div class="row justify-content-end">
+            <div class="col-2">
+                <button class="btn btn-outline-primary"  [routerLink]="['/addedit']" style="margin-right: 16px;">
+                    Añadir
+                  </button>
+            </div>
+          </div>
+        </div>
+        </div>

@@ -1,8 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+// server y frontend.
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Para usar Angular Material.
 import {MaterialModule} from './material.module';
@@ -23,6 +26,18 @@ import { RowHorasControlComponent } from './components/row-horas-control/row-hor
 import { FooterComponent } from './components/footer/footer.component';
 import { RowCardsComponent } from './components/row-cards/row-cards.component';
 
+// Components server y frontend.
+// import { AppComponent } from './app.component';
+import { DetalleComponent } from '../../frontend/src/app/component/detalle/detalle.component';
+import { MaestroComponent } from '../../frontend/src/app/component/maestro/maestro.component';
+import { TablaProcesosComponent } from '../../frontend/src/app/shared/tabla-procesos/tabla-procesos.component';
+// import { FooterComponent } from './shared/footer/footer.component';
+// import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AddeditComponent } from '../../frontend/src/app/component/addedit/addedit.component';
+import { InicioComponent } from '../../frontend/src/app/component/inicio/inicio.component';
+// import { ModalOptionsComponent } from './modal-options/modal-options.component';
+
+
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
 @NgModule({
@@ -36,13 +51,21 @@ registerLocaleData(localeEs, 'es');
     RowHorasComponent,
     RowHorasControlComponent,
     FooterComponent,
-    RowCardsComponent
+    RowCardsComponent,
+    MaestroComponent,
+    MaestroComponent,
+    TablaProcesosComponent,
+    AddeditComponent,
+    DetalleComponent,
+    InicioComponent
     ],
   imports: [
     MaterialModule,
     BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
     AppRoutingModule
-  ],
+    ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
   ],
