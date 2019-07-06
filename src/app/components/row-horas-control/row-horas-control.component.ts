@@ -27,7 +27,7 @@ export class RowHorasControlComponent implements OnInit {
 
   ngOnInit() {
     // TODO:  Da error si asigno type Object a $Event.
-        this.hechoService.hecho.subscribe(($Event) => {
+        this.hechoService.hecho.subscribe(($Event: any) => {
         const horaControl = this.eleHoraControl.toArray()[$Event.boton];
 
         if ($Event.enHora) {
