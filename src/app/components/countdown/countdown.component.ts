@@ -1,5 +1,5 @@
 // https://www.udemy.com/componentes-angular-pro/learn/lecture/7308670#overview
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-countdown',
