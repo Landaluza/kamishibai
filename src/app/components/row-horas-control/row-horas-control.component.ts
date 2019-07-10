@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ViewChildren, QueryList, ElementRef, } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import * as moment from 'moment';
 import { HechoService } from '../../services/hecho.service';
 @Component({
