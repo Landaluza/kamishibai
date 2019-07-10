@@ -17,7 +17,7 @@
 
       <mat-grid-tile>
         <!--  TODO: Ocultar cuando se haya rellenado la card correspondiente a esa hora. -->
-        <app-countdown></app-countdown>
+        <app-countdown *ngIf= "verCounter"></app-countdown>
         </mat-grid-tile>
   </mat-grid-list>
 </div>

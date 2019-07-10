@@ -1,6 +1,5 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef} from '@angular/core';
 import { HechoService } from '../../services/hecho.service';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-cabecera',
@@ -8,28 +7,22 @@ import * as moment from 'moment';
   styleUrls: ['./cabecera.component.css']
 })
 export class CabeceraComponent implements OnInit {
-  // horaControl: number;
 
-  @ViewChild('counterText', {static: false}) counterText: ElementRef;
-   time: Date;
-   fecha = new Date();
-  horaControl = this.time.getHours();
+@ViewChild('counterText', {static: false}) counterText: ElementRef;
+verCounter = true;
 
 constructor(private renderer: Renderer2, public hechoService: HechoService) { }
 
 ngOnInit() {
     this.hechoService.hecho.subscribe(($Event: any) => {
-        if ($Event.hora > (this.horaControl + 7)) {
+        // En realidad no necesito la propiedad todoOK, ya que el evento se emite solo cuando todo es correcto. Lo dejo por claridad.
+        if ( $Event.todoOK ) {
+          this.verCounter = false;
           console.log('borrar');
           this.renderer.setStyle(this.counterText.nativeElement, 'visibility', 'hidden' );
         } else {
           console.log('No borrar');
       }
-
   });
-
-
-
   }
-
 }

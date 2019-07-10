@@ -86,10 +86,10 @@ export class RowCardsComponent implements OnInit {
       this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png' );
       if (this.horaControl <= (index + 7)) {
           this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
-          this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+          this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl, todoOK: true});
       } else {
           this.mensajeControlDespuesHora();
-          this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl });
+          this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl, todoOK: true });
           this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
       }
     }
@@ -117,10 +117,10 @@ export class RowCardsComponent implements OnInit {
       this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg' );
       if (this.horaControl <= (index + 7)) {
          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
-         this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+         this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl, todoOK: true});
       } else {
          this.mensajeControlDespuesHora();
-         this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl });
+         this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl, todoOK: true });
          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
       }
     }
