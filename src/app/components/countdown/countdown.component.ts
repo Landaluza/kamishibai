@@ -16,10 +16,9 @@ export class CountdownComponent implements OnInit {
   segundos = 0;
   public counter = 0;
 
-  @Output() onDecrease = new EventEmitter<number>();
-  @Output() onComplete = new EventEmitter<void>();
-
-  @Output() onIniciar = new EventEmitter<number>();
+  @Output() Decrease = new EventEmitter<number>();
+  @Output() Complete = new EventEmitter<void>();
+  // @Output() onIniciar = new EventEmitter<number>();
 
   constructor() { }
 
@@ -47,10 +46,10 @@ this.processCount();
 }
 
 processCount() {
-this.onDecrease.emit(this.counter);
+this.Decrease.emit(this.counter);
 // console.log('count is ', this.counter);
 if ( this.counter === 0) {
-this.onComplete.emit();
+this.Complete.emit();
 this.counter = 60;
 // console.log('--counter end--');
 } else {
@@ -61,9 +60,6 @@ this.doCountDown();
 
 // Tiene que mostrar la card corespondiente a la hora actual en el row-cards.component.html
 emitirHoraActual() {
-  this.onDecrease.emit(this.hora);
-
+  this.Decrease.emit(this.hora);
 }
-
-
 }
