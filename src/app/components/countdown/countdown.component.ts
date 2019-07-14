@@ -1,5 +1,6 @@
 // https://www.udemy.com/componentes-angular-pro/learn/lecture/7308670#overview
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { CounterService } from '../../services/counter.service';
 
 @Component({
   selector: 'app-countdown',
@@ -20,7 +21,7 @@ export class CountdownComponent implements OnInit {
   @Output() Complete = new EventEmitter<void>();
   // @Output() onIniciar = new EventEmitter<number>();
 
-  constructor() { }
+  constructor(private counterService: CounterService) { }
 
   ngOnInit() {
     // Para que el counter cambie en el segundo 0 del primer minuto.
@@ -32,6 +33,7 @@ export class CountdownComponent implements OnInit {
      }
 
 startCountDown() {
+  console.log('count is ', this.counter);
   if (this.init && this.init > 0) {
     this.counter = this.counter - 1;
     this.doCountDown();
@@ -47,11 +49,12 @@ this.processCount();
 
 processCount() {
 this.Decrease.emit(this.counter);
-// console.log('count is ', this.counter);
+console.log('count is ', this.counter);
 if ( this.counter === 0) {
 this.Complete.emit();
 this.counter = 60;
-// console.log('--counter end--');
+console.log('--counter end--');
+this.counterService.counter.emit({counter: this.counter});
 } else {
 
 }

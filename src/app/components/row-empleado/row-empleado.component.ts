@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { now } from 'moment';
-
+import { RowEmpleadoService } from '../../shared/services/row-empleado.service';
 @Component({
   selector: 'app-row-empleado',
   templateUrl: './row-empleado.component.html',
@@ -11,9 +11,12 @@ export class RowEmpleadoComponent implements OnInit {
   fechaCompleta = new Date();
   version = '0.0.2';
 
-  constructor() { }
+  constructor(private empleadoService: RowEmpleadoService) { }
 
   ngOnInit() {
+    this.empleadoService.queryAll().subscribe(result => {
+      console.log(result.body);
+    });
   }
 
 }
