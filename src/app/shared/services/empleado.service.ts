@@ -1,13 +1,13 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IEmpleado } from '../models/row-empleado.model';
+import { IEmpleado } from '../models/empleado.model';
 
 type EntityResponseType = HttpResponse<IEmpleado>;
 type EntityArrayResponseType = HttpResponse<IEmpleado[]>;
 
 @Injectable()
-export class RowEmpleadoService {
+export class EmpleadoService {
   public resourceUrl = 'http://localhost:8084/api/v1/empleado';
 
   constructor(protected http: HttpClient) {}

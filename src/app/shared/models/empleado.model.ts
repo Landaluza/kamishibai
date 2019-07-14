@@ -6,5 +6,10 @@ export interface IEmpleado {
 }
 
 export class Empleado implements IEmpleado {
-  constructor(public idEmpleado?: number, public nombre?: string, public primerApellido?: string, public segundoApellido?: string) {}
+  constructor(
+    public idEmpleado?: number,
+    public nombre?: string,
+    public primerApellido?: string,
+    public segundoApellido?: string
+    ) {}
 }
