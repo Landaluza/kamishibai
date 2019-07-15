@@ -10,6 +10,8 @@ import {
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import { HechoService } from '../../services/hecho.service';
+import { LocalStorageService } from 'ngx-webstorage';
+import { EmpleadoService } from '../../shared/services/empleado.service';
 
 @Component({
   selector: 'app-row-cards',
@@ -52,11 +54,16 @@ export class RowCardsComponent implements OnInit {
 
   constructor(
     private renderer: Renderer2,
-    private hechoService: HechoService
+    private hechoService: HechoService,
+    private localStorageService: LocalStorageService,
+    private empleadoService: EmpleadoService
   ) {}
 
   ngOnInit() {
   // setInterval(this.concienciacion, 30000);
+  this.empleadoService.find(3).subscribe(response => {´
+    this.localStorageService.store('empleado', response.body);
+  });
   }
 
     onClickHecho(index: number) {

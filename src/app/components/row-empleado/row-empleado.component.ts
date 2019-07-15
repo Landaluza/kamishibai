@@ -5,6 +5,7 @@ import { ControlService } from '../../shared/services/control.service';
 import { ControlDiarioService } from '../../shared/services/controlDiario.service';
 import { LineaEnvasadoService } from '../../shared/services/lineaEnvasado.service';
 import { TarjetaControlService } from 'src/app/shared/services/tarjetaControl.service';
+import { IEmpleado, Empleado } from '../../shared/models/empleado.model';
 
 @Component({
   selector: 'app-row-empleado',
@@ -40,6 +41,18 @@ export class RowEmpleadoComponent implements OnInit {
     this.tarjetaControlService.queryAll().subscribe(result => {
       console.log(result.body);
     });
+
+    // const empleado: IEmpleado = new Empleado();
+    // empleado.nombre = 'nuevo empleado';
+    // empleado.primerApellido = 'apellido nuevo';
+    // console.log(empleado);
+    // this.empleadoService.create(empleado).subscribe(response => {
+    //   console.log('empleado guardado!!!');
+    //   console.log(response.body);
+    // });
+
+
+
   }
 
 }

@@ -23,6 +23,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RowCardsComponent } from './components/row-cards/row-cards.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -45,7 +46,8 @@ registerLocaleData(localeEs, 'es');
     AppRoutingModule,
     AppRoutingModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    Ng2Webstorage.forRoot({ prefix: 'app', separator: '-' }),
     ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
