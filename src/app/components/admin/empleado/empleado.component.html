@@ -1,3 +1,85 @@
-<p>
-  empleado works!
-</p>
+<div class="row col-12">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">
+                    <h2>
+                        <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
+                            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+                            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+                        </a>Empleados</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/admin/dashboard/index']"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item">Administracion</li>
+                        <li class="breadcrumb-item active">Empleados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 100%; height: 70%;">
+            <div class="header">
+                <h2>
+                    <span id="empleado-management-page-heading" jhiTranslate="empleadoManagement.home.title">Empleados</span>
+                    <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
+                      <fa-icon [icon]="'plus'"></fa-icon> <span>Create a new empleado</span>
+                    </button>
+                </h2>
+            </div>
+            <div class="body">
+                <!-- <jhi-alert></jhi-alert> -->
+                <div class="table-responsive" *ngIf="empleados" style="width: 90%">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><span>ID</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Nombre</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Primer Apellido</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th></th>
+                                <th> <span>Segundo Apellido</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Created Date</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Last Modified Date</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="empleados">
+                            <tr *ngFor="let empleado of empleados; trackBy: trackIdentity">
+                                <td><a [routerLink]="['./', empleado.idEmpleado, 'view']">{{empleado.idEmpleado}}</a></td>
+                                <td>{{empleado.nombre}}</td>
+                                <td>{{empleado.primerApellido}}</td>
+                                <td>{{empleado.segundoApellido}}</td>
+                                <td>{{empleado.createdAt | date:'dd/MM/yy HH:mm'}}</td>
+                                <td>{{empleado.updatedAt}}</td>
+                                <td class="text-right">
+                                    <div class="btn-group flex-btn-group-container">
+
+                                        <button type="submit" [routerLink]="['./', empleado.idEmpleado, 'edit']" queryParamsHandling="merge" class="btn btn-primary btn-sm">
+                  <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                  <span class="d-none d-md-inline" >Editar</span>
+                </button>
+                                        <button type="button" (click)="deleteempleado(empleado)" class="btn btn-danger btn-sm">
+                  <fa-icon [icon]="'times'"></fa-icon>
+                  <span class="d-none d-md-inline">Eliminar</span>
+                </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

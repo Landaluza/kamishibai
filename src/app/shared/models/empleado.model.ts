@@ -3,6 +3,8 @@ export interface IEmpleado {
   nombre?: string;
   primerApellido?: string;
   segundoApellido?: string;
+  createdAt?: any;
+  updatedAt?: any;
 }
 
 export class Empleado implements IEmpleado {
@@ -10,6 +12,8 @@ export class Empleado implements IEmpleado {
     public idEmpleado?: number,
     public nombre?: string,
     public primerApellido?: string,
-    public segundoApellido?: string
+    public segundoApellido?: string,
+    public createdAt?: any,
+    public updatedAt?: any
     ) {}
 }

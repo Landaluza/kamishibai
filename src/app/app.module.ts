@@ -1,60 +1,48 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbDatepickerConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-// Para usar Angular Material.
-import {MaterialModule} from './material.module';
-
+import * as moment from 'moment';
+import './vendor.ts';
 // Para que las fechas y números esten en español.
 import { LOCALE_ID} from '@angular/core';
 // https://angular.io/guide/i18n#i18n-pipes
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-
 import { PruebaPipe } from './pipes/prueba.pipe';
-import { CountdownComponent } from './components/countdown/countdown.component';
-import { RelojComponent } from './components/reloj/reloj.component';
-import { CabeceraComponent } from './components/cabecera/cabecera.component';
-import { RowEmpleadoComponent } from './components/row-empleado/row-empleado.component';
-import { RowHorasComponent } from './components/row-horas/row-horas.component';
-import { RowHorasControlComponent } from './components/row-horas-control/row-horas-control.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { RowCardsComponent } from './components/row-cards/row-cards.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { EmpleadoModule } from './components/admin/empleado/empleado.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
-    PruebaPipe,
-    // CountdownComponent,
-    // RelojComponent,
-    // CabeceraComponent,
-    // RowEmpleadoComponent,
-    // RowHorasComponent,
-    // RowHorasControlComponent,
-    // FooterComponent,
-    // RowCardsComponent
+    PruebaPipe
     ],
   imports: [
     AppRoutingModule,
     AppRoutingModule,
     HttpClientModule,
-    // BrowserModule,
+    NgbModule,
     NoopAnimationsModule,
     SharedModule,
     Ng2Webstorage.forRoot({ prefix: 'app', separator: '-' }),
-    EmpleadoModule
+    EmpleadoModule,
+    FontAwesomeModule
     ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private dpConfig: NgbDatepickerConfig) {
+    this.dpConfig.minDate = { year: moment().year() - 100, month: 1, day: 1 };
+  }
+ }

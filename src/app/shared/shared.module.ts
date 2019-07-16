@@ -8,13 +8,13 @@ import { ControlDiarioService } from './services/controlDiario.service';
 import { LineaEnvasadoService } from './services/lineaEnvasado.service';
 import { TarjetaControlService } from './services/tarjetaControl.service';
 import { MaterialModule } from '../material.module';
-import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [],
-  imports: [ CommonModule, MaterialModule
+  imports: [ CommonModule, MaterialModule, FontAwesomeModule
   ],
-  exports: [MaterialModule],
+  exports: [MaterialModule, FontAwesomeModule],
   providers: [
     EmpleadoService,
     ControlService,
