@@ -4,6 +4,8 @@ import { EmpleadoComponent } from './empleado.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { routesEmpleado } from './empleado.routing';
 import { RouterModule } from '@angular/router';
+import { EmpleadoUpdateComponent } from './empleado-update.component';
+import { FormsModule } from '@angular/forms';
 
 const ENTITY_STATES = [...routesEmpleado ];
 
@@ -11,8 +13,9 @@ const ENTITY_STATES = [...routesEmpleado ];
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [EmpleadoComponent]
+  declarations: [EmpleadoComponent, EmpleadoUpdateComponent]
 })
 export class EmpleadoModule { }

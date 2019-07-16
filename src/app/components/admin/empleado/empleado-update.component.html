@@ -1,0 +1,82 @@
+<div class="row col-12">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">
+                    <h2>
+                        <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
+                            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+                            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+                        </a>Empleado</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/admin/dashboard/index']"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item">Administracion</li>
+                        <li class="breadcrumb-item active">Empleado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 100%; height: 90%;">
+            <div class="header">
+
+            </div>
+            <div class="body">
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                            <h2 id="myUserLabel">
+                                Crear o editar Empleado
+                            </h2>
+                            <div>
+                                <div class="form-group" [hidden]="!empleado.idEmpleado">
+                                    <label jhiTranslate="global.field.id">ID</label>
+                                    <input type="text" class="form-control" name="idEmpleado" [(ngModel)]="empleado.idEmpleado" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Nombre</label>
+                                    <input type="text" class="form-control" name="nombre" #loginInput="ngModel" [(ngModel)]="empleado.nombre" required minlength="1" maxlength="50" pattern="^[_.@A-Za-z0-9-]*$">
+
+                                    <div *ngIf="loginInput.dirty && loginInput.invalid">
+                                        <small class="form-text text-danger" *ngIf="loginInput.errors.required">
+                                    Nombre es requerido
+                                </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Primer Apellido</label>
+                                    <input type="text" class="form-control" name="primerApellido" #primerApellidoInput="ngModel" [(ngModel)]="empleado.primerApellido" required maxlength="50">
+
+                                    <div *ngIf="primerApellidoInput.dirty && primerApellidoInput.invalid">
+                                        <small class="form-text text-danger" *ngIf="primerApellidoInput.errors.required">
+                                        Primer Apellido es requerido
+                                    </small>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Segundo Apellido</label>
+                                    <input type="text" class="form-control" name="lastName" #lastNameInput="ngModel" [(ngModel)]="empleado.segundoApellido" maxlength="50">
+
+                                    <div *ngIf="lastNameInput.dirty && lastNameInput.invalid">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
+                            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span
+                            jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+                                <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
+                            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
