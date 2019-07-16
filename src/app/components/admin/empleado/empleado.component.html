@@ -9,7 +9,11 @@
                             <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
                         </a>Empleados</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a [routerLink]="['/admin/dashboard/index']"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item">
+                            <a [routerLink]="['/home']">
+                                <fa-icon [icon]="'home'"></fa-icon>
+                            </a>
+                        </li>
                         <li class="breadcrumb-item">Administracion</li>
                         <li class="breadcrumb-item active">Empleados</li>
                     </ul>
