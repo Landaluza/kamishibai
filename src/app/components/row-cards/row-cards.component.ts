@@ -61,7 +61,7 @@ export class RowCardsComponent implements OnInit {
 
   ngOnInit() {
   // setInterval(this.concienciacion, 30000);
-  this.empleadoService.find(3).subscribe(response => {´
+  this.empleadoService.find(3).subscribe(response => {
     this.localStorageService.store('empleado', response.body);
   });
   }

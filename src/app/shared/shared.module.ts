@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // services de las tablas.
@@ -7,12 +7,14 @@ import { ControlService } from './services/control.service';
 import { ControlDiarioService } from './services/controlDiario.service';
 import { LineaEnvasadoService } from './services/lineaEnvasado.service';
 import { TarjetaControlService } from './services/tarjetaControl.service';
+import { MaterialModule } from '../material.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [],
-  imports: [ CommonModule
+  imports: [ CommonModule, MaterialModule
   ],
-  exports: [],
+  exports: [MaterialModule],
   providers: [
     EmpleadoService,
     ControlService,
@@ -20,6 +22,7 @@ import { TarjetaControlService } from './services/tarjetaControl.service';
     LineaEnvasadoService,
     TarjetaControlService,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {
   static forRoot() {

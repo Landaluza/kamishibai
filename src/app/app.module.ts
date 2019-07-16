@@ -24,6 +24,8 @@ import { RowCardsComponent } from './components/row-cards/row-cards.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
+import { EmpleadoModule } from './components/admin/empleado/empleado.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -31,23 +33,24 @@ registerLocaleData(localeEs, 'es');
   declarations: [
     AppComponent,
     PruebaPipe,
-    CountdownComponent,
-    RelojComponent,
-    CabeceraComponent,
-    RowEmpleadoComponent,
-    RowHorasComponent,
-    RowHorasControlComponent,
-    FooterComponent,
-    RowCardsComponent
+    // CountdownComponent,
+    // RelojComponent,
+    // CabeceraComponent,
+    // RowEmpleadoComponent,
+    // RowHorasComponent,
+    // RowHorasControlComponent,
+    // FooterComponent,
+    // RowCardsComponent
     ],
   imports: [
-    MaterialModule,
-    BrowserModule,
     AppRoutingModule,
     AppRoutingModule,
     HttpClientModule,
+    // BrowserModule,
+    NoopAnimationsModule,
     SharedModule,
     Ng2Webstorage.forRoot({ prefix: 'app', separator: '-' }),
+    EmpleadoModule
     ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
