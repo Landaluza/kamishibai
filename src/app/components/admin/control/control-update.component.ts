@@ -24,22 +24,24 @@ export class ControlUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      console.log(params);
-      const idControl = params.get('idControl');
-      this.controlService.find(+idControl).subscribe(response => {
-        console.log(response);
-        this.control = response.body;
-      });
-    });
-
 
     this.route.data.subscribe(({ control }) => {
+      console.log(control);
       if (control) {
         this.control = control.body;
       } else {
         this.control = new Control();
         this.control.idControl = null;
+        this.route.paramMap.subscribe(params => {
+          console.log(params);
+          if (params.get('idControl')) {
+            const idControl = params.get('idControl');
+            this.controlService.find(+idControl).subscribe(response => {
+              console.log(response);
+              this.control = response.body;
+            });
+          }
+        });
       }
     });
 

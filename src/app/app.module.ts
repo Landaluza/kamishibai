@@ -14,7 +14,6 @@ import { PruebaPipe } from './pipes/prueba.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
-import { EmpleadoModule } from './components/admin/empleado/empleado.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -33,7 +32,6 @@ registerLocaleData(localeEs, 'es');
     NoopAnimationsModule,
     SharedModule,
     Ng2Webstorage.forRoot({ prefix: 'app', separator: '-' }),
-    EmpleadoModule,
     FontAwesomeModule
     ],
   providers: [

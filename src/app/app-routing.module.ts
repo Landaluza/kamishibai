@@ -14,6 +14,10 @@ const routes: Routes = [
       {
         path: 'control',
         loadChildren: './components/admin/control/control.module#ControlModule'
+      },
+      {
+        path: 'linea-envasado',
+        loadChildren: './components/admin/linea-envasado/linea-envasado.module#LineaEnvasadoModule'
       }
     ]
   }
