@@ -9,41 +9,45 @@ import { EmpleadoService } from '../../../shared/services/empleado.service';
   styleUrls: ['./empleado-update.component.css']
 })
 export class EmpleadoUpdateComponent implements OnInit {
-
   empleado: Empleado;
   isSaving: boolean;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private empleadoService: EmpleadoService,
-  ) { }
+  constructor(private route: ActivatedRoute, private router: Router, private empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(({ empleado }) => {
-      this.empleado = empleado.body ? empleado.body : empleado;
-  });
-   }
+      console.log(empleado);
+      if (empleado) {
+        this.empleado = empleado;
+      } else {
+        this.empleado = new Empleado();
+      }
+    });
+  }
 
-   save() {
+  save() {
     this.isSaving = true;
     if (this.empleado.idEmpleado !== null) {
-        this.empleadoService.update(this.empleado).subscribe(response => this.onSaveSuccess(response), () => this.onSaveError());
+      this.empleadoService
+        .update(this.empleado)
+        .subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
     } else {
-        this.empleadoService.create(this.empleado).subscribe(response => this.onSaveSuccess(response), () => this.onSaveError());
+      this.empleadoService
+        .create(this.empleado)
+        .subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
     }
-}
+  }
 
-private onSaveSuccess(result) {
-  this.isSaving = false;
-  this.previousState();
-}
+  private onSaveSuccess(result) {
+    this.isSaving = false;
+    this.previousState();
+  }
 
-private onSaveError() {
-  this.isSaving = false;
-}
+  private onSaveError() {
+    this.isSaving = false;
+  }
 
-   previousState() {
+  previousState() {
     window.history.back();
-    }
+  }
 }

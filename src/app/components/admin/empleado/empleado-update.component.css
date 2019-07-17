@@ -1,0 +1,23 @@
+body {
+    background-color: #f4f7f6;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    color: #5a5a5a;
+}
+
+.body:before,
+.body:after {
+    height: 5px;
+    width: 100%;
+    position: fixed;
+    content: '';
+    z-index: 999;
+}
+
+.body:before {
+    top: 0;
+}
+
+.body:after {
+    bottom: 0;
+}
