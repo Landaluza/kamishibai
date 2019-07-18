@@ -21,6 +21,7 @@ export class EmpleadoUpdateComponent implements OnInit {
         this.empleado = empleado;
       } else {
         this.empleado = new Empleado();
+        this.empleado.idEmpleado = null;
       }
     });
   }

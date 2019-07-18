@@ -36,7 +36,7 @@
 
                                 <div class="form-group">
                                     <label class="form-control-label">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" #loginInput="ngModel" [(ngModel)]="empleado.nombre" required minlength="1" maxlength="50" pattern="^[_.@A-Za-z0-9-]*$">
+                                    <input type="text" class="form-control" name="nombre" #loginInput="ngModel" [(ngModel)]="empleado.nombre" required minlength="1" maxlength="50">
 
                                     <div *ngIf="loginInput.dirty && loginInput.invalid">
                                         <small class="form-text text-danger" *ngIf="loginInput.errors.required">

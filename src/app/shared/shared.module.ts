@@ -9,6 +9,8 @@ import { LineaEnvasadoService } from './services/lineaEnvasado.service';
 import { TarjetaControlService } from './services/tarjetaControl.service';
 import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateMomentAdapter } from './util/datepicker-adapter';
 
 @NgModule({
   declarations: [],
@@ -21,6 +23,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ControlDiarioService,
     LineaEnvasadoService,
     TarjetaControlService,
+    { provide: NgbDateAdapter, useClass: NgbDateMomentAdapter }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

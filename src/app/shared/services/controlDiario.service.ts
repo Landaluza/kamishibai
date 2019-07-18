@@ -8,7 +8,7 @@ type EntityArrayResponseType = HttpResponse<IControlDiario[]>;
 
 @Injectable()
 export class ControlDiarioService {
-  public resourceUrl = 'http://localhost:8084/api/v1/control';
+  public resourceUrl = 'http://localhost:8084/api/v1/controlDiario';
 
   constructor(protected http: HttpClient) {}
 

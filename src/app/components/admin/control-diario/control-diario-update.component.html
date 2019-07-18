@@ -1,0 +1,89 @@
+<div class="row col-12">
+    <div class="container-fluid">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-8 col-sm-12">
+                    <h2>
+                        <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
+                            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
+                            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
+                        </a>Control Diario</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a [routerLink]="['/home']"><i class="icon-home"></i></a></li>
+                        <li class="breadcrumb-item">Administracion</li>
+                        <li class="breadcrumb-item active">Control Diario</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="max-width: 100%; height: 90%;">
+            <div class="header">
+
+            </div>
+            <div class="body">
+                <div class="row justify-content-center">
+                    <div class="col-8">
+                        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+                            <h2 id="myUserLabel">
+                                Crear o editar Control Diario
+                            </h2>
+                            <div>
+                                <div class="form-group" [hidden]="!controlDiario.idControlDiario">
+                                    <label>ID</label>
+                                    <input type="text" class="form-control" name="idControlDiario" [(ngModel)]="controlDiario.idControlDiario" readonly>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_control">Controles</label>
+                                    <select class="form-control" id="field_control" name="control" [(ngModel)]="controlDiario.idControl">
+                   <option [ngValue]="null"></option>
+                   <option [ngValue]="control.idControl" *ngFor="let control of controles; trackBy: trackControlById">{{control.controlNombre}}</option>
+              </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Turno</label>
+                                    <input type="number" class="form-control" name="turno" #turnoInput="ngModel" [(ngModel)]="controlDiario.turno" required minlength="1" maxlength="50">
+
+                                    <div *ngIf="turnoInput.dirty && turnoInput.invalid">
+                                        <small class="form-text text-danger" *ngIf="turnoInput.errors.required">
+                    Turno es requerido
+                  </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_fecha">Fecha</label>
+
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="yyyy-MM-dd" name="dp" [(ngModel)]="fechaDp" ngbDatepicker #d="ngbDatepicker">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-control-label" for="field_empleado">Empleado</label>
+                                    <select class="form-control" id="field_empleado" name="empleado" [(ngModel)]="controlDiario.idEmpleado">
+                   <option [ngValue]="null"></option>
+                   <option [ngValue]="empleado.idEmpleado" *ngFor="let empleado of empleados; trackBy: trackEmpleadoById">{{empleado.nombre}}</option>
+              </select>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+              </button>
+                                <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+              </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

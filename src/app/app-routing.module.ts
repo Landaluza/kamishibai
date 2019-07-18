@@ -18,6 +18,10 @@ const routes: Routes = [
       {
         path: 'linea-envasado',
         loadChildren: './components/admin/linea-envasado/linea-envasado.module#LineaEnvasadoModule'
+      },
+      {
+        path: 'control-diario',
+        loadChildren: './components/admin/control-diario/control-diario.module#ControlDiarioModule'
       }
     ]
   }
