@@ -54,14 +54,26 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label" for="field_fecha">Fecha</label>
+                                    <!-- <label class="form-control-label" for="field_fecha">Fecha</label> -->
 
-                                    <div class="input-group">
+                                    <!-- <div class="input-group">
                                         <input class="form-control" placeholder="yyyy-MM-dd" name="dp" [(ngModel)]="fechaDp" ngbDatepicker #d="ngbDatepicker">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
                                         </div>
-                                    </div>
+                                    </div> -->
+
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Fecha</mat-label>
+                                        <input matInput name="fecha" [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="fechaDp" required>
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                        <mat-error [hidden]="!(editForm.controls.fecha?.dirty && editForm.controls.fecha?.invalid)">
+                                            <small class="form-text text-danger" [hidden]="!editForm.controls.fecha?.errors?.required">
+                                              Fecha es requerido
+                                          </small>
+                                        </mat-error>
+                                    </mat-form-field>
                                 </div>
 
                                 <div class="form-group">
