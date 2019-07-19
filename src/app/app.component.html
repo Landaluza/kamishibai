@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<div style="height: 100vh;">
+    <mat-toolbar class="color">
+        <span>Menu Principal</span>
+
+        <span style="width: 50%"> <br/></span>
+
+        <div fxShow="true" fxHide.lt-md="true">
+            <a [routerLink]="['/home']">Home</a>
+            <a [routerLink]="['/admin/empleado']">Empleados</a>
+            <a [routerLink]="['/admin/control']">Control</a>
+            <a [routerLink]="['/admin/linea-envasado']">Linea Envasado</a>
+            <a [routerLink]="['/admin/control-diario']">Control Diario</a>
+        </div>
+
+
+        <div fxShow="true" fxHide.gt-sm="true">
+            <a (click)="sidenav.toggle()">Show Side Menu</a>
+        </div>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill class="example-container">
+        <mat-sidenav #sidenav fxLayout="column">
+            <div fxLayout="column">
+                <a (click)="sidenav.toggle()" mat-button>Close</a>
+                <a [routerLink]="['/home']">Home</a>
+                <a [routerLink]="['/admin/empleado']">Empleados</a>
+                <a [routerLink]="['/admin/control']">Control</a>
+                <a [routerLink]="['/admin/linea-envasado']">Linea Envasado</a>
+                <a [routerLink]="['/admin/control-diario']">Control Diario</a>
+            </div>
+        </mat-sidenav>
+        <mat-sidenav-content fxFlexFill>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

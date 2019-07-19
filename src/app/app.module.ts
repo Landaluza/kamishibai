@@ -16,6 +16,7 @@ import { SharedModule } from './shared/shared.module';
 import { Ng2Webstorage } from 'ngx-webstorage';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // the second parameter es is optional
 registerLocaleData(localeEs, 'es');
@@ -32,7 +33,8 @@ registerLocaleData(localeEs, 'es');
     NoopAnimationsModule,
     SharedModule,
     Ng2Webstorage.forRoot({ prefix: 'app', separator: '-' }),
-    FontAwesomeModule
+    FontAwesomeModule,
+    FlexLayoutModule
     ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es'}
