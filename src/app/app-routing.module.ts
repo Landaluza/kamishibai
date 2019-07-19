@@ -22,6 +22,10 @@ const routes: Routes = [
       {
         path: 'control-diario',
         loadChildren: './components/admin/control-diario/control-diario.module#ControlDiarioModule'
+      },
+      {
+        path: 'tarjeta-control',
+        loadChildren: './components/admin/tarjeta-control/tarjeta-control.module#TarjetaControlModule'
       }
     ]
   }

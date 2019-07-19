@@ -41,7 +41,7 @@ export const routesEmpleado: Routes = [
     path: 'new',
     component: EmpleadoUpdateComponent,
     resolve: {
-        user: EmpleadoMgmtResolve
+      empleado: EmpleadoMgmtResolve
     }
   }
 ];

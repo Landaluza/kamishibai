@@ -35,14 +35,14 @@ export const routesControlDiario: Routes = [
     path: ':idControlDiario/edit',
     component: ControlDiarioUpdateComponent,
     resolve: {
-      empleado: UserMgmtResolve
+      controlDiario: UserMgmtResolve
     }
   },
   {
     path: 'new',
     component: ControlDiarioUpdateComponent,
     resolve: {
-        user: UserMgmtResolve
+      controlDiario: UserMgmtResolve
     }
   }
 ];

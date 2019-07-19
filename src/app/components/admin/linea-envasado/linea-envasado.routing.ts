@@ -33,14 +33,14 @@ export const routesLineaEnvasado: Routes = [
     path: ':idLineaEnvasado/edit',
     component: LineaEnvasadoUpdateComponent,
     resolve: {
-      empleado: LineaEnvasadoMgmtResolve
+      lineaEnvasado: LineaEnvasadoMgmtResolve
     }
   },
   {
     path: 'new',
     component: LineaEnvasadoUpdateComponent,
     resolve: {
-        user: LineaEnvasadoMgmtResolve
+      lineaEnvasado: LineaEnvasadoMgmtResolve
     }
   }
 ];

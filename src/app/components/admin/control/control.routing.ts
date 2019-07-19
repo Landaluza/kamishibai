@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot, Routes } from '@angular/router';
 
-import { Control } from '../../../shared/models/control.model';
+import { Control, IControl } from '../../../shared/models/control.model';
 import { ControlService } from '../../../shared/services/control.service';
 import { ControlUpdateComponent } from './control-update.component';
 import { ControlComponent } from './control.component';
@@ -13,17 +13,17 @@ import { HttpResponse } from '@angular/common/http';
 export class ControlMgmtResolve implements Resolve<any> {
     constructor(private service: ControlService) {}
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const id = route.params['idControl'] ? route.params['idControl'] : null;
-        if (id) {
-          return this.service.find(id).pipe(
-            filter((response: HttpResponse<Control>) => response.ok),
-            map((control: HttpResponse<Control>) => {
-              return control.body;
-            })
-          );
-        }
-        return new Control();
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IControl> {
+      console.log(route.params);
+      const id = route.params['idControl'] ? route.params['idControl'] : null;
+      console.log(id);
+      if (id !== null) {
+        return this.service.find(id).pipe(
+          filter((response: HttpResponse<Control>) => response.ok),
+          map((control: HttpResponse<Control>) => control.body)
+        );
+      }
+      return of(new Control());
     }
 }
 
@@ -36,14 +36,14 @@ export const routesControl: Routes = [
     path: ':idControl/edit',
     component: ControlUpdateComponent,
     resolve: {
-      empleado: ControlMgmtResolve
+      control: ControlMgmtResolve
     }
   },
   {
     path: 'new',
     component: ControlUpdateComponent,
     resolve: {
-        user: ControlMgmtResolve
+      control: ControlMgmtResolve
     }
   }
 ];

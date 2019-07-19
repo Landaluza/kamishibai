@@ -33,27 +33,10 @@ export class ControlDiarioUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ controlDiario }) => {
       console.log(controlDiario);
-      if (controlDiario) {
-        this.controlDiario = controlDiario.body;
-      } else {
-        this.controlDiario = new ControlDiario();
-        this.controlDiario.idControlDiario = null;
-        this.activatedRoute.paramMap.subscribe(params => {
-          if (params.get('idControlDiario')) {
-            const idControlDiario = params.get('idControlDiario');
-            this.controlDiarioService.find(+idControlDiario).subscribe(response => {
-              console.log(response);
-              this.controlDiario = response.body;
-              if (this.controlDiario.idControlDiario) {
-                this.fechaDp = moment(this.controlDiario.fecha, 'YYYY-MM-DD').format();
-                this.controlDiario.fecha = this.controlDiario.fecha != null ? moment(this.controlDiario.fecha) : null;
-                console.log(this.fechaDp);
-              }
-            });
-          }
-        });
+      this.controlDiario = controlDiario;
+      if(this.controlDiario.idControlDiario){
+        this.fechaDp = moment(this.controlDiario.fecha, 'YYYY-MM-DD').format();
       }
-
     });
 
 

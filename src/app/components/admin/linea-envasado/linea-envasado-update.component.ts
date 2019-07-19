@@ -22,11 +22,7 @@ export class LineaEnvasadoUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.route.data.subscribe(({ lineaEnvasado }) => {
       console.log(lineaEnvasado);
-      if (lineaEnvasado) {
-        this.lineaEnvasado = lineaEnvasado;
-      } else {
-        this.lineaEnvasado = new LineaEnvasado();
-      }
+      this.lineaEnvasado = lineaEnvasado;
     });
    }
 
