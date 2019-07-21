@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 import { Router } from '@angular/router';
+import { LoginService } from './shared/services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -13,27 +14,21 @@ export class AppComponent  implements OnInit {
   constructor(
     private localStorage: LocalStorageService,
     private sessionStorage: SessionStorageService,
-    private router: Router
-  ) {}
+    private router: Router,
+    public loginService: LoginService
+  ) {
+    console.log(this.loginService.isLogged);
+    this.validate = this.loginService.isLogged;
+  }
 
   ngOnInit() {
-    const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
-    console.log(token);
-    console.log(token === 'miguel');
-    if (token) {
-      console.log(token === 'miguel');
-      if (token === 'miguel') {
-        this.validate = true;
-      } else {
-        this.validate = false;
-      }
-    }
-    console.log(this.validate);
   }
 
   logout() {
     this.localStorage.clear('authenticationToken');
     this.router.navigateByUrl('/login');
     this.validate = false;
+    this.loginService.changeLogin(false);
+    console.log(this.loginService.isLogged);
   }
 }

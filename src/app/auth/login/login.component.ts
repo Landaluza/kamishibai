@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   empleado: IEmpleado;
   constructor(
-    private loginService: LoginService,
+    public loginService: LoginService,
     private router: Router,
     private localStorage: LocalStorageService
     ) { }
@@ -29,8 +29,10 @@ export class LoginComponent implements OnInit {
       if (response.body) {
         this.localStorage.store('authenticationToken', response.body.userName);
         this.router.navigate(['/home']);
+        this.loginService.changeLogin(true);
       } else {
         console.log('no encontro nada');
+        this.loginService.changeLogin(false);
       }
     }, error => {
       console.log('error en servicio');
