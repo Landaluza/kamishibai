@@ -11,6 +11,7 @@ import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateMomentAdapter } from './util/datepicker-adapter';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { NgbDateMomentAdapter } from './util/datepicker-adapter';
     ControlDiarioService,
     LineaEnvasadoService,
     TarjetaControlService,
+    LoginService,
     { provide: NgbDateAdapter, useClass: NgbDateMomentAdapter }
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
