@@ -28,7 +28,12 @@ const routes: Routes = [
         loadChildren: './components/admin/tarjeta-control/tarjeta-control.module#TarjetaControlModule'
       }
     ]
+  },
+  {
+    path: 'login',
+    loadChildren: './auth/login/login.module#LoginModule'
   }
+
 ];
 
 @NgModule({
