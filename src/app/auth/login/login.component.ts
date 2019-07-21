@@ -23,15 +23,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.empleado);
     this.loginService.login(this.empleado).subscribe(response => {
-      console.log(response.body);
       if (response.body) {
         this.localStorage.store('authenticationToken', response.body.userName);
         this.router.navigate(['/home']);
         this.loginService.changeLogin(true);
       } else {
-        console.log('no encontro nada');
         this.loginService.changeLogin(false);
       }
     }, error => {

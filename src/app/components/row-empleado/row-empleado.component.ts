@@ -26,33 +26,6 @@ export class RowEmpleadoComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.empleadoService.queryAll().subscribe(result => {
-      console.log(result.body);
-    });
-    this.controlService.queryAll().subscribe(result => {
-      console.log(result.body);
-    });
-    this.controlDiarioService.queryAll().subscribe(result => {
-      console.log(result.body);
-    });
-    this.lineaEnvasadoService.queryAll().subscribe(result => {
-      console.log(result.body);
-    });
-    this.tarjetaControlService.queryAll().subscribe(result => {
-      console.log(result.body);
-    });
-
-    // const empleado: IEmpleado = new Empleado();
-    // empleado.nombre = 'nuevo empleado';
-    // empleado.primerApellido = 'apellido nuevo';
-    // console.log(empleado);
-    // this.empleadoService.create(empleado).subscribe(response => {
-    //   console.log('empleado guardado!!!');
-    //   console.log(response.body);
-    // });
-
-
-
   }
 
 }

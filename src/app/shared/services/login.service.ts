@@ -28,10 +28,7 @@ export class LoginService {
 
   changeLogin(isLogged: boolean) {
     const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
-    console.log(token);
-    console.log(token === 'miguel');
     if (token) {
-      console.log(token === 'miguel');
       if (token === 'miguel') {
         this.isLogged = true;
       } else {

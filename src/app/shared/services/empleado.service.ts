@@ -13,7 +13,6 @@ export class EmpleadoService {
   constructor(protected http: HttpClient) {}
 
   create(empleado: IEmpleado): Observable<EntityResponseType> {
-    console.log(empleado);
     return this.http.post<IEmpleado>(this.resourceUrl, empleado, { observe: 'response' });
   }
 

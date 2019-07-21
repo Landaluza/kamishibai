@@ -17,7 +17,6 @@ export class AppComponent  implements OnInit {
     private router: Router,
     public loginService: LoginService
   ) {
-    console.log(this.loginService.isLogged);
     this.validate = this.loginService.isLogged;
   }
 
@@ -29,6 +28,5 @@ export class AppComponent  implements OnInit {
     this.router.navigateByUrl('/login');
     this.validate = false;
     this.loginService.changeLogin(false);
-    console.log(this.loginService.isLogged);
   }
 }

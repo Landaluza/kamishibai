@@ -31,20 +31,12 @@ export class AuthGuard implements CanActivate, CanActivateChild {
 
   private autenticated() {
     const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
-    console.log(token);
     if (!token) {
       this.router.navigateByUrl('/login');
       this.loginService.changeLogin(false);
-      console.log(this.loginService.isLogged);
       return false;
     }
 
-    // const empresa: IEmpresa = this.localStorage.retrieve('empresa') || this.sessionStorage.retrieve('empresa');
-    // if (!empresa || !empresa.id) {
-    //   this.router.navigateByUrl('/admin/account/settings');
-    //   return false;
-    // }
-    console.log(this.loginService.isLogged);
     this.loginService.changeLogin(true);
     return true;
   }
