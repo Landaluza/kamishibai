@@ -20,7 +20,7 @@ export class LineaEnvasadoMgmtResolve implements Resolve<any> {
             map((lineaEnvasado: HttpResponse<LineaEnvasado>) => lineaEnvasado.body)
           );
         }
-        return new LineaEnvasado();
+        return new LineaEnvasado(null);
     }
 }
 

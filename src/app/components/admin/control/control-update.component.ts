@@ -26,7 +26,6 @@ export class ControlUpdateComponent implements OnInit {
   ngOnInit(): void {
 
     this.route.data.subscribe(({ control }) => {
-      console.log(control);
       this.control = control;
     });
 

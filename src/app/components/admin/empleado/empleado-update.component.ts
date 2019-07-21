@@ -16,13 +16,7 @@ export class EmpleadoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(({ empleado }) => {
-      console.log(empleado);
-      if (empleado) {
-        this.empleado = empleado;
-      } else {
-        this.empleado = new Empleado();
-        this.empleado.idEmpleado = null;
-      }
+      this.empleado = empleado;
     });
   }
 

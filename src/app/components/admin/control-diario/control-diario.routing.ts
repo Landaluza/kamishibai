@@ -22,7 +22,7 @@ export class UserMgmtResolve implements Resolve<any> {
           map((controlDiario: HttpResponse<ControlDiario>) => controlDiario.body)
         );
       }
-      return of(new ControlDiario());
+      return of(new ControlDiario(null));
     }
 }
 

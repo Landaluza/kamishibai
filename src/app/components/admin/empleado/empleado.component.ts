@@ -13,7 +13,6 @@ export class EmpleadoComponent implements OnInit {
 
   ngOnInit() {
     this.empleadoService.queryAll().subscribe(resp => {
-      console.log(resp.body);
       this.empleados = resp.body;
     });
   }

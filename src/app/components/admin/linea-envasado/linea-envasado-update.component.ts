@@ -21,20 +21,17 @@ export class LineaEnvasadoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(({ lineaEnvasado }) => {
-      console.log(lineaEnvasado);
       this.lineaEnvasado = lineaEnvasado;
     });
    }
 
    save() {
     this.isSaving = true;
-    console.log(this.lineaEnvasado);
-    if (this.lineaEnvasado.idLineaEnvasado !== undefined) {
+    if (this.lineaEnvasado.idLineaEnvasado !== null) {
       this.lineaEnvasadoService
         .update(this.lineaEnvasado)
         .subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());
     } else {
-      this.lineaEnvasado.idLineaEnvasado = null;
       this.lineaEnvasadoService
         .create(this.lineaEnvasado)
         .subscribe((response) => this.onSaveSuccess(response), () => this.onSaveError());

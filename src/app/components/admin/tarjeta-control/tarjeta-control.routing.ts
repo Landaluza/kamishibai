@@ -13,16 +13,14 @@ export class TarjetaControlResolver implements Resolve<any> {
     constructor(private service: TarjetaControlService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TarjetaControl> {
-      console.log(route.params);
       const id = route.params['idTarjetaControl'] ? route.params['idTarjetaControl'] : null;
-      console.log(id);
       if (id !== null) {
         return this.service.find(id).pipe(
           filter((response: HttpResponse<TarjetaControl>) => response.ok),
           map((tarjetaControl: HttpResponse<TarjetaControl>) => tarjetaControl.body)
         );
       }
-      return of(new TarjetaControl());
+      return of(new TarjetaControl(null));
     }
 }
 

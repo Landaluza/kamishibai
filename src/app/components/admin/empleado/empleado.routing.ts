@@ -20,7 +20,7 @@ export class EmpleadoMgmtResolve implements Resolve<any> {
             map((empleado: HttpResponse<Empleado>) => empleado.body)
           );
         }
-        return new Empleado();
+        return new Empleado(null);
     }
 }
 

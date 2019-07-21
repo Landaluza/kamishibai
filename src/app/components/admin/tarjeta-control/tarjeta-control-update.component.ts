@@ -21,14 +21,12 @@ export class TarjetaControlUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(({ tarjetaControl }) => {
-      console.log(tarjetaControl);
       this.tarjetaControl = tarjetaControl;
     });
   }
 
   save() {
     this.isSaving = true;
-    console.log(this.tarjetaControl);
     if (this.tarjetaControl.idTarjetaControl) {
       this.tarjetaControlService
         .update(this.tarjetaControl)

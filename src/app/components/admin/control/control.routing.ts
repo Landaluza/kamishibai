@@ -23,7 +23,7 @@ export class ControlMgmtResolve implements Resolve<any> {
           map((control: HttpResponse<Control>) => control.body)
         );
       }
-      return of(new Control());
+      return of(new Control(null));
     }
 }
 
