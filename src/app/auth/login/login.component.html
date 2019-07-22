@@ -8,6 +8,7 @@
             <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form> -->
         <form class="login-form">
+            <img class ="logo" src="assets/img/LogoLA.png">
             <input type="text" class="form-control" name="userName" #userNameInput="ngModel" [(ngModel)]="empleado.userName" maxlength="50" placeholder="Nombre de Usuario">
             <input type="password" class="form-control" name="password" #lastNameInput="ngModel" [(ngModel)]="empleado.password" maxlength="12" placeholder="Password">
             <button type="button" mat-raised-button class="mat-cancel" (click)="login()">

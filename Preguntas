@@ -1,15 +1,17 @@
-1.-¿Para que sirve vendor.ts?
 
-2.- En app.module.ts
+¿Por qué diferenciamos components y services en la carpeta shared?
+
+---------------------------------------
+
+En app.module.ts
    constructor(private dpConfig: NgbDatepickerConfig) {
     this.dpConfig.minDate = { year: moment().year() - 100, month: 1, day: 1 };
 
     ¿Es mejor usar https://date-fns.org/?
 
-3.- En app.component.html
-       <div fxShow="true" fxHide.lt-md="true">
+----------------------------------------
 
+En app.component.html
+   ¿Como entre en la pantalla de login?
 
-
-4.- En empleado-update-component.html
-        <label jhiTranslate="global.field.id">ID</label>
+----------------------------------------
