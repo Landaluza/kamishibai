@@ -13,9 +13,7 @@ export class UserMgmtResolve implements Resolve<any> {
     constructor(private service: ControlDiarioService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IControlDiario> {
-      console.log(route.params);
       const id = route.params['idControlDiario'] ? route.params['idControlDiario'] : null;
-      console.log(id);
       if (id !== null) {
         return this.service.find(id).pipe(
           filter((response: HttpResponse<ControlDiario>) => response.ok),

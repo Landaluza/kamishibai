@@ -9,7 +9,7 @@
         </form> -->
         <form class="login-form">
             <input type="text" class="form-control" name="userName" #userNameInput="ngModel" [(ngModel)]="empleado.userName" maxlength="50" placeholder="Nombre de Usuario">
-            <input type="text" class="form-control" name="password" #lastNameInput="ngModel" [(ngModel)]="empleado.password" maxlength="12" placeholder="Password">
+            <input type="password" class="form-control" name="password" #lastNameInput="ngModel" [(ngModel)]="empleado.password" maxlength="12" placeholder="Password">
             <button type="button" mat-raised-button class="mat-cancel" (click)="login()">
               <fa-icon [icon]="'user'"></fa-icon>&nbsp;<span>Ingreso</span>
             </button>

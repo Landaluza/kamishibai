@@ -16,7 +16,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card" style="max-width: 100%; height: 90%;">
             <div class="header">
 
@@ -33,25 +32,24 @@
                                     <label>ID</label>
                                     <input type="text" class="form-control" name="idLineaEnvasado" [(ngModel)]="lineaEnvasado.idLineaEnvasado" readonly>
                                 </div>
-
                                 <div class="form-group">
                                     <label class="form-control-label">Descripción</label>
                                     <input type="text" class="form-control" name="nombre" #descripcionInput="ngModel" [(ngModel)]="lineaEnvasado.descripcion" required minlength="1" maxlength="50">
 
                                     <div *ngIf="descripcionInput.dirty && descripcionInput.invalid">
                                         <small class="form-text text-danger" *ngIf="descripcionInput.errors.required">
-                    Nombre es requerido
-                  </small>
+                                            Nombre es requerido
+                                        </small>
                                     </div>
                                 </div>
                             </div>
                             <div>
                                 <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
-                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
-              </button>
+                                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                                </button>
                                 <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
-                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
-              </button>
+                                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                                </button>
                             </div>
                         </form>
                     </div>

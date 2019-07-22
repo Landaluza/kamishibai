@@ -40,26 +40,29 @@
 
                                     <div *ngIf="controlNombreInput.dirty && controlNombreInput.invalid">
                                         <small class="form-text text-danger" *ngIf="controlNombreInput.errors.required">
-                      Nombre es requerido
-                    </small>
+                                            Nombre es requerido
+                                        </small>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="form-control-label" for="field_lineaEnvasado">Lineas de envasado</label>
+                                    <label class="form-control-label" for="field_lineaEnvasado">Lineas de
+                                        envasado</label>
                                     <select class="form-control" id="field_lineaEnvasado" name="lineaEnvasado" [(ngModel)]="control.idLineaEnvasado">
-                       <option [ngValue]="null"></option>
-                       <option [ngValue]="lineaEnvasado.idLineaEnvasado" *ngFor="let lineaEnvasado of lineaEnvasados; trackBy: trackLineaEnvasadoById">{{lineaEnvasado.descripcion}}</option>
-                  </select>
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="lineaEnvasado.idLineaEnvasado"
+                                            *ngFor="let lineaEnvasado of lineaEnvasados; trackBy: trackLineaEnvasadoById">
+                                            {{lineaEnvasado.descripcion}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div>
                                 <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
-                  <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
-                </button>
+                                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                                </button>
                                 <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
-                  <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
-                </button>
+                                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                                </button>
                             </div>
                         </form>
                     </div>

@@ -32,7 +32,6 @@ export class ControlDiarioUpdateComponent implements OnInit {
   ngOnInit() {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ controlDiario }) => {
-      console.log(controlDiario);
       this.controlDiario = controlDiario;
       if(this.controlDiario.idControlDiario){
         this.fechaDp = moment(this.controlDiario.fecha, 'YYYY-MM-DD').format();
@@ -51,7 +50,6 @@ export class ControlDiarioUpdateComponent implements OnInit {
 
   save() {
     this.isSaving = true;
-    console.log(this.controlDiario);
     this.controlDiario.fecha = this.fechaDp != null ? moment(this.fechaDp, 'YYYY-MM-DD') : null;
     if (this.controlDiario.idControlDiario) {
       this.controlDiarioService.update(this.controlDiario).subscribe(response => this.onSaveSuccess(response), () => this.onSaveError());

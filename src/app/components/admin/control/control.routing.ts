@@ -14,9 +14,7 @@ export class ControlMgmtResolve implements Resolve<any> {
     constructor(private service: ControlService) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IControl> {
-      console.log(route.params);
       const id = route.params['idControl'] ? route.params['idControl'] : null;
-      console.log(id);
       if (id !== null) {
         return this.service.find(id).pipe(
           filter((response: HttpResponse<Control>) => response.ok),

@@ -16,7 +16,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card" style="max-width: 100%; height: 90%;">
             <div class="header">
 
@@ -37,9 +36,11 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="field_control">Controles</label>
                                     <select class="form-control" id="field_control" name="control" [(ngModel)]="controlDiario.idControl">
-                   <option [ngValue]="null"></option>
-                   <option [ngValue]="control.idControl" *ngFor="let control of controles; trackBy: trackControlById">{{control.controlNombre}}</option>
-              </select>
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="control.idControl"
+                                            *ngFor="let control of controles; trackBy: trackControlById">
+                                            {{control.controlNombre}}</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
@@ -48,8 +49,8 @@
 
                                     <div *ngIf="turnoInput.dirty && turnoInput.invalid">
                                         <small class="form-text text-danger" *ngIf="turnoInput.errors.required">
-                    Turno es requerido
-                  </small>
+                                            Turno es requerido
+                                        </small>
                                     </div>
                                 </div>
 
@@ -70,8 +71,8 @@
                                         <mat-datepicker #picker></mat-datepicker>
                                         <mat-error [hidden]="!(editForm.controls.fecha?.dirty && editForm.controls.fecha?.invalid)">
                                             <small class="form-text text-danger" [hidden]="!editForm.controls.fecha?.errors?.required">
-                                              Fecha es requerido
-                                          </small>
+                                                Fecha es requerido
+                                            </small>
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
@@ -79,18 +80,20 @@
                                 <div class="form-group">
                                     <label class="form-control-label" for="field_empleado">Empleado</label>
                                     <select class="form-control" id="field_empleado" name="empleado" [(ngModel)]="controlDiario.idEmpleado">
-                   <option [ngValue]="null"></option>
-                   <option [ngValue]="empleado.idEmpleado" *ngFor="let empleado of empleados; trackBy: trackEmpleadoById">{{empleado.nombre}}</option>
-              </select>
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="empleado.idEmpleado"
+                                            *ngFor="let empleado of empleados; trackBy: trackEmpleadoById">
+                                            {{empleado.nombre}}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div>
                                 <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
-                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
-              </button>
+                                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                                </button>
                                 <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
-                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
-              </button>
+                                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                                </button>
                             </div>
                         </form>
                     </div>

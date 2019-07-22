@@ -16,10 +16,8 @@
                 </div>
             </div>
         </div>
-
         <div class="card" style="max-width: 100%; height: 90%;">
             <div class="header">
-
             </div>
             <div class="body">
                 <div class="row justify-content-center">
@@ -40,8 +38,8 @@
 
                                     <div *ngIf="horaInput.dirty && horaInput.invalid">
                                         <small class="form-text text-danger" *ngIf="horaInput.errors.required">
-                  Hora es requerido
-                </small>
+                                            Hora es requerido
+                                        </small>
                                     </div>
                                 </div>
 
@@ -51,51 +49,45 @@
 
                                     <div *ngIf="resultadoInput.dirty && resultadoInput.invalid">
                                         <small class="form-text text-danger" *ngIf="resultadoInput.errors.required">
-                                          Resultado es requerido
-              </small>
+                                            Resultado es requerido
+                                        </small>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label class="form-control-label">Observaciones</label>
                                     <input type="text" class="form-control" name="observaciones" #observacionesInput="ngModel" [(ngModel)]="tarjetaControl.observaciones" required minlength="1" maxlength="250">
 
                                     <div *ngIf="observacionesInput.dirty && observacionesInput.invalid">
                                         <small class="form-text text-danger" *ngIf="observacionesInput.errors.required">
-                                          Observaciones es requerido
-            </small>
+                                            Observaciones es requerido
+                                        </small>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label class="form-control-label">Control Diario</label>
                                     <input type="number" class="form-control" name="idControlDiario" #idControlDiarioInput="ngModel" [(ngModel)]="tarjetaControl.idControlDiario" required minlength="1" maxlength="50">
 
                                     <div *ngIf="idControlDiarioInput.dirty && idControlDiarioInput.invalid">
                                         <small class="form-text text-danger" *ngIf="idControlDiarioInput.errors.required">
-                                          Control Diario es requerido
-          </small>
+                                            Control Diario es requerido
+                                        </small>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label class="form-control-label">
-                                      <input type="checkbox" class="form-control" name="enHora" #enHoraInput="ngModel" [(ngModel)]="tarjetaControl.enHora">
-                                      En Hora
+                                        <input type="checkbox" class="form-control" name="enHora" #enHoraInput="ngModel"
+                                            [(ngModel)]="tarjetaControl.enHora">
+                                        En Hora
                                     </label>
-
-
-
-
                                 </div>
                             </div>
                             <div>
                                 <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
-              <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
-            </button>
+                                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                                </button>
                                 <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
-              <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
-            </button>
+                                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                                </button>
                             </div>
                         </form>
                     </div>

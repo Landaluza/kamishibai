@@ -20,13 +20,12 @@
                 </div>
             </div>
         </div>
-
         <div class="card" style="max-width: 100%; height: 70%;">
             <div class="header">
                 <h2>
                     <span id="empleado-management-page-heading">Empleados</span>
                     <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
-                      <fa-icon [icon]="'plus'"></fa-icon> <span>Create a new empleado</span>
+                        <fa-icon [icon]="'plus'"></fa-icon> <span>Create a new empleado</span>
                     </button>
                 </h2>
             </div>
@@ -59,7 +58,8 @@
                             </thead>
                             <tbody *ngIf="empleados">
                                 <tr *ngFor="let empleado of empleados; trackBy: trackIdentity">
-                                    <td><a [routerLink]="['./', empleado.idEmpleado, 'view']">{{empleado.idEmpleado}}</a></td>
+                                    <td><a [routerLink]="['./', empleado.idEmpleado, 'view']">{{empleado.idEmpleado}}</a>
+                                    </td>
                                     <td>{{empleado.nombre}}</td>
                                     <td>{{empleado.primerApellido}}</td>
                                     <td>{{empleado.segundoApellido}}</td>
@@ -67,15 +67,14 @@
                                     <td>{{empleado.updatedAt | date:'dd/MM/yy HH:mm'}}</td>
                                     <td class="text-right">
                                         <div class="btn-group flex-btn-group-container">
-
                                             <button type="submit" [routerLink]="['./', empleado.idEmpleado, 'edit']" queryParamsHandling="merge" class="btn btn-primary btn-sm">
-                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                <span class="d-none d-md-inline" >Editar</span>
-              </button>
+                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                                <span class="d-none d-md-inline">Editar</span>
+                                            </button>
                                             <button type="button" (click)="deleteempleado(empleado)" class="btn btn-danger btn-sm">
-                <fa-icon [icon]="'times'"></fa-icon>
-                <span class="d-none d-md-inline">Eliminar</span>
-              </button>
+                                                <fa-icon [icon]="'times'"></fa-icon>
+                                                <span class="d-none d-md-inline">Eliminar</span>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>

@@ -26,8 +26,8 @@
                 <h2>
                     <span id="empleado-management-page-heading">Controles</span>
                     <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
-                    <fa-icon [icon]="'plus'"></fa-icon> <span>Crear nuevo Control</span>
-                  </button>
+                        <fa-icon [icon]="'plus'"></fa-icon> <span>Crear nuevo Control</span>
+                    </button>
                 </h2>
             </div>
             <div class="body">
@@ -56,22 +56,22 @@
                             </thead>
                             <tbody *ngIf="controles">
                                 <tr *ngFor="let control of controles; trackBy: trackIdentity">
-                                    <td><a [routerLink]="['./', control.idControl, 'view']">{{control.idControl}}</a></td>
+                                    <td><a [routerLink]="['./', control.idControl, 'view']">{{control.idControl}}</a>
+                                    </td>
                                     <td>{{control.controlNombre}}</td>
                                     <td>{{control.idLineaEnvasado}}</td>
                                     <td>{{control.createdAt | date:'dd/MM/yy HH:mm'}}</td>
                                     <td>{{control.updatedAt | date:'dd/MM/yy HH:mm'}}</td>
                                     <td class="text-right">
                                         <div class="btn-group flex-btn-group-container">
-
                                             <button type="submit" [routerLink]="['./', control.idControl, 'edit']" queryParamsHandling="merge" class="btn btn-primary btn-sm">
-              <fa-icon [icon]="'pencil-alt'"></fa-icon>
-              <span class="d-none d-md-inline" >Editar</span>
-            </button>
+                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                                <span class="d-none d-md-inline">Editar</span>
+                                            </button>
                                             <button type="button" (click)="deleteempleado(empleado)" class="btn btn-danger btn-sm">
-              <fa-icon [icon]="'times'"></fa-icon>
-              <span class="d-none d-md-inline">Eliminar</span>
-            </button>
+                                                <fa-icon [icon]="'times'"></fa-icon>
+                                                <span class="d-none d-md-inline">Eliminar</span>
+                                            </button>
                                         </div>
                                     </td>
                                 </tr>
