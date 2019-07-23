@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { IEmpleado } from '../models/empleado.model';
+import { IEmpleado, Rol } from '../models/empleado.model';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
 
 type EntityResponseType = HttpResponse<IEmpleado>;
@@ -29,7 +29,7 @@ export class LoginService {
   changeLogin(isLogged: boolean) {
     const token = this.localStorage.retrieve('authenticationToken') || this.sessionStorage.retrieve('authenticationToken');
     if (token) {
-      if (token === 'miguel') {
+      if (token === Rol.ADMINISTRADOR) {
         this.isLogged = true;
       } else {
         this.isLogged = false;

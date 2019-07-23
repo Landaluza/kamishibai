@@ -1,3 +1,8 @@
+export const enum Rol {
+  ADMINISTRADOR = 'ADMINISTRADOR',
+  USUARIO = 'USUARIO'
+}
+
 export interface IEmpleado {
   idEmpleado?: number;
   nombre?: string;
@@ -5,6 +10,7 @@ export interface IEmpleado {
   segundoApellido?: string;
   userName?: string;
   password?: string;
+  rol?: Rol;
   createdAt?: any;
   updatedAt?: any;
 }
@@ -17,6 +23,7 @@ export class Empleado implements IEmpleado {
     public segundoApellido?: string,
     public userName?: string,
     public password?: string,
+    public rol?: Rol,
     public createdAt?: any,
     public updatedAt?: any
     ) {}

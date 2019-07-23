@@ -22,6 +22,7 @@ export class EmpleadoUpdateComponent implements OnInit {
 
   save() {
     this.isSaving = true;
+    console.log(this.empleado);
     if (this.empleado.idEmpleado !== null) {
       this.empleadoService
         .update(this.empleado)

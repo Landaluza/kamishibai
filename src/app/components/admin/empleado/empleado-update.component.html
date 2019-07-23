@@ -79,6 +79,13 @@
 
                                     </div>
                                 </div>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Rol</mat-label>
+                                    <mat-select name="rol" [(ngModel)]="empleado.rol" id="field_rol" required>
+                                        <mat-option value="ADMINISTRADOR">Administrador</mat-option>
+                                        <mat-option value="USUARIO">Usuario</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
                             </div>
                             <div>
                                 <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
