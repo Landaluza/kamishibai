@@ -55,6 +55,17 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label class="form-control-label">Hora de la Tarea</label>
+                                    <input type="text" class="form-control" name="horaTarea" #horaTareaInput="ngModel" [(ngModel)]="tarjetaControl.horaTarea" required minlength="1" maxlength="50">
+
+                                    <div *ngIf="horaTareaInput.dirty && horaTareaInput.invalid">
+                                        <small class="form-text text-danger" *ngIf="horaTareaInput.errors.required">
+                                            Hora de Tarea es requerido
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="form-control-label">Resultado</label>
                                     <input type="text" class="form-control" name="resultado" #resultadoInput="ngModel" [(ngModel)]="tarjetaControl.resultado" required minlength="1" maxlength="50">
 
@@ -76,13 +87,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">Control Diario</label>
-                                    <input type="number" class="form-control" name="idControlDiario" #idControlDiarioInput="ngModel" [(ngModel)]="tarjetaControl.idControlDiario" required minlength="1" maxlength="50">
-
-                                    <div *ngIf="idControlDiarioInput.dirty && idControlDiarioInput.invalid">
-                                        <small class="form-text text-danger" *ngIf="idControlDiarioInput.errors.required">
-                                            Control Diario es requerido
-                                        </small>
-                                    </div>
+                                    <!-- <input type="number" class="form-control" name="idControlDiario" #idControlDiarioInput="ngModel" [(ngModel)]="tarjetaControl.idControlDiario" required minlength="1" maxlength="50"> -->
+                                    <select class="form-control" id="field_idControlDiario" name="idControlDiario" [(ngModel)]="tarjetaControl.idControlDiario">
+                                        <option [ngValue]="null"></option>
+                                        <option [ngValue]="controlDiario.idControlDiario"
+                                            *ngFor="let controlDiario of controlesDiarios; trackBy: trackControlDiarioById">
+                                            {{controlDiario.idControlDiario}}</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">
@@ -90,6 +101,10 @@
                                             [(ngModel)]="tarjetaControl.enHora">
                                         En Hora
                                     </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Fecha y Hora del Control</label>
+                                    <input type="text" class="form-control" name="fechaHoraControl" #fechaHoraControlInput="ngModel" [(ngModel)]="tarjetaControl.fechaHoraControl" required minlength="1" maxlength="250">
                                 </div>
                             </div>
                             <div>

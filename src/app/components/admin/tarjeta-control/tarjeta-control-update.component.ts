@@ -1,3 +1,5 @@
+import { ControlDiarioService } from './../../../shared/services/controlDiario.service';
+import { IControlDiario } from './../../../shared/models/controlDiario.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TarjetaControlService } from '../../../shared/services/tarjetaControl.service';
@@ -12,16 +14,22 @@ export class TarjetaControlUpdateComponent implements OnInit {
 
   tarjetaControl: ITarjetaControl;
   isSaving: boolean;
+  controlesDiarios: IControlDiario[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private controlDiarioService: ControlDiarioService,
     private tarjetaControlService: TarjetaControlService
   ) { }
 
   ngOnInit(): void {
     this.route.data.subscribe(({ tarjetaControl }) => {
       this.tarjetaControl = tarjetaControl;
+    });
+
+    this.controlDiarioService.queryAll().subscribe(response => {
+      this.controlesDiarios = response.body;
     });
   }
 
@@ -49,5 +57,9 @@ export class TarjetaControlUpdateComponent implements OnInit {
 
   previousState() {
     window.history.back();
+  }
+
+  trackControlDiarioById(index: number, item: IControlDiario) {
+    return item.idControlDiario;
   }
 }
