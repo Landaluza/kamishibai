@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', canActivate: [AuthGuard], loadChildren: './components/home/home.module#HomeModule' },
+  { path: 'linea', canActivate: [AuthGuard], loadChildren: './components/carga-inicial/linea/linea.module#LineaModule' },
   {
     path: 'admin',
     canActivateChild: [AuthGuard],
