@@ -6,6 +6,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', canActivate: [AuthGuard], loadChildren: './components/home/home.module#HomeModule' },
   { path: 'linea', canActivate: [AuthGuard], loadChildren: './components/carga-inicial/linea/linea.module#LineaModule' },
+  { path: 'control', canActivate: [AuthGuard], loadChildren: './components/carga-inicial/control/control.module#ControlModule' },
   {
     path: 'admin',
     canActivateChild: [AuthGuard],
@@ -36,7 +37,6 @@ const routes: Routes = [
     path: 'login',
     loadChildren: './auth/login/login.module#LoginModule'
   }
-
 ];
 
 @NgModule({

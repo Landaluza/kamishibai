@@ -24,6 +24,10 @@ export class ControlService {
     return this.http.get<IControl>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  findByLinea(idLineaEnvasado: number): Observable<EntityArrayResponseType> {
+    return this.http.get<IControl[]>(`${this.resourceUrl + 'Query'}/${idLineaEnvasado}`, { observe: 'response' });
+  }
+
   queryAll(): Observable<EntityArrayResponseType> {
     return this.http.get<IControl[]>(this.resourceUrl, { observe: 'response' });
   }
@@ -31,4 +35,5 @@ export class ControlService {
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
+
 }

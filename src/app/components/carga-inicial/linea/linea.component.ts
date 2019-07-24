@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LineaEnvasadoService } from '../../../shared/services/lineaEnvasado.service';
 import { ILineaEnvasado, LineaEnvasado } from '../../../shared/models/lineaEnvasado.model';
 import { LocalStorageService } from 'ngx-webstorage';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-linea',
@@ -13,7 +14,8 @@ export class LineaComponent implements OnInit {
   lineas: ILineaEnvasado[];
   constructor(
     private lineaEnvasadoService: LineaEnvasadoService,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private router: Router
     ) { }
 
   ngOnInit() {
@@ -25,5 +27,6 @@ export class LineaComponent implements OnInit {
   seleccionarLinea(lineaEnvasado: LineaEnvasado) {
     console.log(lineaEnvasado);
     this.localStorage.store('lineaEnvasado', lineaEnvasado);
+    this.router.navigateByUrl('/control');
   }
 }
