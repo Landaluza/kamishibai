@@ -3,10 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'linea', pathMatch: 'full' },
   { path: 'home', canActivate: [AuthGuard], loadChildren: './components/home/home.module#HomeModule' },
   { path: 'linea', canActivate: [AuthGuard], loadChildren: './components/carga-inicial/linea/linea.module#LineaModule' },
   { path: 'control', canActivate: [AuthGuard], loadChildren: './components/carga-inicial/control/control.module#ControlModule' },
+  {
+    path: 'control-diario',
+    canActivate: [AuthGuard],
+    loadChildren: './components/carga-inicial/control-diario/control-diario.module#ControlDiarioModule'
+  },
   {
     path: 'admin',
     canActivateChild: [AuthGuard],

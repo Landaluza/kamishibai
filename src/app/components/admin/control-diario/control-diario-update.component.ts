@@ -33,7 +33,7 @@ export class ControlDiarioUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ controlDiario }) => {
       this.controlDiario = controlDiario;
-      if(this.controlDiario.idControlDiario){
+      if (this.controlDiario.idControlDiario){
         this.fechaDp = moment(this.controlDiario.fecha, 'YYYY-MM-DD').format();
       }
     });
@@ -60,6 +60,7 @@ export class ControlDiarioUpdateComponent implements OnInit {
   }
 
   private onSaveSuccess(result) {
+    console.log(result);
     this.isSaving = false;
     this.previousState();
   }

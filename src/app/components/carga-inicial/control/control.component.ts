@@ -17,20 +17,19 @@ export class ControlComponent implements OnInit {
     private controlService: ControlService,
     private localStorage: LocalStorageService,
     private router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
     const linea: ILineaEnvasado = this.localStorage.retrieve('lineaEnvasado');
     this.controlService.findByLinea(linea.idLineaEnvasado).subscribe(response => {
       this.controles = response.body;
-      console.log(this.controles);
     });
   }
 
   seleccionarControl(control: IControl) {
     this.localStorage.store('control', control);
     console.log(control);
-    // this.router.navigateByUrl('/controlDiario');
+    this.router.navigateByUrl('/control-diario');
   }
 
   previousState() {

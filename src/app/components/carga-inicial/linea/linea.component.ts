@@ -19,6 +19,10 @@ export class LineaComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    const controlDiarioExist = this.localStorage.retrieve('controlDiario');
+    if (controlDiarioExist) {
+      this.router.navigate(['/home']);
+    }
     this.lineaEnvasadoService.queryAll().subscribe(response => {
       this.lineas = response.body;
     });
