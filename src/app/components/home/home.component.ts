@@ -3,6 +3,10 @@ import { IEmpleado } from '../../shared/models/empleado.model';
 import { LocalStorageService } from 'ngx-webstorage';
 import * as moment from 'moment';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
+import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
+import { IControlDiario } from '../../shared/models/controlDiario.model';
 
 @Component({
   selector: 'app-home',
@@ -11,17 +15,29 @@ import { DatePipe } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
   empleado: IEmpleado;
+  tarjetasControl: ITarjetaControl[];
   constructor(
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private router: Router,
+    private tarjetaControlService: TarjetaControlService
   ) { }
 
   ngOnInit() {
     this.empleado = this.localStorage.retrieve('idEmpleado');
+    const controlDiarioExist: IControlDiario = this.localStorage.retrieve('controlDiario');
+    console.log(controlDiarioExist);
+    if (!controlDiarioExist) {
+      this.router.navigate(['/linea']);
+    }
     const date = new Date();
     console.log(moment(date, 'hh:mm').format());
 
     if (date.getHours() >= 8 && date.getHours() < 9) {
       console.log('entro en hora');
     }
+    this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
+      console.log(response);
+      this.tarjetasControl = response.body;
+    });
   }
 }

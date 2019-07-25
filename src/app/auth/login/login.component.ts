@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
       if (response.body) {
         this.localStorage.store('authenticationToken', response.body.rol);
         this.localStorage.store('idEmpleado', response.body.idEmpleado);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/linea']);
         this.loginService.changeLogin(true);
       } else {
         this.loginService.changeLogin(false);

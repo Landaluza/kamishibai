@@ -4,7 +4,8 @@ import {
   ElementRef,
   OnInit,
   ViewChildren,
-  QueryList
+  QueryList,
+  Input
 } from '@angular/core';
 
 import * as moment from 'moment';
@@ -12,6 +13,9 @@ import Swal from 'sweetalert2';
 import { HechoService } from '../../services/hecho.service';
 import { LocalStorageService } from 'ngx-webstorage';
 import { EmpleadoService } from '../../shared/services/empleado.service';
+import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
+import { Router } from '@angular/router';
+import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
 
 @Component({
   selector: 'app-row-cards',
@@ -20,16 +24,16 @@ import { EmpleadoService } from '../../shared/services/empleado.service';
 })
 
 export class RowCardsComponent implements OnInit {
-
+  @Input() tarjetasControl: ITarjetaControl[];
   cards = [
-    { id: 7},
-    { id: 8},
-    { id: 9},
-    { id: 10},
-    { id: 11},
-    { id: 12},
-    { id: 13},
-    { id: 14}
+    { id: 7 },
+    { id: 8 },
+    { id: 9 },
+    { id: 10 },
+    { id: 11 },
+    { id: 12 },
+    { id: 13 },
+    { id: 14 }
   ];
 
   @ViewChildren('card') eleCards: QueryList<ElementRef>;
@@ -56,17 +60,21 @@ export class RowCardsComponent implements OnInit {
     private renderer: Renderer2,
     private hechoService: HechoService,
     private localStorageService: LocalStorageService,
-    private empleadoService: EmpleadoService
-  ) {}
+    private empleadoService: EmpleadoService,
+    private localStorage: LocalStorageService,
+    private router: Router,
+    private tarjetaControlService: TarjetaControlService
+  ) { }
 
   ngOnInit() {
-  // setInterval(this.concienciacion, 30000);
-  this.empleadoService.find(3).subscribe(response => {
-    this.localStorageService.store('empleado', response.body);
-  });
+    // setInterval(this.concienciacion, 30000);
+    this.empleadoService.find(3).subscribe(response => {
+      this.localStorageService.store('empleado', response.body);
+    });
+    console.log(this.tarjetasControl);
   }
 
-    onClickHecho(index: number) {
+  onClickHecho(index: number) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
     // console.log('Hora:', this.horaControl, 'Index:', (index));
@@ -74,7 +82,7 @@ export class RowCardsComponent implements OnInit {
     // console.log('%c Hora ',
     //         'color: white; background-color: #2274A5',
     //         this.horaControl, this.time);
-    if ( this.horaControl < (index + 7) ) {
+    if (this.horaControl < (index + 7)) {
 
       this.mensajeControlAntesHora();
     } else {
@@ -85,19 +93,19 @@ export class RowCardsComponent implements OnInit {
       const texto1 = this.eleTexto1.toArray()[index];
       const texto2 = this.eleTexto2.toArray()[index];
       const texto3 = this.eleTexto3.toArray()[index];
-      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png' );
+      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden');
+      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png');
       if (this.horaControl <= (index + 7)) {
-          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
-          this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green');
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
       } else {
-          this.mensajeControlDespuesHora();
-          this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl});
-          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
+        this.mensajeControlDespuesHora();
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange');
       }
     }
   }
@@ -106,7 +114,7 @@ export class RowCardsComponent implements OnInit {
     this.time = new Date();
     this.horaControl = this.time.getHours();
     // console.log('Hora:', this.horaControl, 'Index:', (index));
-    if ( this.horaControl < (index + 7) ) {
+    if (this.horaControl < (index + 7)) {
       this.mensajeControlAntesHora();
     } else {
       const card = this.eleCards.toArray()[index];
@@ -116,19 +124,19 @@ export class RowCardsComponent implements OnInit {
       const texto1 = this.eleTexto1.toArray()[index];
       const texto2 = this.eleTexto2.toArray()[index];
       const texto3 = this.eleTexto3.toArray()[index];
-      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg' );
+      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden');
+      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg');
       if (this.horaControl <= (index + 7)) {
-         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
-         this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green');
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
       } else {
-         this.mensajeControlDespuesHora();
-         this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl});
-         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
+        this.mensajeControlDespuesHora();
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange');
       }
     }
   }
@@ -159,7 +167,7 @@ export class RowCardsComponent implements OnInit {
 
   concienciacion() {
     this.imgs = ['alerta.jpg', 'PisaCristal.jpg', 'BotellaRota.png'],
-    this.i = Math.floor(Math.random() * this.imgs.length);
+      this.i = Math.floor(Math.random() * this.imgs.length);
     // console.log(this.i);
     Swal.fire({
       title: '¿Por qué es importante que no existan cristales?',

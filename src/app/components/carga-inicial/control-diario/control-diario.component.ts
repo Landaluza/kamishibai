@@ -31,7 +31,7 @@ export class ControlDiarioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const controlDiarioExist = this.localStorage.retrieve('controlDiario');
+    const controlDiarioExist: IControlDiario = this.localStorage.retrieve('controlDiario');
     if (controlDiarioExist) {
       this.router.navigate(['/home']);
     }
@@ -71,12 +71,14 @@ export class ControlDiarioComponent implements OnInit {
         tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
         tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a ' + (hora + 1).toString().padStart(2, '0') + ':00';
         hora = hora + 1;
+        tarjetaControl.createdAt = new Date();
         this.tarjetaControlService.create(tarjetaControl).subscribe(resp => {
           console.log('ok');
           console.log(response);
         });
         console.log(tarjetaControl);
       }
+      this.enFecha = true;
     });
 
   }

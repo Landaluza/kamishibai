@@ -20,6 +20,7 @@ export class LineaComponent implements OnInit {
 
   ngOnInit() {
     const controlDiarioExist = this.localStorage.retrieve('controlDiario');
+    console.log(controlDiarioExist);
     if (controlDiarioExist) {
       this.router.navigate(['/home']);
     }
