@@ -11,6 +11,7 @@
             <a *ngIf="loginService.isLogged" [routerLink]="['/admin/linea-envasado']">Linea Envasado</a>
             <a *ngIf="loginService.isLogged" [routerLink]="['/admin/control-diario']">Control Diario</a>
             <a *ngIf="loginService.isLogged" [routerLink]="['/admin/tarjeta-control']">Tarjeta Control</a>
+            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/turno']">Turno</a>
             <a (click)="logout()">Logout</a>
         </div>
 

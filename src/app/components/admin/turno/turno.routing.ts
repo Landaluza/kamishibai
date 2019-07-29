@@ -6,6 +6,7 @@ import { Observable, of } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { Turno } from '../../../shared/models/turno.model';
 import { TurnoComponent } from './turno.component';
+import { TurnoUpdateComponent } from './turno-update.component';
 
 @Injectable({ providedIn: 'root' })
 export class TurnoResolver implements Resolve<any> {
@@ -28,18 +29,18 @@ export const routesTurno: Routes = [
     path: '',
     component: TurnoComponent
   },
-  // {
-  //   path: ':idTarjetaControl/edit',
-  //   component: TarjetaControlUpdateComponent,
-  //   resolve: {
-  //     tarjetaControl: TarjetaControlResolver
-  //   }
-  // },
-  // {
-  //   path: 'new',
-  //   component: TarjetaControlUpdateComponent,
-  //   resolve: {
-  //     tarjetaControl: TarjetaControlResolver
-  //   }
-  // }
+  {
+    path: ':idtTurno/edit',
+    component: TurnoUpdateComponent,
+    resolve: {
+      turno: TurnoResolver
+    }
+  },
+  {
+    path: 'new',
+    component: TurnoUpdateComponent,
+    resolve: {
+      turno: TurnoResolver
+    }
+  }
 ];
