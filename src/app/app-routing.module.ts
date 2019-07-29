@@ -35,6 +35,10 @@ const routes: Routes = [
       {
         path: 'tarjeta-control',
         loadChildren: './components/admin/tarjeta-control/tarjeta-control.module#TarjetaControlModule'
+      },
+      {
+        path: 'turno',
+        loadChildren: './components/admin/turno/turno.module#TurnoModule'
       }
     ]
   },

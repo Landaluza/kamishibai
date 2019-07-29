@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDateMomentAdapter } from './util/datepicker-adapter';
 import { LoginService } from './services/login.service';
+import { TurnoService } from './services/turno.service';
 
 @NgModule({
   declarations: [],
@@ -24,6 +25,7 @@ import { LoginService } from './services/login.service';
     ControlDiarioService,
     LineaEnvasadoService,
     TarjetaControlService,
+    TurnoService,
     LoginService,
     { provide: NgbDateAdapter, useClass: NgbDateMomentAdapter }
   ],
