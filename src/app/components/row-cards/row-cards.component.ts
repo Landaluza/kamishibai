@@ -16,6 +16,7 @@ import { EmpleadoService } from '../../shared/services/empleado.service';
 import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
 import { Router } from '@angular/router';
 import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
+import { IControlDiario } from '../../shared/models/controlDiario.model';
 
 @Component({
   selector: 'app-row-cards',
@@ -24,7 +25,7 @@ import { TarjetaControlService } from '../../shared/services/tarjetaControl.serv
 })
 
 export class RowCardsComponent implements OnInit {
-  @Input() tarjetasControl: ITarjetaControl[];
+  tarjetasControl: ITarjetaControl[];
   cards = [
     { id: 7 },
     { id: 8 },
@@ -71,7 +72,17 @@ export class RowCardsComponent implements OnInit {
     this.empleadoService.find(3).subscribe(response => {
       this.localStorageService.store('empleado', response.body);
     });
-    console.log(this.tarjetasControl);
+
+    const controlDiarioExist: IControlDiario = this.localStorage.retrieve('controlDiario');
+    this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
+      console.log(response);
+      this.tarjetasControl = response.body;
+      console.log(this.tarjetasControl);
+      this.tarjetasControl.forEach((element, index) => {
+        console.log(element);
+        console.log(index);
+      });
+    });
   }
 
   onClickHecho(index: number) {
@@ -83,7 +94,6 @@ export class RowCardsComponent implements OnInit {
     //         'color: white; background-color: #2274A5',
     //         this.horaControl, this.time);
     if (this.horaControl < (index + 7)) {
-
       this.mensajeControlAntesHora();
     } else {
       const card = this.eleCards.toArray()[index];

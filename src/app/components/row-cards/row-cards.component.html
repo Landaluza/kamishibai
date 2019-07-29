@@ -1,27 +1,22 @@
 <div class="basic-container">
     <mat-grid-list cols="8" rowHeight="600px" gutterSize="1px">
-      <mat-grid-tile class ="mamTile"
-      *ngFor="let card of cards; let indice=index">
-      <!-- <div #card class="card"> -->
-          <div #card class="overlay">
-              <img #imagen src="../assets/img/relojArena.jpg" alt="Smiley face" height="142" width="100%">
-            <h4 #texto1>Texto 1</h4>
-            <div #texto2># Verificar que no existen cristales en la zona.</div>
-            <br />
-            <div #texto3># Otra tarea.</div>
-            <br />
-            <button #botonLimpieza
-              class="btn-material btn-material-rojo"
-              (click)="onClickHechoLimpieza(indice)">
-              Se realiza limpieza.
-            </button>
-            <button #boton
-            class="btn-material btn-material-verde"
-            (click)="onClickHecho(indice)">
-            Revisón correcta.
-          </button>
-          </div>
-        <!-- </div> -->
-      </mat-grid-tile>
+        <mat-grid-tile class="mamTile" *ngFor="let tarjetaControl of tarjetasControl; let indice=index">
+            <!-- <div #card class="card"> -->
+            <div #card class="overlay">
+                <img #imagen src="../assets/img/relojArena.jpg" alt="Smiley face" height="142" width="100%">
+                <h4 #texto1>Texto 1</h4> {{indice}}
+                <div #texto2># Verificar que no existen cristales en la zona.</div>
+                <br />
+                <div #texto3># Otra tarea.</div>
+                <br />
+                <button #botonLimpieza class="btn-material btn-material-rojo" (click)="onClickHechoLimpieza(indice)">
+                  Se realiza limpieza.
+                </button>
+                <button #boton class="btn-material btn-material-verde" (click)="onClickHecho(indice)">
+                  Revisón correcta.
+                </button>
+            </div>
+            <!-- </div> -->
+        </mat-grid-tile>
     </mat-grid-list>
-    </div>
+</div>
