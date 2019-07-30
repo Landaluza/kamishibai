@@ -57,7 +57,8 @@ export class ControlDiarioComponent implements OnInit {
     const controlDiario = new ControlDiario();
     controlDiario.idControl = this.control.idControl;
     controlDiario.idEmpleado = this.idEmpleado;
-    controlDiario.fecha = new Date();
+    controlDiario.fecha = moment().format('YYYY-MM-DD HH:mm:ss');
+    console.log(moment().format('YYYY-MM-DD HH:mm:ss'));
     controlDiario.turno = 1;
     this.controlDiarioService.create(controlDiario).subscribe(response => {
       console.log(response.body);
@@ -71,7 +72,6 @@ export class ControlDiarioComponent implements OnInit {
         tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
         tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a ' + (hora + 1).toString().padStart(2, '0') + ':00';
         hora = hora + 1;
-        tarjetaControl.createdAt = new Date();
         this.tarjetaControlService.create(tarjetaControl).subscribe(resp => {
           console.log('ok');
           console.log(response);

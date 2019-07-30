@@ -10,6 +10,7 @@ import { IControlDiario, ControlDiario } from '../../../shared/models/controlDia
 import { ControlDiarioService } from '../../../shared/services/controlDiario.service';
 import { TarjetaControlService } from '../../../shared/services/tarjetaControl.service';
 import { TarjetaControl } from '../../../shared/models/tarjetaControl.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-control',
@@ -50,30 +51,24 @@ export class ControlComponent implements OnInit {
     // this.router.navigateByUrl('/control-diario');
     const date = new Date();
     this.turnos.forEach(turno => {
-      console.log(turno);
-      // console.log(date.getHours());
-      // console.log(date);
-      // console.log(date.getTime());
 
-      if (date.getHours() >= turno.desde && date.getHours() <= turno.hasta) {
-        console.log(turno);
+      if (date.getHours() >= turno.desde && date.getHours() < turno.hasta) {
         const controlDiario = new ControlDiario();
         controlDiario.idControl = control.idControl;
         controlDiario.idEmpleado = this.idEmpleado;
-        controlDiario.fecha = new Date();
+        controlDiario.fecha = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
         controlDiario.idtTurno = turno.idtTurno;
         this.controlDiarioService.create(controlDiario).subscribe(response => {
-          console.log(response.body);
           const controlDiarioResponse = response.body;
           this.localStorage.store('controlDiario', controlDiarioResponse);
           let hora = +turno.desde;
           for (let index = 0; index < 8; index++) {
-            console.log(index);
-            console.log(hora);
             const tarjetaControl = new TarjetaControl();
             tarjetaControl.idControlDiario = controlDiarioResponse.idControlDiario;
             tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
             tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a ' + (hora + 1).toString().padStart(2, '0') + ':00';
+            tarjetaControl.horaDesde = hora.toString().padStart(2, '0');
+            tarjetaControl.horaHasta = (hora + 1).toString().padStart(2, '0');
             hora = hora + 1;
             tarjetaControl.createdAt = new Date();
             this.tarjetaControlService.create(tarjetaControl).subscribe(resp => {
@@ -85,7 +80,6 @@ export class ControlComponent implements OnInit {
             });
             console.log(tarjetaControl);
           }
-          // this.enFecha = true;
         });
       }
     });

@@ -4,6 +4,8 @@ export interface ITarjetaControl {
   idTarjetaControl?: number;
   descripcion?: string;
   horaTarea?: string;
+  horaDesde?: string;
+  horaHasta?: string;
   hora?: number;
   resultado?: string;
   observaciones?: string;
@@ -19,6 +21,8 @@ export class TarjetaControl implements ITarjetaControl {
     public idTarjetaControl?: number,
     public descripcion?: string,
     public horaTarea?: string,
+    public horaDesde?: string,
+    public horaHasta?: string,
     public hora?: number,
     public resultado?: string,
     public observaciones?: string,
