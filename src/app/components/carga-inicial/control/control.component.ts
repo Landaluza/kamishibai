@@ -50,7 +50,11 @@ export class ControlComponent implements OnInit {
     // this.router.navigateByUrl('/control-diario');
     const date = new Date();
     this.turnos.forEach(turno => {
+      console.log(turno);
       console.log(date.getHours());
+      console.log(date);
+      console.log(date.getTime());
+
       if (date.getHours() >= turno.desde && date.getHours() <= turno.hasta) {
         console.log(turno);
         const controlDiario = new ControlDiario();

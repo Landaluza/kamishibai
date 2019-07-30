@@ -6,6 +6,7 @@ import { ControlDiarioService } from '../../shared/services/controlDiario.servic
 import { LineaEnvasadoService } from '../../shared/services/lineaEnvasado.service';
 import { TarjetaControlService } from 'src/app/shared/services/tarjetaControl.service';
 import { IEmpleado, Empleado } from '../../shared/models/empleado.model';
+import { LocalStorageService } from 'ngx-webstorage';
 
 @Component({
   selector: 'app-row-empleado',
@@ -16,6 +17,7 @@ export class RowEmpleadoComponent implements OnInit {
   fecha = now();
   fechaCompleta = new Date();
   version = '0.0.5';
+  empleado: IEmpleado;
 
   constructor(
     private empleadoService: EmpleadoService,
@@ -23,9 +25,11 @@ export class RowEmpleadoComponent implements OnInit {
     private controlDiarioService: ControlDiarioService,
     private lineaEnvasadoService: LineaEnvasadoService,
     private tarjetaControlService: TarjetaControlService,
+    private localStorage: LocalStorageService
     ) { }
 
   ngOnInit() {
+    this.empleado = this.localStorage.retrieve('empleado');
   }
 
 }
