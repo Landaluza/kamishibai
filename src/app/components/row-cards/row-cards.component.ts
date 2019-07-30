@@ -17,6 +17,7 @@ import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
 import { Router } from '@angular/router';
 import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
 import { IControlDiario } from '../../shared/models/controlDiario.model';
+import { now } from 'moment';
 
 @Component({
   selector: 'app-row-cards',
@@ -69,10 +70,10 @@ export class RowCardsComponent implements OnInit {
 
   ngOnInit() {
     // setInterval(this.concienciacion, 30000);
-    this.empleadoService.find(3).subscribe(response => {
-      this.localStorageService.store('empleado', response.body);
-    });
+    this.loadAll();
+  }
 
+  loadAll() {
     const controlDiarioExist: IControlDiario = this.localStorage.retrieve('controlDiario');
     this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
       console.log(response);
@@ -85,7 +86,7 @@ export class RowCardsComponent implements OnInit {
     });
   }
 
-  onClickHecho(index: number) {
+  onClickHecho(index: number, tarjeta: ITarjetaControl) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
     // console.log('Hora:', this.horaControl, 'Index:', (index));
@@ -112,15 +113,23 @@ export class RowCardsComponent implements OnInit {
       if (this.horaControl <= (index + 7)) {
         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green');
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+        tarjeta.enHora = true;
       } else {
         this.mensajeControlDespuesHora();
         this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange');
+        tarjeta.enHora = false;
       }
+      tarjeta.resultado = 'revision';
+      tarjeta.fechaHoraControl = moment.now();
+      this.tarjetaControlService.update(tarjeta).subscribe(response => {
+        console.log('ok');
+        this.loadAll();
+      });
     }
   }
 
-  onClickHechoLimpieza(index: number) {
+  onClickHechoLimpieza(index: number, tarjeta: ITarjetaControl) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
     // console.log('Hora:', this.horaControl, 'Index:', (index));
@@ -143,11 +152,19 @@ export class RowCardsComponent implements OnInit {
       if (this.horaControl <= (index + 7)) {
         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green');
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+        tarjeta.enHora = true;
       } else {
         this.mensajeControlDespuesHora();
         this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange');
+        tarjeta.enHora = false;
       }
+      tarjeta.resultado = 'limpieza';
+      tarjeta.fechaHoraControl = moment.now();
+      this.tarjetaControlService.update(tarjeta).subscribe(response => {
+        console.log('ok');
+        this.loadAll();
+      });
     }
   }
 
@@ -187,6 +204,64 @@ export class RowCardsComponent implements OnInit {
       imageAlt: 'Imagen',
       animation: true
     });
+  }
+
+  onClickHechoLoad(index: number, tarjeta: ITarjetaControl) {
+    this.time = new Date();
+    this.horaControl = this.time.getHours();
+
+    if (tarjeta.resultado === 'revision') {
+      const card = this.eleCards.toArray()[index];
+      const boton = this.eleBoton.toArray()[index];
+      const botonLimpieza = this.eleBotonLimpieza.toArray()[index];
+      const imagen = this.eleImagen.toArray()[index];
+      const texto1 = this.eleTexto1.toArray()[index];
+      const texto2 = this.eleTexto2.toArray()[index];
+      const texto3 = this.eleTexto3.toArray()[index];
+      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden');
+      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png');
+      if (tarjeta.enHora) {
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green');
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+      } else {
+        this.mensajeControlDespuesHora();
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange');
+      }
+    }
+  }
+
+  onClickHechoLimpiezaLoad(index: number, tarjeta: ITarjetaControl) {
+    this.time = new Date();
+    this.horaControl = this.time.getHours();
+    // console.log('Hora:', this.horaControl, 'Index:', (index));
+    if (tarjeta.resultado === 'limpieza') {
+      const card = this.eleCards.toArray()[index];
+      const boton = this.eleBoton.toArray()[index];
+      const botonLimpieza = this.eleBotonLimpieza.toArray()[index];
+      const imagen = this.eleImagen.toArray()[index];
+      const texto1 = this.eleTexto1.toArray()[index];
+      const texto2 = this.eleTexto2.toArray()[index];
+      const texto3 = this.eleTexto3.toArray()[index];
+      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden');
+      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden');
+      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg');
+      if (tarjeta.enHora) {
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green');
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+      } else {
+        this.mensajeControlDespuesHora();
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+        this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange');
+      }
+    }
   }
 
 }

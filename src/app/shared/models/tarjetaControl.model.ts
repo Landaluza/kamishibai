@@ -9,7 +9,7 @@ export interface ITarjetaControl {
   observaciones?: string;
   idControlDiario?: number;
   enHora?: boolean;
-  fechaHoraControl?: Moment;
+  fechaHoraControl?: any;
   createdAt?: any;
   updatedAt?: any;
  }
@@ -24,7 +24,7 @@ export class TarjetaControl implements ITarjetaControl {
     public observaciones?: string,
     public idControlDiario?: number,
     public enHora?: boolean,
-    public fechaHoraControl?: Moment,
+    public fechaHoraControl?: any,
     public createdAt?: any,
     public updatedAt?: any
     ) {}
