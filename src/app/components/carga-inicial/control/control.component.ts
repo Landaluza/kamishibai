@@ -51,9 +51,9 @@ export class ControlComponent implements OnInit {
     const date = new Date();
     this.turnos.forEach(turno => {
       console.log(turno);
-      console.log(date.getHours());
-      console.log(date);
-      console.log(date.getTime());
+      // console.log(date.getHours());
+      // console.log(date);
+      // console.log(date.getTime());
 
       if (date.getHours() >= turno.desde && date.getHours() <= turno.hasta) {
         console.log(turno);

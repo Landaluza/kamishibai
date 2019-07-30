@@ -79,10 +79,14 @@ export class RowCardsComponent implements OnInit {
       console.log(response);
       this.tarjetasControl = response.body;
       console.log(this.tarjetasControl);
-      this.tarjetasControl.forEach((element, index) => {
-        console.log(element);
-        console.log(index);
-      });
+      if (this.tarjetasControl.length > 0) {
+        this.tarjetasControl.forEach((element, index) => {
+          console.log(element);
+          console.log(index);
+          this.onClickHechoLimpieza(index, element);
+          this.onClickHechoLimpiezaLoad(index, element);
+        });
+      }
     });
   }
 
@@ -124,7 +128,7 @@ export class RowCardsComponent implements OnInit {
       tarjeta.fechaHoraControl = moment.now();
       this.tarjetaControlService.update(tarjeta).subscribe(response => {
         console.log('ok');
-        this.loadAll();
+        // this.loadAll();
       });
     }
   }
@@ -163,7 +167,7 @@ export class RowCardsComponent implements OnInit {
       tarjeta.fechaHoraControl = moment.now();
       this.tarjetaControlService.update(tarjeta).subscribe(response => {
         console.log('ok');
-        this.loadAll();
+        // this.loadAll();
       });
     }
   }

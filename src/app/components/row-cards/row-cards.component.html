@@ -2,7 +2,7 @@
     <mat-grid-list cols="8" rowHeight="600px" gutterSize="1px">
         <mat-grid-tile class="mamTile" *ngFor="let tarjetaControl of tarjetasControl; let indice=index">
             <!-- <div #card class="card"> -->
-            <div #card class="overlay">
+            <div #card class="overlay" *ngIf="tarjetaControl.resultado !== 'limpieza' && tarjetaControl.resultado !== 'revision'">
                 <img #imagen src="../assets/img/relojArena.jpg" alt="Smiley face" height="142" width="100%">
                 <h4 #texto1>Texto 1</h4> {{indice}}
                 <div #texto2># Verificar que no existen cristales en la zona.</div>
@@ -15,6 +15,19 @@
                 <button #boton class="btn-material btn-material-verde" (click)="onClickHecho(indice, tarjetaControl)">
                   Revisón correcta.
                 </button>
+            </div>
+
+            <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'limpieza' && tarjetaControl.enHora === true" style="background: green">
+                <img #imagen src="../assets/img/barrer.jpg" alt="Smiley face" height="142" width="100%">
+            </div>
+            <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'limpieza' && tarjetaControl.enHora === false" style="background: orange">
+                <img #imagen src="../assets/img/barrer.jpg" alt="Smiley face" height="142" width="100%">
+            </div>
+            <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'revision' && tarjetaControl.enHora === true" style="background: green">
+                <img #imagen src="../assets/img/OK.png" alt="Smiley face" height="142" width="100%">
+            </div>
+            <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'revision' && tarjetaControl.enHora === false" style="background: orange">
+                <img #imagen src="../assets/img/OK.png" alt="Smiley face" height="142" width="100%">
             </div>
             <!-- </div> -->
         </mat-grid-tile>
