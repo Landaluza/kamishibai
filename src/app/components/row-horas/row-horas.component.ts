@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer2, ViewChildren, QueryList, ElementRef, } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChildren, QueryList, ElementRef, Input, } from '@angular/core';
 import { HechoService } from '../../services/hecho.service';
+import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
 
 @Component({
   selector: 'app-row-horas',
@@ -7,6 +8,9 @@ import { HechoService } from '../../services/hecho.service';
   styleUrls: ['./row-horas.component.css']
 })
 export class RowHorasComponent implements OnInit {
+
+  @Input() tarjetasControl: ITarjetaControl[];
+
   cards = [
     { horario: '07:00 a 08:00'},
     { horario: '08:00 a 09:00'},
@@ -23,6 +27,7 @@ export class RowHorasComponent implements OnInit {
    }
 
   ngOnInit() {
+    console.log(this.tarjetasControl);
       this.hechoService.hecho.subscribe(($Event) => {
       const hora = this.Hora.toArray()[$Event.boton];
       this.renderer.setStyle(hora.nativeElement, 'padding', '15px');
