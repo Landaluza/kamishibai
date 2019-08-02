@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IEmpleado } from '../../shared/models/empleado.model';
 import { LocalStorageService } from 'ngx-webstorage';
-import * as moment from 'moment';
-import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
 import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
@@ -34,7 +32,6 @@ export class HomeComponent implements OnInit {
       console.log('entro en hora');
     }
     this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
-      console.log(response);
       this.tarjetasControl = response.body;
     });
   }

@@ -17,8 +17,8 @@ import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
 import { Router } from '@angular/router';
 import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
 import { IControlDiario } from '../../shared/models/controlDiario.model';
-import { now } from 'moment';
 import { EventEmitter, Output } from '@angular/core';
+import { IControl } from '../../shared/models/control.model';
 
 @Component({
   selector: 'app-row-cards',
@@ -28,6 +28,7 @@ import { EventEmitter, Output } from '@angular/core';
 
 export class RowCardsComponent implements OnInit {
   tarjetasControl: ITarjetaControl[];
+  control: IControl;
 
   @Output() tarjetasControlEvent = new EventEmitter<ITarjetaControl[]>();
 
@@ -70,6 +71,7 @@ export class RowCardsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.control = this.localStorageService.retrieve('control');
     this.loadAll();
   }
 
@@ -78,7 +80,6 @@ export class RowCardsComponent implements OnInit {
     this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
       this.tarjetasControl = [];
       this.tarjetasControl = response.body;
-      console.log(this.tarjetasControl);
       this.tarjetasControlEvent.emit(this.tarjetasControl);
       if (this.tarjetasControl.length > 0) {
         this.tarjetasControl.forEach((element, index) => {
@@ -92,14 +93,10 @@ export class RowCardsComponent implements OnInit {
   onClickHecho(index: number, tarjeta: ITarjetaControl) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
-    console.log(tarjeta);
-    console.log(this.horaControl);
-    console.log(tarjeta.horaHasta);
+
     if (this.horaControl > tarjeta.horaHasta || this.horaControl < tarjeta.horaDesde) {
       this.mensajeControlAntesHora();
     } else {
-      console.log(this.horaControl);
-      console.log(tarjeta.horaHasta);
       if (this.horaControl <= tarjeta.horaHasta) {
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
         tarjeta.enHora = true;
@@ -121,13 +118,9 @@ export class RowCardsComponent implements OnInit {
     this.time = new Date();
     this.horaControl = this.time.getHours();
 
-    console.log(this.horaControl);
-    console.log(tarjeta.horaHasta);
-    console.log(tarjeta.horaDesde);
     if (this.horaControl > tarjeta.horaHasta || this.horaControl < tarjeta.horaDesde) {
       this.mensajeControlAntesHora();
     } else {
-
       if (this.horaControl <= tarjeta.horaHasta) {
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
         tarjeta.enHora = true;
@@ -209,7 +202,4 @@ export class RowCardsComponent implements OnInit {
       }
     }
   }
-
-  
-
 }

@@ -5,7 +5,7 @@
             <div #card class="overlay" *ngIf="tarjetaControl.resultado !== 'limpieza' && tarjetaControl.resultado !== 'revision'">
                 <img #imagen src="../assets/img/relojArena.jpg" alt="Smiley face" height="142" width="100%">
                 <h4 #texto1>Texto 1</h4> {{indice}}
-                <div #texto2># Verificar que no existen cristales en la zona.</div>
+                <div #texto2>{{control.controlNombre}}</div>
                 <br />
                 <div #texto3># Otra tarea.</div>
                 <br />
