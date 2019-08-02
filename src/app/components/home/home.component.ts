@@ -25,12 +25,10 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.empleado = this.localStorage.retrieve('idEmpleado');
     const controlDiarioExist: IControlDiario = this.localStorage.retrieve('controlDiario');
-    console.log(controlDiarioExist);
     if (!controlDiarioExist) {
       this.router.navigate(['/linea']);
     }
     const date = new Date();
-    console.log(moment(date, 'hh:mm').format());
 
     if (date.getHours() >= 8 && date.getHours() < 9) {
       console.log('entro en hora');
@@ -39,5 +37,9 @@ export class HomeComponent implements OnInit {
       console.log(response);
       this.tarjetasControl = response.body;
     });
+  }
+
+  loadTarjetas(tarjetasControl: ITarjetaControl[]) {
+    this.tarjetasControl = tarjetasControl;
   }
 }

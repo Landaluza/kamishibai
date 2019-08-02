@@ -51,36 +51,58 @@ export class ControlComponent implements OnInit {
     // this.router.navigateByUrl('/control-diario');
     const date = new Date();
     this.turnos.forEach(turno => {
-
+      console.log(turno);
+      console.log(date.getHours());
       if (date.getHours() >= turno.desde && date.getHours() < turno.hasta) {
-        const controlDiario = new ControlDiario();
-        controlDiario.idControl = control.idControl;
-        controlDiario.idEmpleado = this.idEmpleado;
-        controlDiario.fecha = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
-        controlDiario.idtTurno = turno.idtTurno;
-        this.controlDiarioService.create(controlDiario).subscribe(response => {
-          const controlDiarioResponse = response.body;
-          this.localStorage.store('controlDiario', controlDiarioResponse);
-          let hora = +turno.desde;
-          for (let index = 0; index < 8; index++) {
-            const tarjetaControl = new TarjetaControl();
-            tarjetaControl.idControlDiario = controlDiarioResponse.idControlDiario;
-            tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
-            tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a ' + (hora + 1).toString().padStart(2, '0') + ':00';
-            tarjetaControl.horaDesde = hora.toString().padStart(2, '0');
-            tarjetaControl.horaHasta = (hora + 1).toString().padStart(2, '0');
-            hora = hora + 1;
-            tarjetaControl.createdAt = new Date();
-            this.tarjetaControlService.create(tarjetaControl).subscribe(resp => {
-              console.log('ok');
-              console.log(response);
-              if (index === 7) {
-                this.router.navigate(['/home']);
-              }
-            });
-            console.log(tarjetaControl);
+        this.cargaDatos(turno, control);
+      } else {
+        if (date.getHours() === +turno.desde && date.getHours() === 23) {
+          this.cargaDatos(turno, control);
+        } else {
+          if (date.getHours() >= 0 && date.getHours() < 7) {
+            this.cargaDatos(turno, control);
+          }
+        }
+      }
+    });
+  }
+
+  private cargaDatos(turno: ITurno, control: IControl) {
+    const controlDiario = new ControlDiario();
+    controlDiario.idControl = control.idControl;
+    controlDiario.idEmpleado = this.idEmpleado;
+    controlDiario.fecha = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+    controlDiario.idtTurno = turno.idtTurno;
+    this.controlDiarioService.create(controlDiario).subscribe(response => {
+      const controlDiarioResponse = response.body;
+      this.localStorage.store('controlDiario', controlDiarioResponse);
+      let hora = +turno.desde;
+      for (let index = 0; index < 8; index++) {
+        const tarjetaControl = new TarjetaControl();
+        tarjetaControl.idControlDiario = controlDiarioResponse.idControlDiario;
+        tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
+        console.log(hora);
+
+        tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a '
+        + (hora + 1 === 24 ? 0 : hora + 1).toString().padStart(2, '0') + ':00';
+        tarjetaControl.horaDesde = +hora.toString().padStart(2, '0');
+        tarjetaControl.horaHasta = +(hora + 1).toString().padStart(2, '0');
+        tarjetaControl.orden = index;
+        // tarjetaControl.fechaHoraControl = null;
+
+        hora = hora + 1;
+        if (hora === 24) {
+          hora = 0;
+        }
+
+        this.tarjetaControlService.create(tarjetaControl).subscribe(resp => {
+          console.log('ok');
+          console.log(resp);
+          if (index === 7) {
+            this.router.navigate(['/home']);
           }
         });
+        console.log(tarjetaControl);
       }
     });
   }
