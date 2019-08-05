@@ -1,20 +1,16 @@
 import {
   Component,
-  Renderer2,
   ElementRef,
   OnInit,
   ViewChildren,
   QueryList,
-  Input
 } from '@angular/core';
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import { HechoService } from '../../services/hecho.service';
 import { LocalStorageService } from 'ngx-webstorage';
-import { EmpleadoService } from '../../shared/services/empleado.service';
 import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
-import { Router } from '@angular/router';
 import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
 import { IControlDiario } from '../../shared/models/controlDiario.model';
 import { EventEmitter, Output } from '@angular/core';
@@ -51,7 +47,6 @@ export class RowCardsComponent implements OnInit {
   @ViewChildren('texto2') eleTexto2: QueryList<ElementRef>;
   @ViewChildren('texto3') eleTexto3: QueryList<ElementRef>;
 
-
   imgs: string[] = [];
   i: number;
 
@@ -61,12 +56,9 @@ export class RowCardsComponent implements OnInit {
   fecha = new Date();
 
   constructor(
-    private renderer: Renderer2,
     private hechoService: HechoService,
     private localStorageService: LocalStorageService,
-    private empleadoService: EmpleadoService,
     private localStorage: LocalStorageService,
-    private router: Router,
     private tarjetaControlService: TarjetaControlService
   ) { }
 
@@ -94,10 +86,13 @@ export class RowCardsComponent implements OnInit {
     this.time = new Date();
     this.horaControl = this.time.getHours();
 
-    if (this.horaControl > tarjeta.horaHasta || this.horaControl < tarjeta.horaDesde) {
+    if (this.horaControl < tarjeta.horaDesde) {
       this.mensajeControlAntesHora();
     } else {
-      if (this.horaControl <= tarjeta.horaHasta) {
+      const endTime = moment(tarjeta.horaDesde + ':59', 'hh:mm');
+      const nowTime = moment(this.time.getHours() + ':' + this.time.getMinutes()  , 'hh:mm');
+
+      if (nowTime <= endTime) {
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
         tarjeta.enHora = true;
       } else {
@@ -105,6 +100,7 @@ export class RowCardsComponent implements OnInit {
         this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
         tarjeta.enHora = false;
       }
+
       tarjeta.resultado = 'revision';
       tarjeta.fechaHoraControl = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
       this.tarjetaControlService.update(tarjeta).subscribe(response => {
@@ -118,10 +114,12 @@ export class RowCardsComponent implements OnInit {
     this.time = new Date();
     this.horaControl = this.time.getHours();
 
-    if (this.horaControl > tarjeta.horaHasta || this.horaControl < tarjeta.horaDesde) {
+    if (this.horaControl < tarjeta.horaDesde) {
       this.mensajeControlAntesHora();
     } else {
-      if (this.horaControl <= tarjeta.horaHasta) {
+      const endTime = moment(tarjeta.horaDesde + ':59', 'hh:mm');
+      const nowTime = moment(this.time.getHours() + ':' + this.time.getMinutes()  , 'hh:mm');
+      if (nowTime <= endTime) {
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
         tarjeta.enHora = true;
       } else {
@@ -178,13 +176,10 @@ export class RowCardsComponent implements OnInit {
   onClickHechoLoad(index: number, tarjeta: ITarjetaControl) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
-
     if (tarjeta.resultado === 'revision') {
-
       if (tarjeta.enHora) {
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
       } else {
-        this.mensajeControlDespuesHora();
         this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
       }
     }
@@ -197,7 +192,6 @@ export class RowCardsComponent implements OnInit {
       if (tarjeta.enHora) {
         this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
       } else {
-        this.mensajeControlDespuesHora();
         this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
       }
     }

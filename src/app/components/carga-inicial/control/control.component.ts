@@ -47,12 +47,10 @@ export class ControlComponent implements OnInit {
 
   seleccionarControl(control: IControl) {
     this.localStorage.store('control', control);
-    console.log(control);
     // this.router.navigateByUrl('/control-diario');
     const date = new Date();
     this.turnos.forEach(turno => {
-      console.log(turno);
-      console.log(date.getHours());
+
       if (date.getHours() >= turno.desde && date.getHours() < turno.hasta) {
         this.cargaDatos(turno, control);
       } else {
@@ -81,14 +79,12 @@ export class ControlComponent implements OnInit {
         const tarjetaControl = new TarjetaControl();
         tarjetaControl.idControlDiario = controlDiarioResponse.idControlDiario;
         tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
-        console.log(hora);
 
         tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a '
         + (hora + 1 === 24 ? 0 : hora + 1).toString().padStart(2, '0') + ':00';
         tarjetaControl.horaDesde = +hora.toString().padStart(2, '0');
         tarjetaControl.horaHasta = +(hora + 1).toString().padStart(2, '0');
         tarjetaControl.orden = index;
-        // tarjetaControl.fechaHoraControl = null;
 
         hora = hora + 1;
         if (hora === 24) {
@@ -97,12 +93,10 @@ export class ControlComponent implements OnInit {
 
         this.tarjetaControlService.create(tarjetaControl).subscribe(resp => {
           console.log('ok');
-          console.log(resp);
           if (index === 7) {
             this.router.navigate(['/home']);
           }
         });
-        console.log(tarjetaControl);
       }
     });
   }
