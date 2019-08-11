@@ -49,9 +49,7 @@ export class RowCardsComponent implements OnInit {
 
   imgs: string[] = [];
   i: number;
-
   time: Date;
-
   horaControl: number;
   fecha = new Date();
 
