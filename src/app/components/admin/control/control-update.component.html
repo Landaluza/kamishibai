@@ -1,73 +1,86 @@
-<div class="row col-12">
-    <div class="container-fluid">
-        <div class="block-header">
-            <div class="row">
-                <div class="col-lg-5 col-md-8 col-sm-12">
-                    <h2>
+<!-- <div class="row col-12"> -->
+<div id = "containerControl" class="container">
+  <div class="block-header">
+    <div class="row">
+      <div class="col-12">
+        <!-- <h2>
                         <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
                             <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
                             <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
-                        </a>Control</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a [routerLink]="['/home']"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item">Administracion</li>
-                        <li class="breadcrumb-item active">Control</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="card" style="max-width: 100%; height: 90%;">
-            <div class="header">
-
-            </div>
-            <div class="body">
-                <div class="row justify-content-center">
-                    <div class="col-8">
-                        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-                            <h2 id="myUserLabel">
-                                Crear o editar Control
-                            </h2>
-                            <div>
-                                <div class="form-group" [hidden]="!control.idControl">
-                                    <label>ID</label>
-                                    <input type="text" class="form-control" name="idControl" [(ngModel)]="control.idControl" readonly>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-control-label">Nombre de Control</label>
-                                    <input type="text" class="form-control" name="controlNombre" #controlNombreInput="ngModel" [(ngModel)]="control.controlNombre" required minlength="1" maxlength="50">
-
-                                    <div *ngIf="controlNombreInput.dirty && controlNombreInput.invalid">
-                                        <small class="form-text text-danger" *ngIf="controlNombreInput.errors.required">
-                                            Nombre es requerido
-                                        </small>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="form-control-label" for="field_lineaEnvasado">Lineas de
-                                        envasado</label>
-                                    <select class="form-control" id="field_lineaEnvasado" name="lineaEnvasado" [(ngModel)]="control.idLineaEnvasado">
-                                        <option [ngValue]="null"></option>
-                                        <option [ngValue]="lineaEnvasado.idLineaEnvasado"
-                                            *ngFor="let lineaEnvasado of lineaEnvasados; trackBy: trackLineaEnvasadoById">
-                                            {{lineaEnvasado.descripcion}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div>
-                                <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
-                                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
-                                </button>
-                                <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
-                                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </a>Control</h2> -->
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a [routerLink]="['/home']">
+              <fa-icon [icon]="'home'"></fa-icon>
+            </a>
+          </li>
+          <li class="breadcrumb-item">Administracion</li>
+          <li class="breadcrumb-item active">Control</li>
+        </ul>
+      </div>
     </div>
+  </div>
+
+  <div class="card" style="max-width: 100%; height: 90%;">
+    <div class="header">
+ <h4 id="labelCrear">
+              Crear o editar Control
+            </h4>
+    </div>
+    <div id ="bodyCrear" class="body">
+      <!-- <div class="row justify-content-center"> -->
+        <div class="col-12 justify-content-center">
+          <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+
+            <div>
+
+              <!-- <div class="form-group" [hidden]="!control.idControl">
+                <label>ID</label>
+                <input type="text" class="form-control" name="idControl" [(ngModel)]="control.idControl" readonly>
+              </div> -->
+
+              <div class="form-group">
+
+                <label id = "labelControlNombre" class="form-control-label">Nombre de Control</label>
+                <input type="text" id = "inputControlNombre" class="form-control" name="controlNombre" #controlNombreInput="ngModel"
+                  [(ngModel)]="control.controlNombre" required minlength="1" maxlength="50">
+
+                <div *ngIf="controlNombreInput.dirty && controlNombreInput.invalid">
+                  <small class="form-text text-danger" *ngIf="controlNombreInput.errors.required">
+                    Nombre es requerido
+                  </small>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <label id = "labelControlLineaEnvasado" class="form-control-label" for="field_lineaEnvasado">Lineas de
+                  envasado</label>
+                <select class="form-control" id="field_lineaEnvasado" name="lineaEnvasado"
+                  [(ngModel)]="control.idLineaEnvasado">
+                  <option [ngValue]="null"></option>
+                  <option [ngValue]="lineaEnvasado.idLineaEnvasado"
+                    *ngFor="let lineaEnvasado of lineaEnvasados; trackBy: trackLineaEnvasadoById">
+                    {{lineaEnvasado.descripcion}}</option>
+                </select>
+              </div>
+            </div>
+
+            <div id ="botonesCrear">
+              <button type="button" mat-raised-button class="btn btn-danger btn-sm" (click)="previousState()">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+              </button>
+              <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button
+                class="btn btn-primary btn-sm">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      <!-- </div> -->
+    </div>
+  </div>
 </div>
+<!-- </div> -->
