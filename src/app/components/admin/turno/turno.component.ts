@@ -19,4 +19,8 @@ export class TurnoComponent implements OnInit {
     });
   }
 
+  trackIdentity(index: number, item: ITurno) {
+    return item.idtTurno;
+  }
+
 }

@@ -19,4 +19,8 @@ export class TarjetaControlComponent implements OnInit {
     });
   }
 
+  trackIdentity(index: number, item: ITarjetaControl) {
+    return item.idTarjetaControl;
+  }
+
 }

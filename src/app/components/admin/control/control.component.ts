@@ -19,4 +19,8 @@ export class ControlComponent implements OnInit {
     });
   }
 
+  trackIdentity(index: number, item: IControl) {
+    return item.idControl;
+  }
+
 }

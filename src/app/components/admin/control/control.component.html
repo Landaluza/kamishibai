@@ -1,96 +1,95 @@
 <!-- <div class="row col-7"> -->
 <div class="container">
-  <div class="block-header">
-    <div class="row">
-      <div class="col-5">
-        <!-- <h2>
+    <div class="block-header">
+        <div class="row">
+            <div class="col-5">
+                <!-- <h2>
           <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
             <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
             <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
           </a>Controles</h2> -->
-        <ul class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a [routerLink]="['/home']">
-              <fa-icon [icon]="'home'"></fa-icon>
-            </a>
-          </li>
-          <li class="breadcrumb-item">Administracion</li>
-          <li class="breadcrumb-item active">Controles</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <mat-card>
-    <mat-card-header>
-      <div class="row col-6">
-        <div class="col-md-6">
-          <h2><span>Controles</span></h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a [routerLink]="['/home']">
+                            <fa-icon [icon]="'home'"></fa-icon>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">Administracion</li>
+                    <li class="breadcrumb-item active">Controles</li>
+                </ul>
+            </div>
         </div>
-        <div class="col-md-6">
-          <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
+    </div>
+
+    <mat-card>
+        <mat-card-header>
+            <div class="row col-6">
+                <div class="col-md-6">
+                    <h2><span>Controles</span></h2>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
             <fa-icon [icon]="'plus'"></fa-icon> <span>Nuevo</span>
           </button>
-        </div>
-      </div>
-    </mat-card-header>
+                </div>
+            </div>
+        </mat-card-header>
 
-    <mat-card-content>
-      <div class="row justify-content-center">
-        <div class="table-responsive" *ngIf="controles" style="width: 90%">
-          <table class="table table-striped" style="width: 100%">
+        <mat-card-content>
+            <div class="row justify-content-center">
+                <div class="table-responsive" *ngIf="controles" style="width: 90%">
+                    <table class="table table-striped" style="width: 100%">
 
-            <thead>
-              <tr>
-                <th><span>ID</span>
-                  <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th><span>Nombre</span>
-                  <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th><span>Linea Envasado</span>
-                  <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th><span>Fecha creación</span>
-                  <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th><span>Fecha modificación</span>
-                  <fa-icon [icon]="'sort'"></fa-icon>
-                </th>
-                <th></th>
-              </tr>
-            </thead>
+                        <thead>
+                            <tr>
+                                <th><span>ID</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Nombre</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Linea Envasado</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Fecha creación</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th><span>Fecha modificación</span>
+                                    <fa-icon [icon]="'sort'"></fa-icon>
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
 
-            <tbody *ngIf="controles">
-              <tr *ngFor="let control of controles; trackBy: trackIdentity">
-                <td><a [routerLink]="['./', control.idControl, 'view']">{{control.idControl}}</a>
-                </td>
-                <td>{{control.controlNombre}}</td>
-                <td>{{control.idLineaEnvasado}}</td>
-                <td>{{control.createdAt | date:'dd/MM/yy HH:mm'}}</td>
-                <td>{{control.updatedAt | date:'dd/MM/yy HH:mm'}}</td>
-                <td class="text-right">
+                        <tbody *ngIf="controles">
+                            <tr *ngFor="let control of controles; trackBy: trackIdentity">
+                                <td><a [routerLink]="['./', control.idControl, 'view']">{{control.idControl}}</a>
+                                </td>
+                                <td>{{control.controlNombre}}</td>
+                                <td>{{control.idLineaEnvasado}}</td>
+                                <td>{{control.createdAt | date:'dd/MM/yy HH:mm'}}</td>
+                                <td>{{control.updatedAt | date:'dd/MM/yy HH:mm'}}</td>
+                                <td class="text-right">
 
-                  <div class="btn-group flex-btn-group-container">
-                    <button type="submit" [routerLink]="['./', control.idControl, 'edit']" queryParamsHandling="merge"
-                      class="btn btn-primary btn-sm">
+                                    <div class="btn-group flex-btn-group-container">
+                                        <button type="submit" [routerLink]="['./', control.idControl, 'edit']" queryParamsHandling="merge" class="btn btn-primary btn-sm">
                       <fa-icon [icon]="'pencil-alt'"></fa-icon>
                       <span class="d-none d-md-inline"> Editar</span>
                     </button>
-                    <button type="button" (click)="deleteempleado(empleado)" class="btn btn-danger btn-sm">
+                                        <button type="button" (click)="deleteempleado(empleado)" class="btn btn-danger btn-sm">
                       <fa-icon [icon]="'times'"></fa-icon>
                       <span class="d-none d-md-inline"> Eliminar</span>
                     </button>
-                  </div>
+                                    </div>
 
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </mat-card-content>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </mat-card-content>
 
-  </mat-card>
+    </mat-card>
 </div>
 <!-- </div> -->

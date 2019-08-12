@@ -20,4 +20,8 @@ export class ControlDiarioComponent implements OnInit {
     });
   }
 
+  trackIdentity(index: number, item: IControlDiario) {
+    return item.idControlDiario;
+  }
+
 }

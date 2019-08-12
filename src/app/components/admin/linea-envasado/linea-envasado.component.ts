@@ -21,4 +21,8 @@ export class LineaEnvasadoComponent implements OnInit {
     });
   }
 
+  trackIdentity(index: number, item: ILineaEnvasado) {
+    return item.idLineaEnvasado;
+  }
+
 }
