@@ -28,16 +28,16 @@ export class RowCardsComponent implements OnInit {
 
   @Output() tarjetasControlEvent = new EventEmitter<ITarjetaControl[]>();
 
-  cards = [
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-    { id: 10 },
-    { id: 11 },
-    { id: 12 },
-    { id: 13 },
-    { id: 14 }
-  ];
+  // cards = [
+  //   { id: 7 },
+  //   { id: 8 },
+  //   { id: 9 },
+  //   { id: 10 },
+  //   { id: 11 },
+  //   { id: 12 },
+  //   { id: 13 },
+  //   { id: 14 }
+  // ];
 
   @ViewChildren('card') eleCards: QueryList<ElementRef>;
   @ViewChildren('boton') eleBoton: QueryList<ElementRef>;
@@ -63,6 +63,7 @@ export class RowCardsComponent implements OnInit {
   ngOnInit() {
     this.control = this.localStorageService.retrieve('control');
     this.loadAll();
+    setInterval(this.concienciacion, 30000);
   }
 
   loadAll() {
@@ -102,7 +103,7 @@ export class RowCardsComponent implements OnInit {
       tarjeta.resultado = 'revision';
       tarjeta.fechaHoraControl = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
       this.tarjetaControlService.update(tarjeta).subscribe(response => {
-        console.log('ok');
+        // console.log('ok');
         this.loadAll();
       });
     }
@@ -128,7 +129,7 @@ export class RowCardsComponent implements OnInit {
       tarjeta.resultado = 'limpieza';
       tarjeta.fechaHoraControl = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
       this.tarjetaControlService.update(tarjeta).subscribe(response => {
-        console.log('ok');
+        // console.log('ok');
         this.loadAll();
       });
     }
