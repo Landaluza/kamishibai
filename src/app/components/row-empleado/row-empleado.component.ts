@@ -16,7 +16,7 @@ import { LocalStorageService } from 'ngx-webstorage';
 export class RowEmpleadoComponent implements OnInit {
   fecha = now();
   fechaCompleta = new Date();
-  version = '0.0.5';
+  version = '1.0.5';
   empleado: IEmpleado;
 
   constructor(
