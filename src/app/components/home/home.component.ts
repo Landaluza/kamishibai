@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     const date = new Date();
 
     if (date.getHours() >= 8 && date.getHours() < 9) {
-      console.log('entro en hora');
+      // console.log('entro en hora');
     }
     console.log(controlDiarioExist);
     this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
