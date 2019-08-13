@@ -3,6 +3,8 @@ export interface ITurno {
     nombreTurno?: string;
     desde?: number;
     hasta?: number;
+    createdAt?: any;
+    updatedAt?: any;
 }
 
 export class Turno implements ITurno {
@@ -10,6 +12,8 @@ export class Turno implements ITurno {
         public idtTurno?: number,
         public nombreTurno?: string,
         public desde?: number,
-        public hasta?: number
+        public hasta?: number,
+        public createdAt?: any,
+        public updatedAt?: any
     ) { }
 }

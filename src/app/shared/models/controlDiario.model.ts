@@ -7,6 +7,8 @@ export interface IControlDiario {
   fecha?: any;
   idEmpleado?: number;
   idtTurno?: number;
+  createdAt?: any;
+  updatedAt?: any;
  }
 
 export class ControlDiario implements IControlDiario {
@@ -16,6 +18,8 @@ export class ControlDiario implements IControlDiario {
    public idControl?: number,
    public turno?: number,
    public idEmpleado?: number,
-   public idtTurno?: number
+   public idtTurno?: number,
+   public createdAt?: any,
+   public updatedAt?: any
         ) {}
 }
