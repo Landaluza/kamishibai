@@ -19,6 +19,10 @@ export class TurnoComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.loadAll();
+  }
+
+  loadAll() {
     this.turnoService.queryAll().subscribe(response => {
       this.turnos = response.body;
     });
