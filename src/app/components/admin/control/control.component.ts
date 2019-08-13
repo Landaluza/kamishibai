@@ -3,6 +3,7 @@ import { ControlService } from '../../../shared/services/control.service';
 import { IControl } from '../../../shared/models/control.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material';
+import { LineaEnvasadoService } from '../../../shared/services/lineaEnvasado.service';
 
 @Component({
   selector: 'app-control',
@@ -15,6 +16,7 @@ export class ControlComponent implements OnInit {
 
   constructor(
     private controlService: ControlService,
+    private lineaEnvasadoService: LineaEnvasadoService,
     public dialog: MatDialog
     ) { }
 
@@ -25,6 +27,11 @@ export class ControlComponent implements OnInit {
   loadAll() {
     this.controlService.queryAll().subscribe(response => {
       this.controles = response.body;
+      this.controles.forEach(control => {
+        this.lineaEnvasadoService.find(control.idLineaEnvasado).subscribe(response => {
+          control.idLineaEnvasadoNombre = response.body.descripcion;
+        });
+      });
     });
   }
 
