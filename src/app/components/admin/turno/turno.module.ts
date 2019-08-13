@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TurnoComponent } from './turno.component';
+import { TurnoComponent, TurnoDeleteComponent } from './turno.component';
 import { routesTurno } from './turno.routing';
 import { SharedModule } from '../../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ const ENTITY_STATES = [...routesTurno ];
     FormsModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [TurnoComponent, TurnoUpdateComponent]
+  declarations: [TurnoComponent, TurnoUpdateComponent, TurnoDeleteComponent],
+  entryComponents: [TurnoDeleteComponent]
 })
 export class TurnoModule { }

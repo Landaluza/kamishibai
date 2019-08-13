@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ControlDiarioComponent } from './control-diario.component';
+import { ControlDiarioComponent, ControlDiarioDeleteComponent } from './control-diario.component';
 import { ControlDiarioUpdateComponent } from './control-diario-update.component';
 import { routesControlDiario } from './control-diario.routing';
 import { SharedModule } from '../../../shared/shared.module';
@@ -18,7 +18,8 @@ const ENTITY_STATES = [...routesControlDiario ];
     NgbDatepickerModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [ControlDiarioComponent, ControlDiarioUpdateComponent],
-  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+  declarations: [ControlDiarioComponent, ControlDiarioUpdateComponent, ControlDiarioDeleteComponent],
+  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}],
+  entryComponents: [ControlDiarioDeleteComponent]
 })
 export class ControlDiarioModule { }

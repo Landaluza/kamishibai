@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LineaEnvasadoComponent } from './linea-envasado.component';
+import { LineaEnvasadoComponent, LineaEnvasadoDeleteComponent } from './linea-envasado.component';
 import { routesLineaEnvasado } from './linea-envasado.routing';
 import { SharedModule } from '../../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ const ENTITY_STATES = [...routesLineaEnvasado ];
     FormsModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [LineaEnvasadoComponent, LineaEnvasadoUpdateComponent]
+  declarations: [LineaEnvasadoComponent, LineaEnvasadoUpdateComponent, LineaEnvasadoDeleteComponent],
+  entryComponents: [LineaEnvasadoDeleteComponent]
 })
 export class LineaEnvasadoModule { }
