@@ -1,29 +1,28 @@
 <div class="container">
   <div class="row">
-     <!-- TODO: ¿Donde esta la class"breadcrumb"  -->
+    <!-- TODO: ¿Donde esta la class"breadcrumb"  -->
     <ul class="breadcrumb">
       <li class="breadcrumb-item">
         <a [routerLink]="['/home']">
           <fa-icon [icon]="'home'"></fa-icon>
         </a>
       </li>
-      <li class="breadcrumb-item">Administracion</li>
+      <li class="breadcrumb-item">Administración</li>
       <li class="breadcrumb-item active">Linea Envasado</li>
     </ul>
   </div>
 
-  <mat-card>
-    <mat-card-header>
-      <h2><span>Linea envasado</span></h2>
-      <button class="btn btn-primary btn-sm float-right"
-        [routerLink]="['./new']">
+  <div class="card">
+    <div class="card-header">
+      <h2 id="tituloTarjetaAdmin"><span>Linea envasado</span></h2>
+      <button class="btn btn-success btn-lg float-right" [routerLink]="['./new']">
         <fa-icon [icon]="'plus'"></fa-icon> <span>Nueva linea</span>
       </button>
-    </mat-card-header>
+    </div>
 
-    <mat-card-content class="row justify-content-center">
+    <div class="card-body" class="row justify-content-center">
       <div class="table-responsive" *ngIf="lineaEnvasados" style="width: 90%">
-        <table class="table table-striped" style="width: 100%">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th><span>Nombre</span>
@@ -45,14 +44,12 @@
               <td>{{linea.updatedAt | date:'dd/MM/yy HH:mm'}}</td>
               <td class="text-right">
                 <div class="btn-group flex-btn-group-container">
-                  <button type="submit" [routerLink]="['./', linea.idLineaEnvasado, 'edit']"
-                    queryParamsHandling="merge"
-                    class="btn btn-primary btn-sm">
+                  <button type="submit" [routerLink]="['./', linea.idLineaEnvasado, 'edit']" queryParamsHandling="merge"
+                    class="btn btn-primary btn-sm mr-2">
                     <fa-icon [icon]="'pencil-alt'"></fa-icon>
                     <span>Editar</span>
                   </button>
-                  <button type="button" (click)="deleteLineaEnvasado(linea)"
-                    class="btn btn-danger btn-sm">
+                  <button type="button" (click)="deleteLineaEnvasado(linea)" class="btn btn-danger btn-sm">
                     <fa-icon [icon]="'times'"></fa-icon>
                     <span>Eliminar</span>
                   </button>
@@ -62,6 +59,6 @@
           </tbody>
         </table>
       </div>
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </div>
 </div>

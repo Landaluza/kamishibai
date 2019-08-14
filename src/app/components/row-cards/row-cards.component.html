@@ -1,7 +1,7 @@
 <div class="basic-container">
   <mat-grid-list cols="8" rowHeight="600px" gutterSize="1px">
     <mat-grid-tile class="mamTile" *ngFor="let tarjetaControl of tarjetasControl; let indice=index">
-      <div #card class="overlay"
+      <div #tarjeta class="overlay"
         *ngIf="tarjetaControl.resultado !== 'limpieza' && tarjetaControl.resultado !== 'revision'">
         <img #imagen src="../assets/img/relojArena.jpg" alt="Smiley face" height="142" width="100%">
         <div id="textoCard" #texto2>{{control.controlNombre}}</div>
@@ -14,19 +14,19 @@
         </button>
       </div>
 
-      <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'limpieza' && tarjetaControl.enHora === true"
+      <div #tarjeta class="overlay" *ngIf="tarjetaControl.resultado === 'limpieza' && tarjetaControl.enHora === true"
         style="background: green">
         <img #imagen src="../assets/img/barrer.jpg" alt="Smiley face" height="142" width="100%">
       </div>
-      <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'limpieza' && tarjetaControl.enHora === false"
+      <div #tarjeta class="overlay" *ngIf="tarjetaControl.resultado === 'limpieza' && tarjetaControl.enHora === false"
         style="background: orange">
         <img #imagen src="../assets/img/barrer.jpg" alt="Smiley face" height="142" width="100%">
       </div>
-      <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'revision' && tarjetaControl.enHora === true"
+      <div #tarjeta class="overlay" *ngIf="tarjetaControl.resultado === 'revision' && tarjetaControl.enHora === true"
         style="background: green">
         <img #imagen src="../assets/img/OK.png" alt="Smiley face" height="142" width="100%">
       </div>
-      <div #card class="overlay" *ngIf="tarjetaControl.resultado === 'revision' && tarjetaControl.enHora === false"
+      <div #tarjeta class="overlay" *ngIf="tarjetaControl.resultado === 'revision' && tarjetaControl.enHora === false"
         style="background: orange">
         <img #imagen src="../assets/img/OK.png" alt="Smiley face" height="142" width="100%">
       </div>
