@@ -37,9 +37,9 @@
 
                         <thead>
                             <tr>
-                                <th><span>ID</span>
+                                <!-- <th><span>ID</span>
                                     <fa-icon [icon]="'sort'"></fa-icon>
-                                </th>
+                                </th> -->
                                 <th><span>Nombre</span>
                                     <fa-icon [icon]="'sort'"></fa-icon>
                                 </th>
@@ -58,8 +58,8 @@
 
                         <tbody *ngIf="controles">
                             <tr *ngFor="let control of controles; trackBy: trackIdentity">
-                                <td><a [routerLink]="['./', control.idControl, 'view']">{{control.idControl}}</a>
-                                </td>
+                                <!-- <td><a [routerLink]="['./', control.idControl, 'view']">{{control.idControl}}</a>
+                                </td> -->
                                 <td>{{control.controlNombre}}</td>
                                 <td>{{control.idLineaEnvasadoNombre}}</td>
                                 <td>{{control.createdAt | date:'dd/MM/yy HH:mm'}}</td>

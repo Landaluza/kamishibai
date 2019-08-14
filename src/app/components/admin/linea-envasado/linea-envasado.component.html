@@ -1,13 +1,13 @@
-<div class="row col-12">
-    <div class="container-fluid">
+<!-- <div class="row col-12"> -->
+    <div class="container">
         <div class="block-header">
             <div class="row">
-                <div class="col-lg-5 col-md-8 col-sm-12">
-                    <h2>
+                <div class="col-5">
+                    <!-- <h2>
                         <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
                             <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
                             <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
-                        </a>Linea Envasado</h2>
+                        </a>Linea Envasado</h2> -->
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a [routerLink]="['/home']">
@@ -21,27 +21,29 @@
             </div>
         </div>
         <mat-card>
+
             <mat-card-header>
-                <div class="row col-12">
-                    <div class="col-md-6">
-                        <h2><span id="linea-envasado-management-page-heading">Linea Envasado</span></h2>
+                <div class="row col-6">
+                    <div class="col-md-8">
+                        <h2><span>Linea Envasado</span></h2>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
                                         <fa-icon [icon]="'plus'"></fa-icon> <span>Nuevo</span>
                                     </button>
                     </div>
                 </div>
             </mat-card-header>
+
             <mat-card-content>
                 <div class="row justify-content-center">
                     <div class="table-responsive" *ngIf="lineaEnvasados" style="width: 90%">
-                        <table class="table table-striped" style="width: 90%">
+                        <table class="table table-striped" style="width: 100%">
                             <thead>
                                 <tr>
-                                    <th><span>ID</span>
+                                    <!-- <th><span>ID</span>
                                         <fa-icon [icon]="'sort'"></fa-icon>
-                                    </th>
+                                    </th> -->
                                     <th><span>Nombre</span>
                                         <fa-icon [icon]="'sort'"></fa-icon>
                                     </th>
@@ -54,10 +56,11 @@
                                     <th></th>
                                 </tr>
                             </thead>
+
                             <tbody *ngIf="lineaEnvasados">
                                 <tr *ngFor="let linea of lineaEnvasados; trackBy: trackIdentity">
-                                    <td><a [routerLink]="['./', linea.idLineaEnvasado, 'view']">{{linea.idLineaEnvasado}}</a>
-                                    </td>
+                                    <!-- <td><a [routerLink]="['./', linea.idLineaEnvasado, 'view']">{{linea.idLineaEnvasado}}</a>
+                                    </td> -->
                                     <td>{{linea.descripcion}}</td>
                                     <td>{{linea.createdAt | date:'dd/MM/yy HH:mm'}}</td>
                                     <td>{{linea.updatedAt | date:'dd/MM/yy HH:mm'}}</td>
@@ -82,4 +85,4 @@
             </mat-card-content>
         </mat-card>
     </div>
-</div>
+<!-- </div> -->

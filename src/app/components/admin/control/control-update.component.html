@@ -1,61 +1,63 @@
 <div id="containerControl" class="container">
 
-    <div class=" row col-12">
+  <div class=" row col-12">
 
-        <ul class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a [routerLink]="['/home']">
-                    <fa-icon [icon]="'home'"></fa-icon>
-                </a>
-            </li>
-            <li class="breadcrumb-item">Administracion</li>
-            <li class="breadcrumb-item active">Control</li>
-        </ul>
+    <ul class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/home']">
+          <fa-icon [icon]="'home'"></fa-icon>
+        </a>
+      </li>
+      <li class="breadcrumb-item">Administracion</li>
+      <li class="breadcrumb-item active">Control</li>
+    </ul>
+  </div>
+
+  <div class="card" style="max-width: 100%; height: 90%;">
+
+    <div class="card-header">
+      <h4 id="labelHeader">
+        Crear o editar Control
+      </h4>
     </div>
 
-    <div class="card" style="max-width: 100%; height: 90%;">
+    <div class="row card-body col-12  justify-content-center">
 
-        <div class="card-header">
-            <h4 id="labelHeader">
-                Crear o editar Control
-            </h4>
-        </div>
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 
-        <div class="row card-body col-12  justify-content-center">
+        <div class="form-group">
+          <label id="labelControlNombre" class="form-control-label">Nombre de Control</label>
+          <input type="text" id="inputControlNombre" class="form-control" name="controlNombre"
+            #controlNombreInput="ngModel" [(ngModel)]="control.controlNombre" required minlength="1" maxlength="50">
 
-            <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-                <div class="form-group">
-                    <label id="labelControlNombre" class="form-control-label">Nombre de Control</label>
-                    <input type="text" id="inputControlNombre" class="form-control" name="controlNombre" #controlNombreInput="ngModel" [(ngModel)]="control.controlNombre" required minlength="1" maxlength="50">
-
-                    <div *ngIf="controlNombreInput.dirty && controlNombreInput.invalid">
-                        <small class="form-text text-danger" *ngIf="controlNombreInput.errors.required">
+          <div *ngIf="controlNombreInput.dirty && controlNombreInput.invalid">
+            <small class="form-text text-danger" *ngIf="controlNombreInput.errors.required">
               Nombre de Control es requerido
             </small>
-                    </div>
-                </div>
+          </div>
+        </div>
 
-                <div class="form-group">
-                    <label id="labelControlLineaEnvasado" class="form-control-label" for="field_lineaEnvasado">Lineas de
+        <div class="form-group">
+          <label id="labelControlLineaEnvasado" class="form-control-label" for="field_lineaEnvasado">Lineas de
             envasado</label>
-                    <select class="form-control" id="field_lineaEnvasado" name="lineaEnvasado" [(ngModel)]="control.idLineaEnvasado">
+          <select class="form-control" id="field_lineaEnvasado" name="lineaEnvasado"
+            [(ngModel)]="control.idLineaEnvasado">
             <option [ngValue]="null"></option>
             <option [ngValue]="lineaEnvasado.idLineaEnvasado"
               *ngFor="let lineaEnvasado of lineaEnvasados; trackBy: trackLineaEnvasadoById">
               {{lineaEnvasado.descripcion}}</option>
           </select>
-                </div>
+        </div>
 
-                <div id="botonesCrear" class=" row col-12 justify-content-center">
-                    <button type="button" class="btn btn-danger btn-sm" (click)="previousState()">
+        <div id="botonesCrear" class=" row col-12 justify-content-center">
+          <button type="button" class="btn btn-danger btn-sm" (click)="previousState()">
             <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancelar</span>
           </button>
-                    <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary btn-sm">
+          <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary btn-sm">
             <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Grabar</span>
           </button>
-                </div>
-            </form>
         </div>
+      </form>
     </div>
+  </div>
 </div>

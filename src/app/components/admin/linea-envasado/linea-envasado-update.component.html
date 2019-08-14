@@ -1,60 +1,53 @@
-<div class="row col-12">
-    <div class="container-fluid">
-        <div class="block-header">
-            <div class="row">
-                <div class="col-lg-5 col-md-8 col-sm-12">
-                    <h2>
-                        <a href="javascript:void(0);" class="btn btn-xs btn-link btn-toggle-fullwidth" (click)="toggleFullWidth()">
-                            <i class="fa fa-arrow-left" *ngIf="sidebarVisible"></i>
-                            <i class="fa fa-arrow-right" *ngIf="!sidebarVisible"></i>
-                        </a>Linea de Envasado</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a [routerLink]="['/home']"><i class="icon-home"></i></a></li>
-                        <li class="breadcrumb-item">Administracion</li>
-                        <li class="breadcrumb-item active">Linea de Envasado</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="card" style="max-width: 100%; height: 90%;">
-            <div class="header">
+<div id="containerLinea" class="container">
 
-            </div>
-            <div class="body">
-                <div class="row justify-content-center">
-                    <div class="col-8">
-                        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-                            <h2 id="myUserLabel">
-                                Crear o editar Linea de Envasado
-                            </h2>
-                            <div>
-                                <div class="form-group" [hidden]="!lineaEnvasado.idLineaEnvasado">
-                                    <label>ID</label>
-                                    <input type="text" class="form-control" name="idLineaEnvasado" [(ngModel)]="lineaEnvasado.idLineaEnvasado" readonly>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-control-label">Descripción</label>
-                                    <input type="text" class="form-control" name="nombre" #descripcionInput="ngModel" [(ngModel)]="lineaEnvasado.descripcion" required minlength="1" maxlength="50">
+  <div class="row col-12">
 
-                                    <div *ngIf="descripcionInput.dirty && descripcionInput.invalid">
-                                        <small class="form-text text-danger" *ngIf="descripcionInput.errors.required">
-                                            Nombre es requerido
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <button type="button" mat-raised-button class="mat-cancel" (click)="previousState()">
-                                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
-                                </button>
-                                <button type="submit" [disabled]="editForm.form.invalid || isSaving" mat-raised-button class="mat-success">
-                                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <ul class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a [routerLink]="['/home']">
+              <fa-icon [icon]="'home'"></fa-icon>
+            </a>
+          </li>
+          <li class="breadcrumb-item">Administracion</li>
+          <li class="breadcrumb-item active">Lineas envasado</li>
+        </ul>
+      </div>
+
+  <div class="card" style="max-width: 100%; height: 90%;">
+
+    <div class="card-header">
+      <h4 id="labelHeader">
+        Crear o editar Linea de Envasado
+      </h4>
     </div>
+
+    <div class="row card-body col-12  justify-content-center">
+
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+        <div class="form-group">
+          <label id="labelControlNombre" class="form-control-label">Descripción</label>
+          <input type="text" class="form-control" name="nombre" #descripcionInput="ngModel"
+            [(ngModel)]="lineaEnvasado.descripcion" required minlength="1" maxlength="50">
+
+          <div *ngIf="descripcionInput.dirty && descripcionInput.invalid">
+            <small class="form-text text-danger" *ngIf="descripcionInput.errors.required">
+              Nombre es requerido
+            </small>
+          </div>
+        </div>
+
+
+        <div id="botonesCrear" class=" row col-12 justify-content-center">
+          <button type="button" class="btn btn-danger btn-sm" (click)="previousState()">
+            <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancelar</span>
+          </button>
+          <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary btn-sm">
+            <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Grabar</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
