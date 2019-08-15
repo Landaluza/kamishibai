@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.empleado).subscribe(response => {
       if (response.body) {
         this.localStorage.store('authenticationToken', response.body.rol);
-        this.router.navigate(['/home']);
+        this.localStorage.store('idEmpleado', response.body.idEmpleado);
+        this.localStorage.store('empleado', response.body);
+        this.router.navigate(['/linea']);
         this.loginService.changeLogin(true);
       } else {
         this.loginService.changeLogin(false);

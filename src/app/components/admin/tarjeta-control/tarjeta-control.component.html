@@ -20,18 +20,25 @@
                 </div>
             </div>
         </div>
-        <div class="card" style="max-width: 100%; height: 70%;">
-            <div class="header">
-                <h2>
-                    <span id="empleado-management-page-heading">Tarjeta Control</span>
-                    <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
-                        <fa-icon [icon]="'plus'"></fa-icon> <span>Nuevo</span>
-                    </button>
-                </h2>
-            </div>
-            <div class="body">
+
+        <mat-card>
+            <mat-card-header>
+                <div class="row col-12">
+                    <div class="col-md-6">
+                        <h2><span id="tarjeta-management-page-heading">Tarjeta Control</span></h2>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-primary btn-sm float-right" [routerLink]="['./new']">
+                                        <fa-icon [icon]="'plus'"></fa-icon> <span>Nuevo</span>
+                                    </button>
+
+                    </div>
+                </div>
+            </mat-card-header>
+
+            <mat-card-content>
                 <div class="row justify-content-center">
-                    <div class="table-responsive" *ngIf="tarjetas" style="width: 90%">
+                    <div class="table-responsive tableFixHead" *ngIf="tarjetas" style="width: 90%">
                         <table class="table table-striped" style="width: 90%">
                             <thead>
                                 <tr>
@@ -76,13 +83,13 @@
                                     <td class="text-right">
                                         <div class="btn-group flex-btn-group-container">
                                             <button type="submit" [routerLink]="['./', tarjeta.idTarjetaControl, 'edit']" queryParamsHandling="merge" class="btn btn-primary btn-sm">
-                                                <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                                                <span class="d-none d-md-inline">Editar</span>
-                                            </button>
-                                            <button type="button" (click)="deleteempleado(linea)" class="btn btn-danger btn-sm">
-                                                <fa-icon [icon]="'times'"></fa-icon>
-                                                <span class="d-none d-md-inline">Eliminar</span>
-                                            </button>
+                                                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                                                            <span class="d-none d-md-inline">Editar</span>
+                                                        </button>
+                                            <button type="button" (click)="deleteTarjetaControl(tarjeta)" class="btn btn-danger btn-sm">
+                                                            <fa-icon [icon]="'times'"></fa-icon>
+                                                            <span class="d-none d-md-inline">Eliminar</span>
+                                                        </button>
                                         </div>
                                     </td>
                                 </tr>
@@ -90,7 +97,8 @@
                         </table>
                     </div>
                 </div>
-            </div>
-        </div>
+            </mat-card-content>
+
+        </mat-card>
     </div>
 </div>

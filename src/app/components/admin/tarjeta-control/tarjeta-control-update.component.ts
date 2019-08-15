@@ -15,6 +15,7 @@ export class TarjetaControlUpdateComponent implements OnInit {
   tarjetaControl: ITarjetaControl;
   isSaving: boolean;
   controlesDiarios: IControlDiario[];
+  fechaDp: any;
 
   constructor(
     private route: ActivatedRoute,

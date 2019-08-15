@@ -1,17 +1,20 @@
 import {
   Component,
-  Renderer2,
   ElementRef,
   OnInit,
   ViewChildren,
-  QueryList
+  QueryList,
 } from '@angular/core';
 
 import * as moment from 'moment';
 import Swal from 'sweetalert2';
 import { HechoService } from '../../services/hecho.service';
 import { LocalStorageService } from 'ngx-webstorage';
-import { EmpleadoService } from '../../shared/services/empleado.service';
+import { ITarjetaControl } from '../../shared/models/tarjetaControl.model';
+import { TarjetaControlService } from '../../shared/services/tarjetaControl.service';
+import { IControlDiario } from '../../shared/models/controlDiario.model';
+import { EventEmitter, Output } from '@angular/core';
+import { IControl } from '../../shared/models/control.model';
 
 @Component({
   selector: 'app-row-cards',
@@ -20,17 +23,21 @@ import { EmpleadoService } from '../../shared/services/empleado.service';
 })
 
 export class RowCardsComponent implements OnInit {
+  tarjetasControl: ITarjetaControl[];
+  control: IControl;
 
-  cards = [
-    { id: 7},
-    { id: 8},
-    { id: 9},
-    { id: 10},
-    { id: 11},
-    { id: 12},
-    { id: 13},
-    { id: 14}
-  ];
+  @Output() tarjetasControlEvent = new EventEmitter<ITarjetaControl[]>();
+
+  // cards = [
+  //   { id: 7 },
+  //   { id: 8 },
+  //   { id: 9 },
+  //   { id: 10 },
+  //   { id: 11 },
+  //   { id: 12 },
+  //   { id: 13 },
+  //   { id: 14 }
+  // ];
 
   @ViewChildren('card') eleCards: QueryList<ElementRef>;
   @ViewChildren('boton') eleBoton: QueryList<ElementRef>;
@@ -40,96 +47,91 @@ export class RowCardsComponent implements OnInit {
   @ViewChildren('texto2') eleTexto2: QueryList<ElementRef>;
   @ViewChildren('texto3') eleTexto3: QueryList<ElementRef>;
 
-
   imgs: string[] = [];
   i: number;
-
-  // time = new Date();
   time: Date;
-
-  // public horaControl = this.time.getHours();
   horaControl: number;
   fecha = new Date();
-  //  fecha1 = '2019.01.23';
 
   constructor(
-    private renderer: Renderer2,
     private hechoService: HechoService,
     private localStorageService: LocalStorageService,
-    private empleadoService: EmpleadoService
-  ) {}
+    private localStorage: LocalStorageService,
+    private tarjetaControlService: TarjetaControlService
+  ) { }
 
   ngOnInit() {
-  // setInterval(this.concienciacion, 30000);
-  this.empleadoService.find(3).subscribe(response => {
-    this.localStorageService.store('empleado', response.body);
-  });
+    this.control = this.localStorageService.retrieve('control');
+    this.loadAll();
+    setInterval(this.concienciacion, 30000);
   }
 
-    onClickHecho(index: number) {
+  loadAll() {
+    const controlDiarioExist: IControlDiario = this.localStorage.retrieve('controlDiario');
+    this.tarjetaControlService.queryAllByControlDiario(controlDiarioExist.idControlDiario).subscribe(response => {
+      this.tarjetasControl = [];
+      this.tarjetasControl = response.body;
+      this.tarjetasControlEvent.emit(this.tarjetasControl);
+      if (this.tarjetasControl.length > 0) {
+        this.tarjetasControl.forEach((element, index) => {
+          this.onClickHechoLoad(index, element);
+          this.onClickHechoLimpiezaLoad(index, element);
+        });
+      }
+    });
+  }
+
+  onClickHecho(index: number, tarjeta: ITarjetaControl) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
-    // console.log('Hora:', this.horaControl, 'Index:', (index));
-    // https://medium.com/free-code-camp/how-to-use-the-javascript-console-going-beyond-console-log-5128af9d573b
-    // console.log('%c Hora ',
-    //         'color: white; background-color: #2274A5',
-    //         this.horaControl, this.time);
-    if ( this.horaControl < (index + 7) ) {
 
+    if (this.horaControl < tarjeta.horaDesde) {
       this.mensajeControlAntesHora();
     } else {
-      const card = this.eleCards.toArray()[index];
-      const boton = this.eleBoton.toArray()[index];
-      const botonLimpieza = this.eleBotonLimpieza.toArray()[index];
-      const imagen = this.eleImagen.toArray()[index];
-      const texto1 = this.eleTexto1.toArray()[index];
-      const texto2 = this.eleTexto2.toArray()[index];
-      const texto3 = this.eleTexto3.toArray()[index];
-      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/OK.png' );
-      if (this.horaControl <= (index + 7)) {
-          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
-          this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+      const endTime = moment(tarjeta.horaDesde + ':59', 'hh:mm');
+      const nowTime = moment(this.time.getHours() + ':' + this.time.getMinutes()  , 'hh:mm');
+
+      if (nowTime <= endTime) {
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+        tarjeta.enHora = true;
       } else {
-          this.mensajeControlDespuesHora();
-          this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl});
-          this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
+        this.mensajeControlDespuesHora();
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+        tarjeta.enHora = false;
       }
+
+      tarjeta.resultado = 'revision';
+      tarjeta.fechaHoraControl = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+      this.tarjetaControlService.update(tarjeta).subscribe(response => {
+        // console.log('ok');
+        this.loadAll();
+      });
     }
   }
 
-  onClickHechoLimpieza(index: number) {
+  onClickHechoLimpieza(index: number, tarjeta: ITarjetaControl) {
     this.time = new Date();
     this.horaControl = this.time.getHours();
-    // console.log('Hora:', this.horaControl, 'Index:', (index));
-    if ( this.horaControl < (index + 7) ) {
+
+    if (this.horaControl < tarjeta.horaDesde) {
       this.mensajeControlAntesHora();
     } else {
-      const card = this.eleCards.toArray()[index];
-      const boton = this.eleBoton.toArray()[index];
-      const botonLimpieza = this.eleBotonLimpieza.toArray()[index];
-      const imagen = this.eleImagen.toArray()[index];
-      const texto1 = this.eleTexto1.toArray()[index];
-      const texto2 = this.eleTexto2.toArray()[index];
-      const texto3 = this.eleTexto3.toArray()[index];
-      this.renderer.setStyle(boton.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(botonLimpieza.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto1.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto2.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setStyle(texto3.nativeElement, 'visibility', 'hidden' );
-      this.renderer.setAttribute(imagen.nativeElement, 'src', '../assets/img/barrer.jpg' );
-      if (this.horaControl <= (index + 7)) {
-         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'green' );
-         this.hechoService.hecho.emit({ boton : index, enHora : true, el : index, hora: this.horaControl});
+      const endTime = moment(tarjeta.horaDesde + ':59', 'hh:mm');
+      const nowTime = moment(this.time.getHours() + ':' + this.time.getMinutes()  , 'hh:mm');
+      if (nowTime <= endTime) {
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+        tarjeta.enHora = true;
       } else {
-         this.mensajeControlDespuesHora();
-         this.hechoService.hecho.emit({boton : index, enHora : false, el : index, hora: this.horaControl});
-         this.renderer.setStyle(card.nativeElement, 'backgroundColor', 'orange' );
+        this.mensajeControlDespuesHora();
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+        tarjeta.enHora = false;
       }
+      tarjeta.resultado = 'limpieza';
+      tarjeta.fechaHoraControl = moment(new Date()).format('YYYY-MM-DD HH:mm:ss');
+      this.tarjetaControlService.update(tarjeta).subscribe(response => {
+        // console.log('ok');
+        this.loadAll();
+      });
     }
   }
 
@@ -159,8 +161,7 @@ export class RowCardsComponent implements OnInit {
 
   concienciacion() {
     this.imgs = ['alerta.jpg', 'PisaCristal.jpg', 'BotellaRota.png'],
-    this.i = Math.floor(Math.random() * this.imgs.length);
-    // console.log(this.i);
+      this.i = Math.floor(Math.random() * this.imgs.length);
     Swal.fire({
       title: '¿Por qué es importante que no existan cristales?',
       imageUrl: '../assets/img/concienciacion/' + this.imgs[this.i],
@@ -171,4 +172,27 @@ export class RowCardsComponent implements OnInit {
     });
   }
 
+  onClickHechoLoad(index: number, tarjeta: ITarjetaControl) {
+    this.time = new Date();
+    this.horaControl = this.time.getHours();
+    if (tarjeta.resultado === 'revision') {
+      if (tarjeta.enHora) {
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+      } else {
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+      }
+    }
+  }
+
+  onClickHechoLimpiezaLoad(index: number, tarjeta: ITarjetaControl) {
+    this.time = new Date();
+    this.horaControl = this.time.getHours();
+    if (tarjeta.resultado === 'limpieza') {
+      if (tarjeta.enHora) {
+        this.hechoService.hecho.emit({ boton: index, enHora: true, el: index, hora: this.horaControl });
+      } else {
+        this.hechoService.hecho.emit({ boton: index, enHora: false, el: index, hora: this.horaControl });
+      }
+    }
+  }
 }

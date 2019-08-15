@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { EmpleadoComponent } from './empleado.component';
+import { EmpleadoComponent, EmpleadoDeleteComponent } from './empleado.component';
 import { SharedModule } from '../../../shared/shared.module';
 import { routesEmpleado } from './empleado.routing';
 import { RouterModule } from '@angular/router';
@@ -16,6 +16,7 @@ const ENTITY_STATES = [...routesEmpleado ];
     FormsModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [EmpleadoComponent, EmpleadoUpdateComponent]
+  declarations: [EmpleadoComponent, EmpleadoUpdateComponent, EmpleadoDeleteComponent],
+  entryComponents: [EmpleadoDeleteComponent]
 })
 export class EmpleadoModule { }

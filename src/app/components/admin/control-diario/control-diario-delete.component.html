@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>¿Seguro que desea eliminar el Control Diario?</h1>
+<div mat-dialog-content>
+    <p>{{data.idControlDiario}}</p>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Si</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>No</button>
+</div>

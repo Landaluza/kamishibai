@@ -25,6 +25,10 @@ export class ControlDiarioService {
     return this.http.get<IControlDiario>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
 
+  findAllByEmpleado(idEmpleado: number): Observable<EntityArrayResponseType> {
+    return this.http.get<IControlDiario[]>(`${this.resourceUrl + '/empleado'}/${idEmpleado}`, { observe: 'response' });
+  }
+
   queryAll(): Observable<EntityArrayResponseType> {
     return this.http.get<IControlDiario[]>(this.resourceUrl, { observe: 'response' });
   }

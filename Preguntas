@@ -8,10 +8,12 @@ En app.module.ts
     this.dpConfig.minDate = { year: moment().year() - 100, month: 1, day: 1 };
 
     ¿Es mejor usar https://date-fns.org/?
+    o
+    https://www.npmjs.com/package/dayjs
 
 ----------------------------------------
 
 En app.component.html
-   ¿Como entre en la pantalla de login?
+   ¿Como entra en la pantalla de login?
 
 ----------------------------------------

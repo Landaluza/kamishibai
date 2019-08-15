@@ -1,0 +1,39 @@
+#containerControl{
+  width: 500px;
+}
+
+.card-header{
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 0px 0px;
+}
+/*
+#labelHeader {
+  background-color:  #FF5722;
+  font-size: 32px;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0px 10px 0px;
+  margin: 0px 0px 0px 0px;
+} */
+
+/* #labelControlNombre {
+width: 200px;
+font-weight: bold;
+} */
+
+#inputControlNombre {
+  width: 300px;
+  }
+
+  #labelControlLineaEnvasado {
+    width: 200px;
+font-weight: bold;
+  }
+
+  #field_lineaEnvasado {
+    width: 300px;
+  }
+
+  /* #botonesCrear {
+    margin: 30px 0px 20px 00px;
+  } */

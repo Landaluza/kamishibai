@@ -29,6 +29,10 @@ export class TarjetaControlService {
     return this.http.get<ITarjetaControl[]>(this.resourceUrl, { observe: 'response' });
   }
 
+  queryAllByControlDiario(idControlDiario: number): Observable<EntityArrayResponseType> {
+    return this.http.get<ITarjetaControl[]>(`${this.resourceUrl}/empleado/${idControlDiario}`, { observe: 'response' });
+  }
+
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }

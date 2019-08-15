@@ -25,6 +25,11 @@ export class AppComponent  implements OnInit {
 
   logout() {
     this.localStorage.clear('authenticationToken');
+    this.localStorage.clear('empleado');
+    this.localStorage.clear('idEmpleado');
+    this.localStorage.clear('control');
+    this.localStorage.clear('lineaEnvasado');
+    this.localStorage.clear('controlDiario');
     this.router.navigateByUrl('/login');
     this.validate = false;
     this.loginService.changeLogin(false);

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ControlComponent } from './control.component';
+import { ControlComponent, ControlDeleteComponent } from './control.component';
 import { routesControl } from './control.routing';
 import { SharedModule } from '../../../shared/shared.module';
 import { FormsModule } from '@angular/forms';
@@ -16,6 +16,7 @@ const ENTITY_STATES = [...routesControl ];
     FormsModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [ControlComponent, ControlUpdateComponent]
+  declarations: [ControlComponent, ControlUpdateComponent, ControlDeleteComponent],
+  entryComponents: [ControlDeleteComponent]
 })
 export class ControlModule { }

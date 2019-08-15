@@ -1,9 +1,14 @@
 <div class="basic-container">
-<mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
-  <mat-grid-tile  *ngFor="let card of cards"
-  [style.border]="'1px solid black'"
-  [style.border-left]="'2px solid black'">
-    <div class ="mamDiv" #eleHoraControl >  </div>
-  </mat-grid-tile>
-</mat-grid-list>
+    <mat-grid-list cols="8" rowHeight="50px" gutterSize="1px" [style.border]="'1px solid black'">
+        <mat-grid-tile *ngFor="let tarjeta of tarjetasControl" [style.border]="'1px solid black'" [style.border-left]="'2px solid black'">
+            <div class="mamDiv" #eleHoraControl style="background: green; padding: 15px" *ngIf="tarjeta.resultado === 'limpieza' && tarjeta.enHora === true">
+                {{tarjeta.fechaHoraControl | date:'HH:mm':'GMT'}} </div>
+            <div class="mamDiv" #eleHoraControl style="background: orange; padding: 15px" *ngIf="tarjeta.resultado === 'limpieza' && tarjeta.enHora === false">
+                {{tarjeta.fechaHoraControl | date:'HH:mm':'GMT'}} </div>
+            <div class="mamDiv" #eleHoraControl style="background: green; padding: 15px" *ngIf="tarjeta.resultado === 'revision' && tarjeta.enHora === true">
+                {{tarjeta.fechaHoraControl | date:'HH:mm':'GMT'}} </div>
+            <div class="mamDiv" #eleHoraControl style="background: orange; padding: 15px" *ngIf="tarjeta.resultado === 'revision' && tarjeta.enHora === false">
+                {{tarjeta.fechaHoraControl | date:'HH:mm':'GMT'}} </div>
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>
