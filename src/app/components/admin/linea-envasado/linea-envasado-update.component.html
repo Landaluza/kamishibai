@@ -8,8 +8,7 @@
         <input id="Descripcion" type="text" class="form-control" name="nombre" #descripcionInput="ngModel"
           [(ngModel)]="lineaEnvasado.descripcion" required minlength="1" maxlength="50" placeholder="Descripción">
         <div *ngIf="descripcionInput.dirty && descripcionInput.invalid">
-          <!-- TODO: Revisar error  -->
-          <small class="form-text text-danger" *ngIf="descripcionInput.errors.required">
+            <small class="form-text text-danger" *ngIf="descripcionInput.errors.required">
             Nombre es requerido
           </small>
         </div>

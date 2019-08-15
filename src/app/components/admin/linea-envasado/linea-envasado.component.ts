@@ -23,7 +23,9 @@ export class LineaEnvasadoComponent implements OnInit {
   }
 
   loadAll() {
+    // console.log('entro a cargar las lineas');
     this.lineaEnvasadoService.queryAll().subscribe(response => {
+      // console.log('carga');
       this.lineaEnvasados = response.body;
     });
   }
@@ -32,10 +34,8 @@ export class LineaEnvasadoComponent implements OnInit {
     return item.idLineaEnvasado;
   }
 
-  // TODO: En el primer intento no lo borra, en el segundo si.
-  deleteLineaEnvasado(lineaEnvasado: ILineaEnvasado): void {
+    deleteLineaEnvasado(lineaEnvasado: ILineaEnvasado): void {
     console.log(lineaEnvasado);
-  // TODO: Usar SweetAlert
     const dialogRef = this.dialog.open(LineaEnvasadoDeleteComponent, {
       width: '50%',
       data: {
@@ -59,7 +59,6 @@ export class LineaEnvasadoDeleteComponent implements OnInit {
   constructor(
     private lineaEnvasadoService: LineaEnvasadoService,
     public dialogRef: MatDialogRef<LineaEnvasadoDeleteComponent>,
-    // TODO: ¿Para qué sirve esto?
     @Inject(MAT_DIALOG_DATA) public data: ILineaEnvasado
   ) { }
 
@@ -67,9 +66,9 @@ export class LineaEnvasadoDeleteComponent implements OnInit {
     console.log(this.data);
   }
 
-  onNoClick(): void {
+  onClick(): void {
     this.lineaEnvasadoService.delete(this.data.idLineaEnvasado).subscribe(response => {
-      console.log('empleado deleted');
+      console.log('linea deleted');
     });
     this.dialogRef.close();
   }

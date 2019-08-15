@@ -41,8 +41,7 @@ export class LineaEnvasadoUpdateComponent implements OnInit {
     }
   }
 
-  // TODO: ¿Para qué sirve isSaving si en ambos casos = false.
-  private onSaveSuccess(result) {
+    private onSaveSuccess(result) {
     this.isSaving = false;
     this.mensajeGrabadoOK();
     this.previousState();
