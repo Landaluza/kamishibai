@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LineaEnvasadoService } from '../../../shared/services/lineaEnvasado.service';
 import { LineaEnvasado, ILineaEnvasado } from '../../../shared/models/lineaEnvasado.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-linea-envasado-update',
@@ -23,7 +24,9 @@ export class LineaEnvasadoUpdateComponent implements OnInit {
     this.route.data.subscribe(({ lineaEnvasado }) => {
       this.lineaEnvasado = lineaEnvasado;
     });
-   }
+
+    document.getElementById('Descripcion').focus();
+     }
 
    save() {
     this.isSaving = true;
@@ -38,16 +41,42 @@ export class LineaEnvasadoUpdateComponent implements OnInit {
     }
   }
 
+  // TODO: ¿Para qué sirve isSaving si en ambos casos = false.
   private onSaveSuccess(result) {
     this.isSaving = false;
+    this.mensajeGrabadoOK();
     this.previousState();
   }
 
   private onSaveError() {
+    this.mensajeGrabadoError();
     this.isSaving = false;
   }
 
   previousState() {
     window.history.back();
   }
+
+mensajeGrabadoOK() {
+Swal.fire({
+  position: 'top-end',
+  type: 'success',
+  title: 'Grabado correctamente',
+  showConfirmButton: false,
+  timer: 1500
+});
 }
+
+mensajeGrabadoError() {
+  Swal.fire({
+    position: 'top-end',
+    type: 'error',
+    title: 'Error al intentar grabar',
+    showConfirmButton: false,
+    timer: 1500
+  });
+  }
+
+}
+
+

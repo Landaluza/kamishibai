@@ -32,8 +32,10 @@ export class LineaEnvasadoComponent implements OnInit {
     return item.idLineaEnvasado;
   }
 
+  // TODO: En el primer intento no lo borra, en el segundo si.
   deleteLineaEnvasado(lineaEnvasado: ILineaEnvasado): void {
     console.log(lineaEnvasado);
+  // TODO: Usar SweetAlert
     const dialogRef = this.dialog.open(LineaEnvasadoDeleteComponent, {
       width: '50%',
       data: {
@@ -47,7 +49,6 @@ export class LineaEnvasadoComponent implements OnInit {
       this.loadAll();
     });
   }
-
 }
 
 @Component({
@@ -55,10 +56,10 @@ export class LineaEnvasadoComponent implements OnInit {
   templateUrl: './linea-envasado-delete.component.html'
 })
 export class LineaEnvasadoDeleteComponent implements OnInit {
-
   constructor(
     private lineaEnvasadoService: LineaEnvasadoService,
     public dialogRef: MatDialogRef<LineaEnvasadoDeleteComponent>,
+    // TODO: ¿Para qué sirve esto?
     @Inject(MAT_DIALOG_DATA) public data: ILineaEnvasado
   ) { }
 
