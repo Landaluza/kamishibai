@@ -2,13 +2,15 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IControl } from '../models/control.model';
+import { environment } from 'src/environments/environment';
 
 type EntityResponseType = HttpResponse<IControl>;
 type EntityArrayResponseType = HttpResponse<IControl[]>;
 
 @Injectable()
 export class ControlService {
-  public resourceUrl = 'http://localhost:8084/api/v1/control';
+
+  public resourceUrl = environment.apiUrl + '/api/v1/control';
 
   constructor(protected http: HttpClient) {}
 

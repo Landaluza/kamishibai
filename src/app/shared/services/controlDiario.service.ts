@@ -2,13 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IControlDiario } from '../models/controlDiario.model';
+import { environment } from 'src/environments/environment';
 
 type EntityResponseType = HttpResponse<IControlDiario>;
 type EntityArrayResponseType = HttpResponse<IControlDiario[]>;
 
 @Injectable()
 export class ControlDiarioService {
-  public resourceUrl = 'http://localhost:8084/api/v1/controlDiario';
+  public resourceUrl = environment.apiUrl + '/api/v1/controlDiario';
 
   constructor(protected http: HttpClient) {}
 

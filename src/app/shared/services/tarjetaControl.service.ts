@@ -2,13 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ITarjetaControl } from '../models/tarjetaControl.model';
+import { environment } from 'src/environments/environment';
 
 type EntityResponseType = HttpResponse<ITarjetaControl>;
 type EntityArrayResponseType = HttpResponse<ITarjetaControl[]>;
 
 @Injectable()
 export class TarjetaControlService {
-  public resourceUrl = 'http://localhost:8084/api/v1/tarjetaControl';
+  public resourceUrl = environment.apiUrl + '/api/v1/tarjetaControl';
 
   constructor(protected http: HttpClient) {}
 
