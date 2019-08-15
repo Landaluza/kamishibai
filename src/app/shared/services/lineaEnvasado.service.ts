@@ -2,13 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ILineaEnvasado } from '../models/lineaEnvasado.model';
+import { environment } from 'src/environments/environment';
 
 type EntityResponseType = HttpResponse<ILineaEnvasado>;
 type EntityArrayResponseType = HttpResponse<ILineaEnvasado[]>;
 
 @Injectable()
 export class LineaEnvasadoService {
-  public resourceUrl = 'http://localhost:8084/api/v1/lineaEnvasado';
+  public resourceUrl = environment.apiUrl + '/api/v1/lineaEnvasado';
 
   constructor(protected http: HttpClient) {}
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IEmpleado, Rol } from '../models/empleado.model';
 import { LocalStorageService, SessionStorageService } from 'ngx-webstorage';
+import { environment } from 'src/environments/environment';
 
 type EntityResponseType = HttpResponse<IEmpleado>;
 type EntityArrayResponseType = HttpResponse<IEmpleado[]>;
@@ -12,7 +13,7 @@ type EntityArrayResponseType = HttpResponse<IEmpleado[]>;
 })
 export class LoginService {
 
-  public resourceUrl = 'http://localhost:8084/api/v1/empleado-login';
+  public resourceUrl = environment.apiUrl + '/api/v1/empleado-login';
 
   isLogged: boolean;
 
