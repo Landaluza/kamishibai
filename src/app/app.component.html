@@ -14,5 +14,9 @@
       <a (click)="logout()">Logout</a>
     </div>
   </mat-toolbar>
-  <router-outlet></router-outlet>
+  <mat-sidenav-container fxFlexFill class="example-container">
+    <mat-sidenav-content fxFlexFill>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
