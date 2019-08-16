@@ -1,3 +1,4 @@
+// TODO: ¿Por qué estas importaciones aquí y no en app.module.ts?
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LineaEnvasadoComponent, LineaEnvasadoDeleteComponent } from './linea-envasado.component';
@@ -7,7 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LineaEnvasadoUpdateComponent } from './linea-envasado-update.component';
 
-const ENTITY_STATES = [...routesLineaEnvasado ];
+const ENTITY_STATES = [...routesLineaEnvasado];
 
 @NgModule({
   imports: [
@@ -16,7 +17,14 @@ const ENTITY_STATES = [...routesLineaEnvasado ];
     FormsModule,
     RouterModule.forChild(ENTITY_STATES)
   ],
-  declarations: [LineaEnvasadoComponent, LineaEnvasadoUpdateComponent, LineaEnvasadoDeleteComponent],
-  entryComponents: [LineaEnvasadoDeleteComponent]
+  declarations: [
+    LineaEnvasadoComponent,
+    LineaEnvasadoUpdateComponent,
+    LineaEnvasadoDeleteComponent
+  ],
+  // TODO: ¿Qué son entryComponents?
+  entryComponents: [
+    LineaEnvasadoDeleteComponent
+  ]
 })
 export class LineaEnvasadoModule { }
