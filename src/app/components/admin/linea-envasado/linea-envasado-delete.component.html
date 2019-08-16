@@ -12,13 +12,13 @@
 <div class="card" style="width: 600px; margin: auto">
   <div class="card-header">
     <h4 id="labelHeader" style="margin-bottom: 20px;; margin: auto; text-align: center">
-      ¿Seguro que desea eliminar la linea de envasado?</h4>
+      ¿Seguro que desea eliminar esta linea de envasado?</h4>
     <h4 style="text-align: center; margin-top:20px">{{data.nombre}}</h4>
   </div>
   <div class="row col-12 justify-content-center">
     <button type="button" class="btn btn-danger btn-sm mr-2" (click)="onClick()">
       <!-- TODO: No se usar los nombres de los iconos. -->
-      <fa-icon [icon]="'check-square'"></fa-icon>&nbsp;<span>Si</span>
+      <fa-icon [icon]="'faBell'"></fa-icon>&nbsp;<span>Si</span>
     </button>
     <button type="button" class="btn btn-primary btn-sm" mat-button [mat-dialog-close]="data" cdkFocusInitial>
       <fa-icon [icon]="'thumbs-down'"></fa-icon>&nbsp;<span>No</span>

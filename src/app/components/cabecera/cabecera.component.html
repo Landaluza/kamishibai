@@ -14,9 +14,7 @@
         <mat-grid-tile>
             <h4 #counterText>Tiempo para control:</h4>
         </mat-grid-tile>
-
         <mat-grid-tile>
-            <!--  TODO: Ocultar cuando se haya rellenado la card correspondiente a esa hora. -->
             <app-countdown *ngIf="verCounter"></app-countdown>
         </mat-grid-tile>
     </mat-grid-list>
