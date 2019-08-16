@@ -1,7 +1,7 @@
-<div style="height: 100vh;">
-    <mat-toolbar class="color">
+<div style="height: 100vh">
+    <mat-toolbar class="color" style="margin: 30px 10px 30px 10px">
+        <img id="logo" src="./assets/img/LogoLA.png" alt="Logo LA" style="width: 100px">
         <span>Menu Principal</span>
-
         <span style="width: 50%"> <br/></span>
 
         <div fxShow="true" fxHide.lt-md="true">
@@ -16,9 +16,9 @@
         </div>
 
 
-        <div fxShow="true" fxHide.gt-sm="true">
+        <!-- <div fxShow="true" fxHide.gt-sm="true">
             <a (click)="sidenav.toggle()">Show Side Menu</a>
-        </div>
+        </div> -->
     </mat-toolbar>
 
     <mat-sidenav-container fxFlexFill class="example-container">
