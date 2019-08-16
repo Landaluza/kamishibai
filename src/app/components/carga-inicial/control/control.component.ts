@@ -78,10 +78,37 @@ export class ControlComponent implements OnInit {
       for (let index = 0; index < 8; index++) {
         const tarjetaControl = new TarjetaControl();
         tarjetaControl.idControlDiario = controlDiarioResponse.idControlDiario;
-        tarjetaControl.descripcion = 'Verificar que no existen cristales en la zona.';
+        switch (index) {
+          case 0:
+            tarjetaControl.descripcion = control.descripcionTarjeta1;
+            break;
+          case 1:
+            tarjetaControl.descripcion = control.descripcionTarjeta2;
+            break;
+          case 2:
+            tarjetaControl.descripcion = control.descripcionTarjeta3;
+            break;
+          case 3:
+            tarjetaControl.descripcion = control.descripcionTarjeta4;
+            break;
+          case 4:
+            tarjetaControl.descripcion = control.descripcionTarjeta5;
+            break;
+          case 5:
+            tarjetaControl.descripcion = control.descripcionTarjeta6;
+            break;
+          case 6:
+            tarjetaControl.descripcion = control.descripcionTarjeta7;
+            break;
+          case 7:
+            tarjetaControl.descripcion = control.descripcionTarjeta8;
+            break;
+          default:
+            break;
+        }
 
         tarjetaControl.horaTarea = hora.toString().padStart(2, '0') + ':00 a '
-        + (hora + 1 === 24 ? 0 : hora + 1).toString().padStart(2, '0') + ':00';
+          + (hora + 1 === 24 ? 0 : hora + 1).toString().padStart(2, '0') + ':00';
         tarjetaControl.horaDesde = +hora.toString().padStart(2, '0');
         tarjetaControl.horaHasta = +(hora + 1).toString().padStart(2, '0');
         tarjetaControl.orden = index;

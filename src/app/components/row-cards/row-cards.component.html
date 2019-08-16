@@ -4,7 +4,7 @@
       <div #tarjeta class="overlay"
         *ngIf="tarjetaControl.resultado !== 'limpieza' && tarjetaControl.resultado !== 'revision'">
         <img #imagen src="../assets/img/relojArena.jpg" alt="Smiley face" height="142" width="100%">
-        <div id="textoCard" #texto2>{{control.controlNombre}}</div>
+        <div id="textoCard" #texto2>{{tarjetaControl.descripcion}}</div>
         <button #botonLimpieza class="btn-material btn-material-rojo"
           (click)="onClickHechoLimpieza(indice, tarjetaControl)">
           Se realiza limpieza.
