@@ -1,39 +1,18 @@
-<div style="height: 100vh">
-    <mat-toolbar class="color" style="margin: 30px 10px 30px 10px">
-        <img id="logo" src="./assets/img/LogoLA.png" alt="Logo LA" style="width: 100px">
-        <span>Menu Principal</span>
-        <span style="width: 50%"> <br/></span>
-
-        <div fxShow="true" fxHide.lt-md="true">
-            <a *ngIf="loginService.isLogged" [routerLink]="['/home']">Home</a>
-            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/empleado']">Empleados</a>
-            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/control']">Control</a>
-            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/linea-envasado']">Linea Envasado</a>
-            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/control-diario']">Control Diario</a>
-            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/tarjeta-control']">Tarjeta Control</a>
-            <a *ngIf="loginService.isLogged" [routerLink]="['/admin/turno']">Turno</a>
-            <a (click)="logout()">Logout</a>
-        </div>
-
-
-        <!-- <div fxShow="true" fxHide.gt-sm="true">
-            <a (click)="sidenav.toggle()">Show Side Menu</a>
-        </div> -->
-    </mat-toolbar>
-
-    <mat-sidenav-container fxFlexFill class="example-container">
-        <mat-sidenav #sidenav fxLayout="column">
-            <div fxLayout="column" *ngIf="loginService.isLogged">
-                <a (click)="sidenav.toggle()" mat-button>Close</a>
-                <a [routerLink]="['/home']">Home</a>
-                <a [routerLink]="['/admin/empleado']">Empleados</a>
-                <a [routerLink]="['/admin/control']">Control</a>
-                <a [routerLink]="['/admin/linea-envasado']">Linea Envasado</a>
-                <a [routerLink]="['/admin/control-diario']">Control Diario</a>
-            </div>
-        </mat-sidenav>
-        <mat-sidenav-content fxFlexFill>
-            <router-outlet></router-outlet>
-        </mat-sidenav-content>
-    </mat-sidenav-container>
+<div >
+  <mat-toolbar class="color" style="margin: 30px 10px 30px 10px; width: 99%">
+    <img id="logo" src="./assets/img/LogoLA.png" alt="Logo LA" style="width: 100px">
+    <span>Menu Principal</span>
+    <span style="width: 50%"> <br /></span>
+    <div>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/home']">Home</a>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/admin/empleado']">Empleados</a>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/admin/control']">Controles</a>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/admin/linea-envasado']">Líneas Envasado</a>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/admin/control-diario']">Controles Diario</a>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/admin/tarjeta-control']">Tarjetas Control</a>
+      <a *ngIf="loginService.isLogged" [routerLink]="['/admin/turno']">Turnos</a>
+      <a (click)="logout()">Logout</a>
+    </div>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
 </div>
