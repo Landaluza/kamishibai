@@ -18,10 +18,12 @@ a:visited {
 
 a:hover,
 a:active {
-    background-color: #E64A19;
+    background-color: rgb(221, 43, 30);
 }
 
-.color {
+.menuPrincipal {
     background: #FF5722;
     color: #fff;
+    margin: 30px 10px 30px 10px;
+    width: 99%;
 }
