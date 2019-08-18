@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { NgbDatepickerConfig, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import * as moment from 'moment';
+// Iconos en svg
 import './vendor.ts';
 // Para que las fechas y números esten en español.
 import { LOCALE_ID} from '@angular/core';

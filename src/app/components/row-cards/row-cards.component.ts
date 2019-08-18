@@ -63,7 +63,7 @@ export class RowCardsComponent implements OnInit {
   ngOnInit() {
     this.control = this.localStorageService.retrieve('control');
     this.loadAll();
-    setInterval(this.concienciacion, 30000);
+    // setInterval(this.concienciacion, 30000);
   }
 
   loadAll() {
