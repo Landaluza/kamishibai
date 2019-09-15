@@ -1,0 +1,42 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "es.com.kamishibai",
+      "nativeLanguage": "es"
+    },
+    "jhipsterVersion": "6.3.0",
+    "applicationType": "monolith",
+    "baseName": "kamishibai",
+    "packageName": "es.com.kamishibai",
+    "packageFolder": "es/com/kamishibai",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "MTNlNGE4MzYxYzdhMWU1YjZiZTFmOTdiZWMyYzdmYmE1NmY2ZjQwMzhiMDUxZGI5ZjQyZGM4NTVmY2Y4MWM5MTY4NTg1OTNiMTg1YzE4MGY5N2QzN2U3ZTRjZTU2NDdlYjJlYzE4YWRkNmYyZDVhOGQ4YjAwNWExMTQ1YjUxMTk=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "testFrameworks": ["gatling"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "es",
+    "languages": ["es"],
+    "blueprints": []
+  }
+}
